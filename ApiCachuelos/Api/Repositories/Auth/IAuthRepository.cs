@@ -7,6 +7,8 @@ namespace Api.Repositories.Auth
     {
 
         Task<bool> UsuarioExiste(string nombreUsuario);
+        Task<bool> CorreoExiste(string nombreUsuario);
         Task<Usuario> InsertUser(Register register);
+        Task<Usuario> LoginUser(Login login);
     }
 }

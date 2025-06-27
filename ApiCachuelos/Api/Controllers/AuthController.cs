@@ -1,4 +1,6 @@
 ﻿using System.Threading.Tasks;
+using Api.CachuelosSA;
+using Api.Entitys;
 using Api.Entitys.Auth;
 using Api.Services.Auth;
 using Microsoft.AspNetCore.Http;
@@ -19,16 +21,47 @@ namespace Api.Controllers
         }
 
         [HttpPost("Login")]
-        public IActionResult Login([FromBody] Login logInfo)
+        public async Task<IActionResult> Login([FromBody] Login logInfo)
         {
-            return Ok("Login exitoso");
+            var result = await _authServ.Login(logInfo);
+
+            if (!result.Exitoso)
+            {
+
+                return BadRequest(new CustomResponse<string>
+                {
+                    Header = new CustomHeader { Codigo = result.Codigo, Mensaje = result.Mensaje },
+                    Body = null
+                });
+            }
+
+            return Ok(new CustomResponse<Usuario>
+            {
+                Header = new CustomHeader { Codigo = result.Codigo, Mensaje = result.Mensaje },
+                Body = result.Datos
+            });
         }
 
         [HttpPost("Register")]
         public async Task<IActionResult> Register([FromBody] Register registerInfo)
         {
-            await _authServ.Register(registerInfo);
-            return Ok("Registro exitoso");
+            var result = await _authServ.Register(registerInfo);
+
+            if (!result.Exitoso)
+            {
+
+                return BadRequest(new CustomResponse<string>
+                {
+                    Header = new CustomHeader { Codigo = result.Codigo, Mensaje = result.Mensaje },
+                    Body = null
+                });
+            }
+
+            return Ok(new CustomResponse<Usuario>
+            {
+                Header = new CustomHeader { Codigo = result.Codigo, Mensaje = result.Mensaje },
+                Body = result.Datos
+            });
         }
 
     }
