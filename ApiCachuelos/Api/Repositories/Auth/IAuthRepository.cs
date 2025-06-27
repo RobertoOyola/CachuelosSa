@@ -1,6 +1,12 @@
-﻿namespace Api.Repositories.Auth
+﻿using Api.CachuelosSA;
+using Api.Entitys.Auth;
+
+namespace Api.Repositories.Auth
 {
     public interface IAuthRepository
     {
+
+        Task<bool> UsuarioExiste(string nombreUsuario);
+        Task<Usuario> InsertUser(Register register);
     }
 }

@@ -3,20 +3,24 @@
   "WorkspaceRootPath": "C:\\CachuelosSa\\ApiCachuelos\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\repositories\\auth\\authrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\repositories\\auth\\authrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\cachuelossa\\cachuelossacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\cachuelossa\\cachuelossacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\entitys\\auth\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\entitys\\auth\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\services\\auth\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\services\\auth\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\utils\\encript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\utils\\encript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\services\\auth\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -31,16 +35,24 @@
       "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\repositories\\auth\\authrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\repositories\\auth\\authrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\cachuelossa\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\cachuelossa\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\entitys\\auth\\register.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\entitys\\auth\\register.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\entitys\\auth\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\entitys\\auth\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -49,63 +61,85 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "DockedWidth": 193,
+          "SelectedChildIndex": 4,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:421934398:0:{81164725-9a96-4ece-a4cb-440d8fd285e5}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Login.cs",
-              "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Entitys\\Auth\\Login.cs",
-              "RelativeDocumentMoniker": "Api\\Entitys\\Auth\\Login.cs",
-              "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Entitys\\Auth\\Login.cs",
-              "RelativeToolTip": "Api\\Entitys\\Auth\\Login.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAeAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "Encript.cs",
+              "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Utils\\Encript.cs",
+              "RelativeDocumentMoniker": "Api\\Utils\\Encript.cs",
+              "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Utils\\Encript.cs",
+              "RelativeToolTip": "Api\\Utils\\Encript.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAADwvxIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-26T20:57:00.42Z",
+              "WhenOpened": "2025-06-27T06:47:20.849Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
+              "Title": "CachuelosSaContext.cs",
+              "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\CachuelosSA\\CachuelosSaContext.cs",
+              "RelativeDocumentMoniker": "Api\\CachuelosSA\\CachuelosSaContext.cs",
+              "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\CachuelosSA\\CachuelosSaContext.cs",
+              "RelativeToolTip": "Api\\CachuelosSA\\CachuelosSaContext.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAcwEUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-27T05:00:29.787Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "IAuthRepository.cs",
               "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Repositories\\Auth\\IAuthRepository.cs",
               "RelativeDocumentMoniker": "Api\\Repositories\\Auth\\IAuthRepository.cs",
               "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Repositories\\Auth\\IAuthRepository.cs",
               "RelativeToolTip": "Api\\Repositories\\Auth\\IAuthRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-26T20:49:01.581Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 5,
+              "Title": "IAuthService.cs",
+              "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Services\\Auth\\IAuthService.cs",
+              "RelativeDocumentMoniker": "Api\\Services\\Auth\\IAuthService.cs",
+              "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Services\\Auth\\IAuthService.cs",
+              "RelativeToolTip": "Api\\Services\\Auth\\IAuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-26T20:48:28.239Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "AuthRepository.cs",
               "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Repositories\\Auth\\AuthRepository.cs",
               "RelativeDocumentMoniker": "Api\\Repositories\\Auth\\AuthRepository.cs",
               "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Repositories\\Auth\\AuthRepository.cs",
               "RelativeToolTip": "Api\\Repositories\\Auth\\AuthRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-26T20:48:51.334Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "IAuthService.cs",
-              "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Services\\Auth\\IAuthService.cs",
-              "RelativeDocumentMoniker": "Api\\Services\\Auth\\IAuthService.cs",
-              "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Services\\Auth\\IAuthService.cs",
-              "RelativeToolTip": "Api\\Services\\Auth\\IAuthService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Api\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Api\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAADwvxwAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-26T20:48:28.239Z",
+              "WhenOpened": "2025-06-26T20:47:02.488Z",
               "EditorCaption": ""
             },
             {
@@ -116,35 +150,22 @@
               "RelativeDocumentMoniker": "Api\\Services\\Auth\\AuthService.cs",
               "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Services\\Auth\\AuthService.cs",
               "RelativeToolTip": "Api\\Services\\Auth\\AuthService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAABAAAAAAAAAAAAD4vxwAAABVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-26T20:48:11.071Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "Api\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "Api\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwA8AAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-26T20:47:02.488Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "WeatherForecast.cs",
-              "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\WeatherForecast.cs",
-              "RelativeDocumentMoniker": "Api\\WeatherForecast.cs",
-              "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\WeatherForecast.cs",
-              "RelativeToolTip": "Api\\WeatherForecast.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-26T20:27:33.183Z",
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\appsettings.json",
+              "RelativeDocumentMoniker": "Api\\appsettings.json",
+              "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\appsettings.json",
+              "RelativeToolTip": "Api\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-06-27T06:40:50.341Z",
               "EditorCaption": ""
             },
             {
@@ -155,42 +176,61 @@
               "RelativeDocumentMoniker": "Api\\Program.cs",
               "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Program.cs",
               "RelativeToolTip": "Api\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAMwBQAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-26T20:25:23.158Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\appsettings.json",
-              "RelativeDocumentMoniker": "Api\\appsettings.json",
-              "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\appsettings.json",
-              "RelativeToolTip": "Api\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-06-26T20:25:20.69Z",
+              "DocumentIndex": 9,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\CachuelosSA\\Usuario.cs",
+              "RelativeDocumentMoniker": "Api\\CachuelosSA\\Usuario.cs",
+              "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\CachuelosSA\\Usuario.cs",
+              "RelativeToolTip": "Api\\CachuelosSA\\Usuario.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAA0wAcAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-27T05:00:47.361Z",
               "EditorCaption": ""
-            }
-          ]
-        },
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
+            },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "WeatherForecastController.cs",
-              "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Controllers\\WeatherForecastController.cs",
-              "RelativeDocumentMoniker": "Api\\Controllers\\WeatherForecastController.cs",
-              "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Controllers\\WeatherForecastController.cs",
-              "RelativeToolTip": "Api\\Controllers\\WeatherForecastController.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABQAAAAtAAAAAAAAAA==",
+              "DocumentIndex": 10,
+              "Title": "Register.cs",
+              "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Entitys\\Auth\\Register.cs",
+              "RelativeDocumentMoniker": "Api\\Entitys\\Auth\\Register.cs",
+              "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Entitys\\Auth\\Register.cs",
+              "RelativeToolTip": "Api\\Entitys\\Auth\\Register.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-26T20:23:20.235Z",
+              "WhenOpened": "2025-06-27T05:22:26.584Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Login.cs",
+              "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Entitys\\Auth\\Login.cs",
+              "RelativeDocumentMoniker": "Api\\Entitys\\Auth\\Login.cs",
+              "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Entitys\\Auth\\Login.cs",
+              "RelativeToolTip": "Api\\Entitys\\Auth\\Login.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-26T20:57:00.42Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "WeatherForecast.cs",
+              "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\WeatherForecast.cs",
+              "RelativeDocumentMoniker": "Api\\WeatherForecast.cs",
+              "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\WeatherForecast.cs",
+              "RelativeToolTip": "Api\\WeatherForecast.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-26T20:27:33.183Z"
             }
           ]
         }

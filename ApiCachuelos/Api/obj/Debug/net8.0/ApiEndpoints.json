@@ -2,7 +2,7 @@
   {
     "ContainingType": "Api.Controllers.AuthController",
     "Method": "Login",
-    "RelativePath": "api/Auth",
+    "RelativePath": "api/Auth/Login",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -13,18 +13,23 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Api.Controllers.AuthController",
+    "Method": "Register",
+    "RelativePath": "api/Auth/Register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
       {
-        "Type": "System.String",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
+        "Name": "registerInfo",
+        "Type": "Api.Entitys.Auth.Register",
+        "IsRequired": true
       }
     ],
-    "EndpointName": "Login"
+    "ReturnTypes": []
   },
   {
     "ContainingType": "Api.Controllers.WeatherForecastController",

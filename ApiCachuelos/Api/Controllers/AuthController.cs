@@ -1,4 +1,6 @@
-﻿using Api.Entitys.Auth;
+﻿using System.Threading.Tasks;
+using Api.Entitys.Auth;
+using Api.Services.Auth;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,11 +11,24 @@ namespace Api.Controllers
     public class AuthController : ControllerBase
     {
 
-        [HttpPost(Name = "Login")]
-        public string Login([FromBody] Login logInfo)
-        {
+        private readonly IAuthService _authServ;
 
-            return "asd";
+        public AuthController(IAuthService authServ)
+        {
+            _authServ = authServ;
+        }
+
+        [HttpPost("Login")]
+        public IActionResult Login([FromBody] Login logInfo)
+        {
+            return Ok("Login exitoso");
+        }
+
+        [HttpPost("Register")]
+        public async Task<IActionResult> Register([FromBody] Register registerInfo)
+        {
+            await _authServ.Register(registerInfo);
+            return Ok("Registro exitoso");
         }
 
     }
