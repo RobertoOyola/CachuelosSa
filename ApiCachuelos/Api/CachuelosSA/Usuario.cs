@@ -19,15 +19,25 @@ public partial class Usuario
 
     public bool? Activo { get; set; }
 
+    public bool? Subscrito { get; set; }
+
+    public DateTime? FechaFinSubscrito { get; set; }
+
     public DateTime? FechaCreacion { get; set; }
 
     public DateTime? FechaUltimoLogin { get; set; }
 
     public DateTime? FechaActualizacion { get; set; }
 
-    public string Rol { get; set; }
+    public int? RolId { get; set; }
 
     public string TokenRecuperacion { get; set; }
 
     public DateTime? ExpiracionToken { get; set; }
+
+    public virtual Role Rol { get; set; }
+
+    public virtual ICollection<UsuarioInfo> UsuarioInfos { get; set; } = new List<UsuarioInfo>();
+
+    public virtual ICollection<UsuariosXDocumento> UsuariosXDocumentos { get; set; } = new List<UsuariosXDocumento>();
 }

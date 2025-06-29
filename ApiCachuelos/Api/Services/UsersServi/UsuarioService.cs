@@ -1,0 +1,54 @@
+﻿using System.Threading.Tasks;
+using Api.CachuelosSA;
+using Api.Entitys;
+using Api.Entitys.Documentos;
+using Api.Entitys.Usuarios;
+using Api.Repositories.UsuarioRepo;
+using Api.Services.Auth;
+
+namespace Api.Services.UsersServi
+{
+    public class UsuarioService : IUsuarioService
+    {
+        private readonly IUsuariosRepository _usuRepo;
+        private readonly IAuthService _authServ;
+        public UsuarioService(IUsuariosRepository usuRepo, IAuthService authServ)
+        {
+            _usuRepo = usuRepo;
+            _authServ = authServ;
+        }
+
+        public async Task<ServiceResult<UsuarioInfo>> CambiarFotoUsuario(UsuariosInfoDto usuariosInfoDto)
+        {
+            Usuarios usuario = _authServ.OtenerTokenInfo();
+
+            UsuarioInfo usuarioInfo = await _usuRepo.ObtenerUserInfoXId(usuario.Id);
+            if (usuarioInfo == null) return ServiceResult<UsuarioInfo>.Fail("UsuarioInfo no Encontrado", 204);
+
+            usuarioInfo.UrlImg = usuariosInfoDto.UrlImg;
+
+            usuarioInfo = await _usuRepo.ActualizarUserInfoXId(usuarioInfo);
+            if (usuarioInfo == null) return ServiceResult<UsuarioInfo>.Fail("Imagen no Actualizada", 409);
+
+            return ServiceResult<UsuarioInfo>.Ok(usuarioInfo, "Imagen actualizada con Exito", 201);
+
+        }
+
+        public async Task<ServiceResult<UsuarioInfo>> CambiarDescripcionUsuario(UsuariosInfoDto usuariosInfoDto)
+        {
+            Usuarios usuario = _authServ.OtenerTokenInfo();
+
+            UsuarioInfo usuarioInfo = await _usuRepo.ObtenerUserInfoXId(usuario.Id);
+            if (usuarioInfo == null) return ServiceResult<UsuarioInfo>.Fail("UsuarioInfo no Encontrado", 204);
+
+            usuarioInfo.Descripcion = usuariosInfoDto.Descripcion;
+
+            usuarioInfo = await _usuRepo.ActualizarUserInfoXId(usuarioInfo);
+            if (usuarioInfo == null) return ServiceResult<UsuarioInfo>.Fail("Imagen no Actualizada", 409);
+
+            return ServiceResult<UsuarioInfo>.Ok(usuarioInfo, "Imagen actualizada con Exito", 201);
+
+
+        }
+    }
+}

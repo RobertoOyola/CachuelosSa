@@ -8,7 +8,7 @@
 
     public class CustomHeader
     {
-        public int Codigo { get; set; } // Código de negocio personalizado
+        public int Codigo { get; set; }
         public string Mensaje { get; set; }
         public DateTime Fecha { get; set; } = DateTime.Now;
     }

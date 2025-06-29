@@ -10,5 +10,6 @@ namespace Api.Repositories.Auth
         Task<bool> CorreoExiste(string nombreUsuario);
         Task<Usuario> InsertUser(Register register);
         Task<Usuario> LoginUser(Login login);
+        Task<bool> CreateUserInfo(Usuario user);
     }
 }

@@ -3,25 +3,17 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 namespace Api.CachuelosSA;
 
 public partial class CachuelosSaContext : DbContext
 {
     private readonly IConfiguration _configuration;
-    public CachuelosSaContext()
-    {
-    }
-
     public CachuelosSaContext(DbContextOptions<CachuelosSaContext> options, IConfiguration configuration)
         : base(options)
     {
         _configuration = configuration;
     }
-
-    public virtual DbSet<Usuario> Usuarios { get; set; }
-
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         if (!optionsBuilder.IsConfigured && _configuration != null)
@@ -30,11 +22,70 @@ public partial class CachuelosSaContext : DbContext
         }
     }
 
+    public virtual DbSet<Documento> Documentos { get; set; }
+
+    public virtual DbSet<Role> Roles { get; set; }
+
+    public virtual DbSet<TipoDocumento> TipoDocumentos { get; set; }
+
+    public virtual DbSet<Usuario> Usuarios { get; set; }
+
+    public virtual DbSet<UsuarioInfo> UsuarioInfos { get; set; }
+
+    public virtual DbSet<UsuariosXDocumento> UsuariosXDocumentos { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Documento>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Document__3214EC0714EAA033");
+
+            entity.ToTable("Documento", tb => tb.HasTrigger("trg_Documento_Update"));
+
+            entity.Property(e => e.Activo).HasDefaultValue(true);
+            entity.Property(e => e.FechaActualizacion)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.FechaIngreso)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.UrlDocumento)
+                .IsRequired()
+                .HasMaxLength(255);
+
+            entity.HasOne(d => d.IdTipoDocumentosNavigation).WithMany(p => p.Documentos)
+                .HasForeignKey(d => d.IdTipoDocumentos)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Documento_TipoDocumento");
+        });
+
+        modelBuilder.Entity<Role>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Roles__3214EC0748413661");
+
+            entity.HasIndex(e => e.NombreRol, "UQ__Roles__4F0B537F6C182ED7").IsUnique();
+
+            entity.Property(e => e.Descripcion).HasMaxLength(255);
+            entity.Property(e => e.NombreRol)
+                .IsRequired()
+                .HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<TipoDocumento>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__TipoDocu__3214EC071CF1C66C");
+
+            entity.HasIndex(e => e.NombreDocumento, "UQ__TipoDocu__637890AB7F89CF22").IsUnique();
+
+            entity.Property(e => e.Descripcion).HasMaxLength(255);
+            entity.Property(e => e.NombreDocumento)
+                .IsRequired()
+                .HasMaxLength(50);
+        });
+
         modelBuilder.Entity<Usuario>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Usuarios__3214EC0753568172");
+            entity.HasKey(e => e.Id).HasName("PK__Usuarios__3214EC075D1771FB");
 
             entity.ToTable(tb => tb.HasTrigger("trg_Usuarios_Update"));
 
@@ -52,15 +103,59 @@ public partial class CachuelosSaContext : DbContext
             entity.Property(e => e.FechaCreacion)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
+            entity.Property(e => e.FechaFinSubscrito).HasColumnType("datetime");
             entity.Property(e => e.FechaUltimoLogin).HasColumnType("datetime");
             entity.Property(e => e.NombreUsuario)
                 .IsRequired()
                 .HasMaxLength(50);
-            entity.Property(e => e.Rol)
-                .HasMaxLength(20)
-                .HasDefaultValue("usuario");
+            entity.Property(e => e.RolId).HasDefaultValue(1);
+            entity.Property(e => e.Subscrito).HasDefaultValue(false);
             entity.Property(e => e.TokenRecuperacion).HasMaxLength(255);
             entity.Property(e => e.Verificado).HasDefaultValue(false);
+
+            entity.HasOne(d => d.Rol).WithMany(p => p.Usuarios)
+                .HasForeignKey(d => d.RolId)
+                .HasConstraintName("FK_Usuarios_Roles");
+        });
+
+        modelBuilder.Entity<UsuarioInfo>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__UsuarioI__3214EC073A422034");
+
+            entity.ToTable("UsuarioInfo");
+
+            entity.Property(e => e.Activo).HasDefaultValue(true);
+            entity.Property(e => e.FechaActualizacion)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.FechaUltimaConexion)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.UrlImg).HasMaxLength(500);
+
+            entity.HasOne(d => d.IdUsuarioNavigation).WithMany(p => p.UsuarioInfos)
+                .HasForeignKey(d => d.IdUsuario)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Usuario_UsuarioInfo");
+        });
+
+        modelBuilder.Entity<UsuariosXDocumento>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Usuarios__3214EC07AB427731");
+
+            entity.Property(e => e.FechaAsignacion)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+
+            entity.HasOne(d => d.IdDocumentoNavigation).WithMany(p => p.UsuariosXDocumentos)
+                .HasForeignKey(d => d.IdDocumento)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_UsuariosXDocumentos_Documento");
+
+            entity.HasOne(d => d.IdUsuarioNavigation).WithMany(p => p.UsuariosXDocumentos)
+                .HasForeignKey(d => d.IdUsuario)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_UsuariosXDocumentos_Usuarios");
         });
 
         OnModelCreatingPartial(modelBuilder);

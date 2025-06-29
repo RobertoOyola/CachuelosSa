@@ -1,6 +1,7 @@
 ﻿using Api.CachuelosSA;
 using Api.Entitys;
 using Api.Entitys.Auth;
+using Api.Entitys.Usuarios;
 
 namespace Api.Services.Auth
 {
@@ -8,5 +9,7 @@ namespace Api.Services.Auth
     {
         Task<ServiceResult<Usuario>> Login(Login login);
         Task<ServiceResult<Usuario>> Register(Register register);
+        string GenerarToken(Usuario user);
+        Usuarios OtenerTokenInfo();
     }
 }

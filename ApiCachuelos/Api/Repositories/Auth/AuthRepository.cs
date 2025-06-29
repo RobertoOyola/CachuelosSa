@@ -57,7 +57,22 @@ namespace Api.Repositories.Auth
                 _context.Usuarios.Add(newUser);
                 await _context.SaveChangesAsync();
 
-                newUser.ContrasenaHash = "";
+                newUser = await _context.Usuarios
+                        .Where(x => x.Correo == register.Correo &&
+                                x.NombreUsuario == register.NombreUsuario &&
+                                x.ContrasenaHash == register.ContrasenaHash)
+                        .Select(x => new Usuario()
+                        {
+                            Id = x.Id,
+                            NombreUsuario = x.NombreUsuario,
+                            Correo = x.Correo,
+                            Verificado = x.Verificado,
+                            Activo = x.Activo,
+                            Subscrito = x.Activo,
+                            FechaFinSubscrito = x.FechaFinSubscrito,
+                            FechaCreacion = x.FechaCreacion,
+                            FechaActualizacion = x.FechaActualizacion
+                        }).FirstOrDefaultAsync();
 
                 return newUser;
             }
@@ -68,7 +83,28 @@ namespace Api.Repositories.Auth
             
         }
 
-        public async Task<Usuario> LoginUser(Login login)
+        public async Task<bool> CreateUserInfo(Usuario user)
+        {
+            try
+            {
+                UsuarioInfo newUserInfo = new UsuarioInfo()
+                {
+                    IdUsuario = user.Id,
+                };
+
+                _context.UsuarioInfos.Add(newUserInfo);
+                await _context.SaveChangesAsync();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+        }
+
+        public async Task<Usuario> LoginUser( Login login )
         {
             try
             {
@@ -82,10 +118,11 @@ namespace Api.Repositories.Auth
                             Correo = x.Correo,
                             Verificado = x.Verificado,
                             Activo = x.Activo,
+                            RolId = x.RolId,
+                            Subscrito = x.Subscrito,
                             FechaCreacion = x.FechaCreacion,
                             FechaUltimoLogin = x.FechaUltimoLogin,
                             FechaActualizacion = x.FechaActualizacion,
-                            Rol = x.Rol,
                             TokenRecuperacion = x.TokenRecuperacion,
                             ExpiracionToken = x.ExpiracionToken
 
