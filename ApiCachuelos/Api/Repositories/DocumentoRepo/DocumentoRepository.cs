@@ -185,6 +185,7 @@ namespace Api.Repositories.DocumentoRepo
                 return false;
             }
         }
+
         public async Task<DocResponse> DesactivarDocumentoRespuesta(Docus documento)
         {
             try
@@ -210,6 +211,22 @@ namespace Api.Repositories.DocumentoRepo
             catch (Exception ex)
             {
                 return null;
+            }
+        }
+
+        public async Task<int> ObtenerIdDocuXNombre(string nombreDocu)
+        {
+            try
+            {
+                int idDocu = await _context.TipoDocumentos
+                        .Where(x => x.NombreDocumento == nombreDocu)
+                        .Select(x => x.Id).FirstOrDefaultAsync();
+
+                return idDocu;
+            }
+            catch (Exception ex)
+            {
+                return 0;
             }
         }
 

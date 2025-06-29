@@ -66,5 +66,29 @@ namespace Api.Controllers
                 Body = result.Datos
             });
         }
+
+        [Authorize]
+        [HttpPost("ObtenerUserInfo")]
+        public async Task<IActionResult> ObtenerUserInfo()
+        {
+
+            ServiceResult<UsuarioXInfoCompleta> result = await _userServ.ObtenerInfoUsuario();
+
+            if (!result.Exitoso)
+            {
+
+                return BadRequest(new CustomResponse<string>
+                {
+                    Header = new CustomHeader { Codigo = result.Codigo, Mensaje = result.Mensaje },
+                    Body = null
+                });
+            }
+
+            return Ok(new CustomResponse<UsuarioXInfoCompleta>
+            {
+                Header = new CustomHeader { Codigo = result.Codigo, Mensaje = result.Mensaje },
+                Body = result.Datos
+            });
+        }
     }
 }

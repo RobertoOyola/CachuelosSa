@@ -8,5 +8,6 @@ namespace Api.Services.UsersServi
     {
         Task<ServiceResult<UsuarioInfo>> CambiarFotoUsuario(UsuariosInfoDto usuariosInfoDto);
         Task<ServiceResult<UsuarioInfo>> CambiarDescripcionUsuario(UsuariosInfoDto usuariosInfoDto);
+        Task<ServiceResult<UsuarioXInfoCompleta>> ObtenerInfoUsuario();
     }
 }

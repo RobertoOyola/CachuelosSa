@@ -124,5 +124,15 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Api.Controllers.UserController",
+    "Method": "ObtenerUserInfo",
+    "RelativePath": "api/User/ObtenerUserInfo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   }
 ]

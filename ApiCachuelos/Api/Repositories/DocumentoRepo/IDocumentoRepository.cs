@@ -13,5 +13,6 @@ namespace Api.Repositories.DocumentoRepo
         Task<List<Docus>> ObtenerDocuTitulosXIdUser(int idUser);
         Task<bool> DesactivarDocumento(Docus documento);
         Task<DocResponse> DesactivarDocumentoRespuesta(Docus documento);
+        Task<int> ObtenerIdDocuXNombre(string nombreDocu);
     }
 }

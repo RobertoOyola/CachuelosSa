@@ -3,32 +3,16 @@
   "WorkspaceRootPath": "C:\\CachuelosSa\\ApiCachuelos\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\services\\usersservi\\usuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\services\\usersservi\\usuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\repositories\\usuariorepo\\usuariosrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\repositories\\usuariorepo\\usuariosrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\utils\\const.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\utils\\const.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\services\\usersservi\\iusuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\services\\usersservi\\iusuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\entitys\\usuarios\\usuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\entitys\\usuarios\\usuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\controllers\\documentocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\controllers\\documentocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\services\\documentosservi\\documentoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\services\\documentosservi\\documentoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\repositories\\documentorepo\\idocumentorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -39,20 +23,48 @@
       "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\repositories\\documentorepo\\documentorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\controllers\\documentocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\controllers\\documentocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\services\\usersservi\\usuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\services\\usersservi\\usuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\services\\usersservi\\iusuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\services\\usersservi\\iusuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\repositories\\usuariorepo\\usuariosrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\repositories\\usuariorepo\\usuariosrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\entitys\\usuarios\\mappingusuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\entitys\\usuarios\\mappingusuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\entitys\\usuarios\\usuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\entitys\\usuarios\\usuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\services\\auth\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\services\\auth\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\services\\documentosservi\\documentoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\services\\documentosservi\\documentoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\repositories\\auth\\authrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\repositories\\auth\\authrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\services\\documentosservi\\idocumentoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -63,24 +75,12 @@
       "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\repositories\\auth\\iauthrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\repositories\\auth\\authrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\repositories\\auth\\authrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\cachuelossa\\cachuelossacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\cachuelossa\\cachuelossacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\utils\\const.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\utils\\const.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\services\\auth\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\services\\auth\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\cachuelossa\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|solutionrelative:api\\cachuelossa\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{550FC573-D1CF-4AEB-9251-671F0D1ECA49}|Api\\Api.csproj|c:\\cachuelossa\\apicachuelos\\api\\entitys\\customresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -156,15 +156,14 @@
               "RelativeDocumentMoniker": "Api\\Controllers\\DocumentoController.cs",
               "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Controllers\\DocumentoController.cs",
               "RelativeToolTip": "Api\\Controllers\\DocumentoController.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAcwIEAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAABEAAAAAAAAAAAA9wB4AAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-28T08:10:58.361Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 14,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "Api\\Controllers\\AuthController.cs",
@@ -173,116 +172,168 @@
               "ViewState": "AgIAAA8AAAAAAAAAAAAiwE8AAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-26T20:47:02.488Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "IUsuarioService.cs",
-              "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Services\\UsersServi\\IUsuarioService.cs",
-              "RelativeDocumentMoniker": "Api\\Services\\UsersServi\\IUsuarioService.cs",
-              "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Services\\UsersServi\\IUsuarioService.cs",
-              "RelativeToolTip": "Api\\Services\\UsersServi\\IUsuarioService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAgAAAAHAAAAAAAAAA==",
+              "Title": "DocumentoService.cs",
+              "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Services\\DocumentosServi\\DocumentoService.cs",
+              "RelativeDocumentMoniker": "Api\\Services\\DocumentosServi\\DocumentoService.cs",
+              "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Services\\DocumentosServi\\DocumentoService.cs",
+              "RelativeToolTip": "Api\\Services\\DocumentosServi\\DocumentoService.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAjwDAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-29T08:57:30.237Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "Api\\Controllers\\UserController.cs",
-              "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Controllers\\UserController.cs",
-              "RelativeToolTip": "Api\\Controllers\\UserController.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAABcAAABLAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-29T08:08:30.41Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-28T07:17:41.241Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Usuarios.cs",
-              "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Entitys\\Usuarios\\Usuarios.cs",
-              "RelativeDocumentMoniker": "Api\\Entitys\\Usuarios\\Usuarios.cs",
-              "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Entitys\\Usuarios\\Usuarios.cs",
-              "RelativeToolTip": "Api\\Entitys\\Usuarios\\Usuarios.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAIA0wA0AAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T08:25:49.607Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UsuarioService.cs",
-              "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Services\\UsersServi\\UsuarioService.cs",
-              "RelativeDocumentMoniker": "Api\\Services\\UsersServi\\UsuarioService.cs",
-              "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Services\\UsersServi\\UsuarioService.cs",
-              "RelativeToolTip": "Api\\Services\\UsersServi\\UsuarioService.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAowCoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-29T08:12:44.587Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UsuariosRepository.cs",
-              "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Repositories\\UsuarioRepo\\UsuariosRepository.cs",
-              "RelativeDocumentMoniker": "Api\\Repositories\\UsuarioRepo\\UsuariosRepository.cs",
-              "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Repositories\\UsuarioRepo\\UsuariosRepository.cs",
-              "RelativeToolTip": "Api\\Repositories\\UsuarioRepo\\UsuariosRepository.cs",
-              "ViewState": "AgIAADsAAAAAAAAAAAAowEsAAAA7AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T06:20:51.652Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
               "Title": "IDocumentoRepository.cs",
               "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Repositories\\DocumentoRepo\\IDocumentoRepository.cs",
               "RelativeDocumentMoniker": "Api\\Repositories\\DocumentoRepo\\IDocumentoRepository.cs",
               "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Repositories\\DocumentoRepo\\IDocumentoRepository.cs",
               "RelativeToolTip": "Api\\Repositories\\DocumentoRepo\\IDocumentoRepository.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAewA4AAAA2AAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAIA2wA8AAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T07:13:41.984Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-28T07:13:41.984Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "DocumentoRepository.cs",
-              "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Repositories\\DocumentoRepo\\DocumentoRepository.cs",
-              "RelativeDocumentMoniker": "Api\\Repositories\\DocumentoRepo\\DocumentoRepository.cs",
-              "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Repositories\\DocumentoRepo\\DocumentoRepository.cs",
-              "RelativeToolTip": "Api\\Repositories\\DocumentoRepo\\DocumentoRepository.cs",
-              "ViewState": "AgIAAHMAAAAAAAAAAAAcwNkAAAABAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "Const.cs",
+              "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Utils\\Const.cs",
+              "RelativeDocumentMoniker": "Api\\Utils\\Const.cs",
+              "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Utils\\Const.cs",
+              "RelativeToolTip": "Api\\Utils\\Const.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T07:13:31.365Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-28T19:51:10.047Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Program.cs",
               "RelativeDocumentMoniker": "Api\\Program.cs",
               "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Program.cs",
               "RelativeToolTip": "Api\\Program.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAAAB8AAAA+AAAAAAAAAA==",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAAwEgAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-26T20:25:23.158Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DocumentoRepository.cs",
+              "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Repositories\\DocumentoRepo\\DocumentoRepository.cs",
+              "RelativeDocumentMoniker": "Api\\Repositories\\DocumentoRepo\\DocumentoRepository.cs",
+              "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Repositories\\DocumentoRepo\\DocumentoRepository.cs",
+              "RelativeToolTip": "Api\\Repositories\\DocumentoRepo\\DocumentoRepository.cs",
+              "ViewState": "AgIAAI4AAAAAAAAAAAA8wNgAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-28T07:13:31.365Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UsuariosRepository.cs",
+              "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Repositories\\UsuarioRepo\\UsuariosRepository.cs",
+              "RelativeDocumentMoniker": "Api\\Repositories\\UsuarioRepo\\UsuariosRepository.cs",
+              "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Repositories\\UsuarioRepo\\UsuariosRepository.cs",
+              "RelativeToolTip": "Api\\Repositories\\UsuarioRepo\\UsuariosRepository.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAzwC0AAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-28T06:20:51.652Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IUsuarioService.cs",
+              "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Services\\UsersServi\\IUsuarioService.cs",
+              "RelativeDocumentMoniker": "Api\\Services\\UsersServi\\IUsuarioService.cs",
+              "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Services\\UsersServi\\IUsuarioService.cs",
+              "RelativeToolTip": "Api\\Services\\UsersServi\\IUsuarioService.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAkwAoAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-29T08:57:30.237Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UsuarioService.cs",
+              "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Services\\UsersServi\\UsuarioService.cs",
+              "RelativeDocumentMoniker": "Api\\Services\\UsersServi\\UsuarioService.cs",
+              "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Services\\UsersServi\\UsuarioService.cs",
+              "RelativeToolTip": "Api\\Services\\UsersServi\\UsuarioService.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAewEAAAAB3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-29T08:12:44.587Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 10,
+              "Title": "MappingUsuarios.cs",
+              "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Entitys\\Usuarios\\MappingUsuarios.cs",
+              "RelativeDocumentMoniker": "Api\\Entitys\\Usuarios\\MappingUsuarios.cs",
+              "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Entitys\\Usuarios\\MappingUsuarios.cs",
+              "RelativeToolTip": "Api\\Entitys\\Usuarios\\MappingUsuarios.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-29T18:04:37.071Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Api\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Api\\Controllers\\UserController.cs",
+              "ViewState": "AgIAAFYAAAAAAAAAAAAAwEcAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-29T08:08:30.41Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Usuarios.cs",
+              "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Entitys\\Usuarios\\Usuarios.cs",
+              "RelativeDocumentMoniker": "Api\\Entitys\\Usuarios\\Usuarios.cs",
+              "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Entitys\\Usuarios\\Usuarios.cs",
+              "RelativeToolTip": "Api\\Entitys\\Usuarios\\Usuarios.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAA/wBMAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-28T08:25:49.607Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Services\\Auth\\AuthService.cs",
+              "RelativeDocumentMoniker": "Api\\Services\\Auth\\AuthService.cs",
+              "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Services\\Auth\\AuthService.cs",
+              "RelativeToolTip": "Api\\Services\\Auth\\AuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-26T20:48:11.071Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AuthRepository.cs",
+              "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Repositories\\Auth\\AuthRepository.cs",
+              "RelativeDocumentMoniker": "Api\\Repositories\\Auth\\AuthRepository.cs",
+              "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Repositories\\Auth\\AuthRepository.cs",
+              "RelativeToolTip": "Api\\Repositories\\Auth\\AuthRepository.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAFUAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-26T20:48:51.334Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\appsettings.json",
               "RelativeDocumentMoniker": "Api\\appsettings.json",
@@ -290,38 +341,11 @@
               "RelativeToolTip": "Api\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-06-27T06:40:50.341Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-27T06:40:50.341Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Services\\Auth\\AuthService.cs",
-              "RelativeDocumentMoniker": "Api\\Services\\Auth\\AuthService.cs",
-              "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Services\\Auth\\AuthService.cs",
-              "RelativeToolTip": "Api\\Services\\Auth\\AuthService.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAMwBMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-26T20:48:11.071Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "DocumentoService.cs",
-              "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Services\\DocumentosServi\\DocumentoService.cs",
-              "RelativeDocumentMoniker": "Api\\Services\\DocumentosServi\\DocumentoService.cs",
-              "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Services\\DocumentosServi\\DocumentoService.cs",
-              "RelativeToolTip": "Api\\Services\\DocumentosServi\\DocumentoService.cs",
-              "ViewState": "AgIAAD4AAAAAAAAAAAAYwEQAAABjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T07:17:41.241Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 16,
               "Title": "IDocumentoService.cs",
               "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Services\\DocumentosServi\\IDocumentoService.cs",
               "RelativeDocumentMoniker": "Api\\Services\\DocumentosServi\\IDocumentoService.cs",
@@ -329,12 +353,11 @@
               "RelativeToolTip": "Api\\Services\\DocumentosServi\\IDocumentoService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAoAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T07:17:48.305Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-28T07:17:48.305Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "CachuelosSaContext.cs",
               "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\CachuelosSA\\CachuelosSaContext.cs",
               "RelativeDocumentMoniker": "Api\\CachuelosSA\\CachuelosSaContext.cs",
@@ -342,25 +365,11 @@
               "RelativeToolTip": "Api\\CachuelosSA\\CachuelosSaContext.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAAuwA8AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-29T07:10:01.317Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-29T07:10:01.317Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "AuthRepository.cs",
-              "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Repositories\\Auth\\AuthRepository.cs",
-              "RelativeDocumentMoniker": "Api\\Repositories\\Auth\\AuthRepository.cs",
-              "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Repositories\\Auth\\AuthRepository.cs",
-              "RelativeToolTip": "Api\\Repositories\\Auth\\AuthRepository.cs",
-              "ViewState": "AgIAACgAAAAAAAAAAAAqwFUAAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-26T20:48:51.334Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 17,
               "Title": "IAuthRepository.cs",
               "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Repositories\\Auth\\IAuthRepository.cs",
               "RelativeDocumentMoniker": "Api\\Repositories\\Auth\\IAuthRepository.cs",
@@ -368,25 +377,11 @@
               "RelativeToolTip": "Api\\Repositories\\Auth\\IAuthRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAwAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-26T20:49:01.581Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-26T20:49:01.581Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "Const.cs",
-              "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Utils\\Const.cs",
-              "RelativeDocumentMoniker": "Api\\Utils\\Const.cs",
-              "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Utils\\Const.cs",
-              "RelativeToolTip": "Api\\Utils\\Const.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T19:51:10.047Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "IAuthService.cs",
               "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\Services\\Auth\\IAuthService.cs",
               "RelativeDocumentMoniker": "Api\\Services\\Auth\\IAuthService.cs",
@@ -394,21 +389,7 @@
               "RelativeToolTip": "Api\\Services\\Auth\\IAuthService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAkAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-26T20:48:28.239Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "Usuario.cs",
-              "DocumentMoniker": "C:\\CachuelosSa\\ApiCachuelos\\Api\\CachuelosSA\\Usuario.cs",
-              "RelativeDocumentMoniker": "Api\\CachuelosSA\\Usuario.cs",
-              "ToolTip": "C:\\CachuelosSa\\ApiCachuelos\\Api\\CachuelosSA\\Usuario.cs",
-              "RelativeToolTip": "Api\\CachuelosSA\\Usuario.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T06:02:43.772Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-26T20:48:28.239Z"
             },
             {
               "$type": "Document",
@@ -420,8 +401,7 @@
               "RelativeToolTip": "Api\\Entitys\\CustomResponse.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAQAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-27T07:31:57.232Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-27T07:31:57.232Z"
             },
             {
               "$type": "Document",
@@ -433,8 +413,7 @@
               "RelativeToolTip": "Api\\Utils\\Encript.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-27T06:47:20.849Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-27T06:47:20.849Z"
             },
             {
               "$type": "Document",
@@ -446,8 +425,7 @@
               "RelativeToolTip": "Api\\CachuelosSA\\Documento.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABcAAAB2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T19:18:55.693Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-28T19:18:55.693Z"
             },
             {
               "$type": "Document",
@@ -459,8 +437,7 @@
               "RelativeToolTip": "Api\\CachuelosSA\\UsuariosXDocumento.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T19:40:42.544Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-28T19:40:42.544Z"
             },
             {
               "$type": "Document",
@@ -472,8 +449,7 @@
               "RelativeToolTip": "Api\\CachuelosSA\\TipoDocumento.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T19:40:40.455Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-28T19:40:40.455Z"
             },
             {
               "$type": "Document",

@@ -13,9 +13,5 @@ namespace Api.Utils
         public const string TipDocTitulo = "Titulos";
         public const string TipDocHistoPoli = "Historial_Policial";
 
-        public const int IdDocCurriculum = 1;
-        public const int IdDocTitulo = 2;
-        public const int IdDocHistoPoli = 3;
-
     }
 }

@@ -35,15 +35,18 @@ namespace Api.Services.DocumentosServi
 
             Docus busqudaDoc = new Docus();
 
-            switch (documento.idTipoDocumento)
+            int idCurriculum = await _docuRepo.ObtenerIdDocuXNombre(Const.TipDocCurriculum);
+            int idHistPoli = await _docuRepo.ObtenerIdDocuXNombre(Const.TipDocHistoPoli);
+
+            if (documento.idTipoDocumento == idCurriculum)
             {
-                case Const.IdDocCurriculum:
-                    busqudaDoc = await _docuRepo.ObtenerDocuCurriculumXIdUser(user.Id);
-                    break;
-                case Const.IdDocHistoPoli:
-                    busqudaDoc = await _docuRepo.ObtenerDocuHistorialPoliXIdUser(user.Id);
-                    break;
+                busqudaDoc = await _docuRepo.ObtenerDocuCurriculumXIdUser(user.Id);
             }
+            else if (documento.idTipoDocumento == idHistPoli)
+            {
+                busqudaDoc = await _docuRepo.ObtenerDocuHistorialPoliXIdUser(user.Id);
+            }
+
             if (busqudaDoc != null)
                 if (busqudaDoc.Id != 0 && busqudaDoc.UrlDocumento != null)
                 {

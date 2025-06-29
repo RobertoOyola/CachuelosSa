@@ -226,6 +226,18 @@
           }
         }
       }
+    },
+    "/api/User/ObtenerUserInfo": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -300,6 +312,10 @@
           "descripcion": {
             "type": "string",
             "nullable": true
+          },
+          "fechaUltimaConexion": {
+            "type": "string",
+            "format": "date-time"
           }
         },
         "additionalProperties": false

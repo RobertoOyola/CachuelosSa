@@ -47,7 +47,22 @@ namespace Api.Services.UsersServi
             if (usuarioInfo == null) return ServiceResult<UsuarioInfo>.Fail("Imagen no Actualizada", 409);
 
             return ServiceResult<UsuarioInfo>.Ok(usuarioInfo, "Imagen actualizada con Exito", 201);
+        }
 
+        public async Task<ServiceResult<UsuarioXInfoCompleta>> ObtenerInfoUsuario()
+        {
+            Usuarios usuario = _authServ.OtenerTokenInfo();
+
+            Usuario user = await _usuRepo.ObtenerUserXId(usuario.Id);
+            if (user == null) return ServiceResult<UsuarioXInfoCompleta>.Fail("Usuario no Encontrado", 204);
+
+            UsuarioInfo usuarioInfo = await _usuRepo.ObtenerUserInfoXId(usuario.Id);
+            if (usuarioInfo == null) return ServiceResult<UsuarioXInfoCompleta>.Fail("UsuarioInfo no Encontrado", 204);
+
+            UsuarioXInfoCompleta usuarioXInfoCompleta = MappingUsuarios.MapearInfoCompleta(user, usuarioInfo);
+            if (usuarioInfo == null) return ServiceResult<UsuarioXInfoCompleta>.Fail("Error al traer la informacion", 409);
+
+            return ServiceResult<UsuarioXInfoCompleta>.Ok(usuarioXInfoCompleta, "Informacion Obtenida con Exito", 200);
 
         }
     }
