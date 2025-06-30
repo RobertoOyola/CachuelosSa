@@ -44,7 +44,7 @@ namespace Api.Controllers
             {
                 HttpOnly = true,
                 Secure = true,
-                SameSite = SameSiteMode.Strict,
+                SameSite = SameSiteMode.None,
                 Expires = DateTimeOffset.UtcNow.AddHours(1)
             });
 
@@ -81,13 +81,26 @@ namespace Api.Controllers
         [HttpPost("Logout")]
         public IActionResult Logout()
         {
-            Response.Cookies.Delete("auth_token");
+            Response.Cookies.Delete("auth_token", new CookieOptions
+            {
+                HttpOnly = true,
+                Secure = true,
+                SameSite = SameSiteMode.None
+            });
 
             return Ok(new CustomResponse<object>
             {
                 Header = new CustomHeader { Codigo = 200, Mensaje = "Session Cerrada con Exito" }
             });
         }
+
+        [Authorize]
+        [HttpGet("check")]
+        public IActionResult Check()
+        {
+            return Ok(new { isAuthenticated = true });
+        }
+
 
     }
 }

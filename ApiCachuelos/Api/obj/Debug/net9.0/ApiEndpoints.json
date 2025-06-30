@@ -1,6 +1,16 @@
 [
   {
     "ContainingType": "Api.Controllers.AuthController",
+    "Method": "Check",
+    "RelativePath": "api/Auth/check",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Api.Controllers.AuthController",
     "Method": "Login",
     "RelativePath": "api/Auth/Login",
     "HttpMethod": "POST",
