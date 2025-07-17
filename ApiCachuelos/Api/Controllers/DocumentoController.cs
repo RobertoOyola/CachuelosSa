@@ -1,15 +1,14 @@
 ﻿using System.Security.Claims;
 using System.Threading.Tasks;
-using Api.CachuelosSA;
-using Api.Entitys;
-using Api.Entitys.Documentos;
-using Api.Entitys.Usuarios;
-using Api.Services.Auth;
-using Api.Services.DocumentosServi;
+using Entitys.Entitys;
+using Entitys.Entitys.Documentos;
+using Entitys.Entitys.Usuarios;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Services.Auth;
+using Services.DocumentosServi;
 
 namespace Api.Controllers
 {

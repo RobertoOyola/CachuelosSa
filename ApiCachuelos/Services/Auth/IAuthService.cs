@@ -1,0 +1,15 @@
+﻿using Entitys.CachuelosSA;
+using Entitys.Entitys;
+using Entitys.Entitys.Auth;
+using Entitys.Entitys.Usuarios;
+
+namespace Services.Auth
+{
+    public interface IAuthService
+    {
+        Task<ServiceResult<Usuario>> Login(Login login);
+        Task<ServiceResult<Usuario>> Register(Register register);
+        string GenerarToken(Usuario user);
+        Usuarios OtenerTokenInfo();
+    }
+}

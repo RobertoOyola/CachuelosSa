@@ -1,11 +1,10 @@
-﻿using Api.Entitys.Documentos;
-using Api.Entitys;
+﻿using Entitys.CachuelosSA;
+using Entitys.Entitys;
+using Entitys.Entitys.Usuarios;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Api.Services.UsersServi;
-using Api.Entitys.Usuarios;
-using Api.CachuelosSA;
+using Services.UsersServi;
 
 namespace Api.Controllers
 {

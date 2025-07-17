@@ -19,7 +19,7 @@
     "Parameters": [
       {
         "Name": "logInfo",
-        "Type": "Api.Entitys.Auth.Login",
+        "Type": "Entitys.Entitys.Auth.Login",
         "IsRequired": true
       }
     ],
@@ -45,7 +45,7 @@
     "Parameters": [
       {
         "Name": "registerInfo",
-        "Type": "Api.Entitys.Auth.Register",
+        "Type": "Entitys.Entitys.Auth.Register",
         "IsRequired": true
       }
     ],
@@ -61,7 +61,7 @@
     "Parameters": [
       {
         "Name": "documentos",
-        "Type": "Api.Entitys.Documentos.Documentos",
+        "Type": "Entitys.Entitys.Documentos.Documentos",
         "IsRequired": true
       }
     ],
@@ -77,7 +77,7 @@
     "Parameters": [
       {
         "Name": "documentos",
-        "Type": "Api.Entitys.Documentos.Docus",
+        "Type": "Entitys.Entitys.Documentos.Docus",
         "IsRequired": true
       }
     ],
@@ -113,7 +113,7 @@
     "Parameters": [
       {
         "Name": "usuariosInfo",
-        "Type": "Api.Entitys.Usuarios.UsuariosInfoDto",
+        "Type": "Entitys.Entitys.Usuarios.UsuariosInfoDto",
         "IsRequired": true
       }
     ],
@@ -129,7 +129,7 @@
     "Parameters": [
       {
         "Name": "usuariosInfo",
-        "Type": "Api.Entitys.Usuarios.UsuariosInfoDto",
+        "Type": "Entitys.Entitys.Usuarios.UsuariosInfoDto",
         "IsRequired": true
       }
     ],
