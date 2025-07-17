@@ -6,6 +6,12 @@
 .pnp.js
 
 .vs/
+obj/
+
+# Visual Studio
+bin/
+/bin/
+/obj/
 
 # testing
 /coverage

@@ -1,13 +1,13 @@
-using Api.CachuelosSA;
-using Api.Repositories.Auth;
-using Api.Repositories.DocumentoRepo;
-using Api.Repositories.UsuarioRepo;
-using Api.Services.Auth;
-using Api.Services.DocumentosServi;
-using Api.Services.UsersServi;
+using Entitys.CachuelosSA;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Repositories.Auth;
+using Repositories.DocumentoRepo;
+using Repositories.UsuarioRepo;
+using Services.Auth;
+using Services.DocumentosServi;
+using Services.UsersServi;
 using System.Text;
 
 
