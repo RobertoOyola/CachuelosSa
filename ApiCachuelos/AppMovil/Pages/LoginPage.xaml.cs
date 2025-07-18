@@ -15,10 +15,13 @@ using System.Security.Cryptography.X509Certificates;
 
 public partial class LoginPage : ContentPage
 {
+    private readonly HttpClient _client;
     public LoginPage()
     {
+        _client = new HttpClient();
+
         InitializeComponent();
-	}
+    }
 
     private void OnLabelTapped(object sender, EventArgs e)
     {
@@ -32,6 +35,8 @@ public partial class LoginPage : ContentPage
         //    await DisplayAlert("Error", "Servicio de autenticación no disponible", "Ok");
         //    return;
         //}
+
+        var response = await _client.GetAsync("https://pokeapi.co/api/v2/pokemon/ditto");
 
         if (correoLogin.Text == null || correoLogin.Text == "")
         {
