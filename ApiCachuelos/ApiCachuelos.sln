@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Servic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils", "Utils\Utils.csproj", "{BD60C369-1B55-40D7-B98C-4692D15097EA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppMovil", "AppMovil\AppMovil.csproj", "{C0F3855F-BCED-45EF-8924-252DC2E38246}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,11 @@ Global
 		{BD60C369-1B55-40D7-B98C-4692D15097EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD60C369-1B55-40D7-B98C-4692D15097EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD60C369-1B55-40D7-B98C-4692D15097EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0F3855F-BCED-45EF-8924-252DC2E38246}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0F3855F-BCED-45EF-8924-252DC2E38246}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0F3855F-BCED-45EF-8924-252DC2E38246}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{C0F3855F-BCED-45EF-8924-252DC2E38246}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0F3855F-BCED-45EF-8924-252DC2E38246}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
