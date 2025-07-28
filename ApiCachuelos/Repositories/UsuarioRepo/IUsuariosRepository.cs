@@ -7,5 +7,6 @@ namespace Repositories.UsuarioRepo
         Task<Usuario> ObtenerUserXId(int idUser);
         Task<UsuarioInfo> ObtenerUserInfoXId(int idUser);
         Task<UsuarioInfo> ActualizarUserInfoXId(UsuarioInfo userInfo);
+        Task<Usuario> ActualizarUsuario(Usuario user);
     }
 }

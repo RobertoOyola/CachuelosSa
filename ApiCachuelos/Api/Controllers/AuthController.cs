@@ -2,6 +2,7 @@
 using Entitys.CachuelosSA;
 using Entitys.Entitys;
 using Entitys.Entitys.Auth;
+using Entitys.Entitys.Mail;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
@@ -100,6 +101,28 @@ namespace Api.Controllers
             return Ok(new { isAuthenticated = true });
         }
 
+        [HttpPost("emailOtp")]
+        public async Task<IActionResult> emailOtp([FromBody] MailInfo mailInfo)
+        {
+            ServiceResult<MailReturn> result = await _authServ.EnviarCorreoOtp(mailInfo);
+
+            if (!result.Exitoso)
+            {
+
+                return BadRequest(new CustomResponse<string>
+                {
+                    Header = new CustomHeader { Codigo = result.Codigo, Mensaje = result.Mensaje },
+                    Body = null
+                });
+            }
+
+            return Ok(new CustomResponse<MailReturn>
+            {
+                Header = new CustomHeader { Codigo = result.Codigo, Mensaje = result.Mensaje },
+                Body = result.Datos
+            });
+
+        }
 
     }
 }

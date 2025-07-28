@@ -11,5 +11,7 @@ namespace Repositories.Auth
         Task<Usuario> InsertUser(Register register);
         Task<Usuario> LoginUser(Login login);
         Task<bool> CreateUserInfo(Usuario user);
+        string ObtenerHashKey();
+        string ObtenerMailKey();
     }
 }

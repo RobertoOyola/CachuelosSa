@@ -23,6 +23,8 @@ public partial class CachuelosSaContext : DbContext
         }
     }
 
+    public virtual DbSet<Catalogo> Catalogos { get; set; }
+
     public virtual DbSet<Documento> Documentos { get; set; }
 
     public virtual DbSet<Role> Roles { get; set; }
@@ -37,9 +39,33 @@ public partial class CachuelosSaContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Catalogo>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Catalogo__3214EC072E89D73F");
+
+            entity.ToTable("Catalogo");
+
+            entity.Property(e => e.Activo).HasDefaultValue(true);
+            entity.Property(e => e.Adicional).HasMaxLength(100);
+            entity.Property(e => e.Codigo)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.Descripcion).HasMaxLength(200);
+            entity.Property(e => e.FechaActualizacion)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.FechaCreacion)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.Nombre).HasMaxLength(100);
+            entity.Property(e => e.NombreCat)
+                .IsRequired()
+                .HasMaxLength(100);
+        });
+
         modelBuilder.Entity<Documento>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Document__3214EC0714EAA033");
+            entity.HasKey(e => e.Id).HasName("PK__Document__3214EC070DEC6C58");
 
             entity.ToTable("Documento", tb => tb.HasTrigger("trg_Documento_Update"));
 
@@ -62,9 +88,9 @@ public partial class CachuelosSaContext : DbContext
 
         modelBuilder.Entity<Role>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Roles__3214EC0748413661");
+            entity.HasKey(e => e.Id).HasName("PK__Roles__3214EC0790A61A19");
 
-            entity.HasIndex(e => e.NombreRol, "UQ__Roles__4F0B537F6C182ED7").IsUnique();
+            entity.HasIndex(e => e.NombreRol, "UQ__Roles__4F0B537F20025383").IsUnique();
 
             entity.Property(e => e.Descripcion).HasMaxLength(255);
             entity.Property(e => e.NombreRol)
@@ -74,9 +100,9 @@ public partial class CachuelosSaContext : DbContext
 
         modelBuilder.Entity<TipoDocumento>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__TipoDocu__3214EC071CF1C66C");
+            entity.HasKey(e => e.Id).HasName("PK__TipoDocu__3214EC073330D35D");
 
-            entity.HasIndex(e => e.NombreDocumento, "UQ__TipoDocu__637890AB7F89CF22").IsUnique();
+            entity.HasIndex(e => e.NombreDocumento, "UQ__TipoDocu__637890AB91BDF8A7").IsUnique();
 
             entity.Property(e => e.Descripcion).HasMaxLength(255);
             entity.Property(e => e.NombreDocumento)
@@ -86,7 +112,7 @@ public partial class CachuelosSaContext : DbContext
 
         modelBuilder.Entity<Usuario>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Usuarios__3214EC075D1771FB");
+            entity.HasKey(e => e.Id).HasName("PK__Usuarios__3214EC0767A3BFB0");
 
             entity.ToTable(tb => tb.HasTrigger("trg_Usuarios_Update"));
 
@@ -121,17 +147,36 @@ public partial class CachuelosSaContext : DbContext
 
         modelBuilder.Entity<UsuarioInfo>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__UsuarioI__3214EC073A422034");
+            entity.HasKey(e => e.Id).HasName("PK__UsuarioI__3214EC079DB28AC3");
 
-            entity.ToTable("UsuarioInfo");
+            entity.ToTable("UsuarioInfo", tb =>
+            {
+                tb.HasTrigger("trg_Catalogo_Update");
+                tb.HasTrigger("trg_UsuariosInfo_Update");
+            });
 
             entity.Property(e => e.Activo).HasDefaultValue(true);
+            entity.Property(e => e.Apellido).HasMaxLength(200);
+            entity.Property(e => e.Ciudad).HasMaxLength(5);
+            entity.Property(e => e.Direccion).HasMaxLength(255);
+            entity.Property(e => e.Discapacidad).HasDefaultValue(false);
+            entity.Property(e => e.EstadoCivil).HasMaxLength(1);
             entity.Property(e => e.FechaActualizacion)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.FechaNacimiento)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
             entity.Property(e => e.FechaUltimaConexion)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
+            entity.Property(e => e.Identificacion).HasMaxLength(50);
+            entity.Property(e => e.Nacionalidad).HasMaxLength(5);
+            entity.Property(e => e.Nombre).HasMaxLength(200);
+            entity.Property(e => e.Provincia).HasMaxLength(5);
+            entity.Property(e => e.Telefono).HasMaxLength(20);
+            entity.Property(e => e.TipoDiscapacidad).HasMaxLength(100);
+            entity.Property(e => e.TipoIdentificacion).HasMaxLength(1);
             entity.Property(e => e.UrlImg).HasMaxLength(500);
 
             entity.HasOne(d => d.IdUsuarioNavigation).WithMany(p => p.UsuarioInfos)
@@ -142,7 +187,7 @@ public partial class CachuelosSaContext : DbContext
 
         modelBuilder.Entity<UsuariosXDocumento>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Usuarios__3214EC07AB427731");
+            entity.HasKey(e => e.Id).HasName("PK__Usuarios__3214EC07058BAE5C");
 
             entity.Property(e => e.FechaAsignacion)
                 .HasDefaultValueSql("(getdate())")

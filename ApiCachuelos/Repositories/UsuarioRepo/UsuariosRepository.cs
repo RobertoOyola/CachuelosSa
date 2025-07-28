@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Entitys.CachuelosSA;
+using Entitys.Entitys.Auth;
 using Microsoft.EntityFrameworkCore;
 
 namespace Repositories.UsuarioRepo
@@ -79,6 +80,23 @@ namespace Repositories.UsuarioRepo
 
                 return userInfo;
 
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public async Task<Usuario> ActualizarUsuario(Usuario user)
+        {
+            try
+            {
+                _context.Update(user);
+                await _context.SaveChangesAsync();
+
+                user.ContrasenaHash = string.Empty;
+
+                return user;
             }
             catch (Exception ex)
             {

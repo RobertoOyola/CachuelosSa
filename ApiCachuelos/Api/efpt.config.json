@@ -15,6 +15,10 @@
    "T4TemplatePath": null,
    "Tables": [
       {
+         "Name": "[dbo].[Catalogo]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[dbo].[Documento]",
          "ObjectType": 0
       },

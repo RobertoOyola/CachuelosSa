@@ -1,6 +1,7 @@
 ﻿using Entitys.CachuelosSA;
 using Entitys.Entitys;
 using Entitys.Entitys.Auth;
+using Entitys.Entitys.Mail;
 using Entitys.Entitys.Usuarios;
 
 namespace Services.Auth
@@ -11,5 +12,6 @@ namespace Services.Auth
         Task<ServiceResult<Usuario>> Register(Register register);
         string GenerarToken(Usuario user);
         Usuarios OtenerTokenInfo();
+        Task<ServiceResult<MailReturn>> EnviarCorreoOtp(MailInfo mailInfo);
     }
 }
