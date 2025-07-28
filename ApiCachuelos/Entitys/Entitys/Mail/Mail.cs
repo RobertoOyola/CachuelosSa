@@ -9,7 +9,6 @@ namespace Entitys.Entitys.Mail
     public class MailInfo
     {
         public string Mail { get; set; }
-        public string Password { get; set; }
     }
 
     public class MailReturn

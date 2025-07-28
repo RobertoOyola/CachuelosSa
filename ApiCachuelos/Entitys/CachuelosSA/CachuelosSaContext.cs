@@ -37,13 +37,15 @@ public partial class CachuelosSaContext : DbContext
 
     public virtual DbSet<UsuariosXDocumento> UsuariosXDocumentos { get; set; }
 
+    public virtual DbSet<OtpAction> OtpActions { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Catalogo>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__Catalogo__3214EC072E89D73F");
 
-            entity.ToTable("Catalogo");
+            entity.ToTable("Catalogo", tb => tb.HasTrigger("trg_Catalogo_Update"));
 
             entity.Property(e => e.Activo).HasDefaultValue(true);
             entity.Property(e => e.Adicional).HasMaxLength(100);
@@ -84,6 +86,34 @@ public partial class CachuelosSaContext : DbContext
                 .HasForeignKey(d => d.IdTipoDocumentos)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Documento_TipoDocumento");
+        });
+
+        modelBuilder.Entity<OtpAction>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__OtpActio__3214EC07A177F94F");
+
+            entity.ToTable("OtpAction", tb => tb.HasTrigger("trg_OtpAction_Update"));
+
+            entity.Property(e => e.Activo).HasDefaultValue(true);
+            entity.Property(e => e.CodigoOtp)
+                .IsRequired()
+                .HasMaxLength(255);
+            entity.Property(e => e.Expiracion).HasColumnType("datetime");
+            entity.Property(e => e.FechaActualizacion)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.FechaGeneracion)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.TipoOtp)
+                .IsRequired()
+                .HasMaxLength(5);
+            entity.Property(e => e.Usado).HasDefaultValue(false);
+
+            entity.HasOne(d => d.IdUsuarioNavigation).WithMany(p => p.OtpActions)
+                .HasForeignKey(d => d.IdUsuario)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Usuario_OtpAction");
         });
 
         modelBuilder.Entity<Role>(entity =>
@@ -149,11 +179,7 @@ public partial class CachuelosSaContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PK__UsuarioI__3214EC079DB28AC3");
 
-            entity.ToTable("UsuarioInfo", tb =>
-            {
-                tb.HasTrigger("trg_Catalogo_Update");
-                tb.HasTrigger("trg_UsuariosInfo_Update");
-            });
+            entity.ToTable("UsuarioInfo", tb => tb.HasTrigger("trg_UsuariosInfo_Update"));
 
             entity.Property(e => e.Activo).HasDefaultValue(true);
             entity.Property(e => e.Apellido).HasMaxLength(200);

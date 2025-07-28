@@ -115,7 +115,9 @@ INSERT INTO TipoDocumentos (NombreDocumento, Descripcion)
 values 
 	('Curriculum', ''),
 	('Titulos', ''),
-	('Historial_Policial', '');
+	('Historial_Policial', ''),
+	('Cedula', ''),
+	('Comprobante de pago', '');
 	
 GO
 
@@ -176,7 +178,7 @@ CREATE TABLE Catalogo (
 GO
 
 CREATE TRIGGER trg_Catalogo_Update
-ON UsuarioInfo
+ON Catalogo
 AFTER UPDATE
 AS
 BEGIN
@@ -200,4 +202,39 @@ values
 	('ESTADO_CIVIL', 'U', 'Union Libre', '', ''),
 	('SMTP_CONFIG', 'HOST', 'smtp.gmail.com', '', ''),
 	('SMTP_CONFIG', 'PORT', '587', '', ''),
-	('SMTP_CONFIG', 'MAIL', 'cachuelos.sa@gmail.com', '', '');
+	('SMTP_CONFIG', 'MAIL', 'cachuelos.sa@gmail.com', '', ''),
+	('TIPO_OTP', 'VU', 'Verificar Usuario', '', ''),
+	('TIPO_OTP', 'CC', 'Cambio Contraseña', '', ''),
+	('TIPO_OTP', 'EU', 'Eliminar Usuario', '', ''),
+	('TIPO_OTP', 'IT', 'Iniciar Trabajo', '', ''),
+	('TIPO_OTP', 'FT', 'Finalizar Trabajo', '', '');
+	
+GO
+
+CREATE TABLE OtpAction (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    IdUsuario INT NOT NULL,
+    CodigoOtp NVARCHAR(255) NOT NULL,
+	TipoOtp NVARCHAR(5) NOT NULL,
+	Expiracion DATETIME NOT NULL,
+	Usado BIT DEFAULT 0,
+	FechaGeneracion DATETIME DEFAULT GETDATE(),
+    FechaActualizacion DATETIME DEFAULT GETDATE(),
+    Activo BIT DEFAULT 1,
+
+    CONSTRAINT FK_Usuario_OtpAction FOREIGN KEY (IdUsuario)
+        REFERENCES Usuarios(Id)
+);
+
+GO
+
+CREATE TRIGGER trg_OtpAction_Update
+ON OtpAction
+AFTER UPDATE
+AS
+BEGIN
+    UPDATE OtpAction
+    SET FechaActualizacion = GETDATE()
+    FROM Inserted
+    WHERE OtpAction.Id = Inserted.Id;
+END;

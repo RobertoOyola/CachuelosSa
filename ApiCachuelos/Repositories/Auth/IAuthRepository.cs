@@ -13,5 +13,6 @@ namespace Repositories.Auth
         Task<bool> CreateUserInfo(Usuario user);
         string ObtenerHashKey();
         string ObtenerMailKey();
+        Task<Usuario> UsuarioXOtp(string otp);
     }
 }

@@ -3,7 +3,7 @@
    "ContextClassName": "CachuelosSaContext",
    "ContextNamespace": null,
    "FilterSchemas": false,
-   "IncludeConnectionString": false,
+   "IncludeConnectionString": true,
    "ModelNamespace": null,
    "OutputContextPath": null,
    "OutputPath": "CachuelosSA",
@@ -20,6 +20,10 @@
       },
       {
          "Name": "[dbo].[Documento]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[OtpAction]",
          "ObjectType": 0
       },
       {

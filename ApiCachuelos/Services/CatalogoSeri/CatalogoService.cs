@@ -35,9 +35,9 @@ namespace Services.CatalogoSeri
 
         public async Task<SmtpConfig> GetSmtpInfo()
         {
-            Catalogo Host = await _cataRepo.ObtenerCodXCat(Const.CatSmtpConfig, Const.SmtpHost);
-            Catalogo Port = await _cataRepo.ObtenerCodXCat(Const.CatSmtpConfig, Const.SmtpPort);
-            Catalogo Mail = await _cataRepo.ObtenerCodXCat(Const.CatSmtpConfig, Const.SmtpMail);
+            Catalogo Host = await _cataRepo.ObtenerCodXCat(Const.Catalogos.SmtpConfig, Const.SmtpConfig.Host);
+            Catalogo Port = await _cataRepo.ObtenerCodXCat(Const.Catalogos.SmtpConfig, Const.SmtpConfig.Port);
+            Catalogo Mail = await _cataRepo.ObtenerCodXCat(Const.Catalogos.SmtpConfig, Const.SmtpConfig.Mail);
             string Password = _configuration["Security:MailKey"];
 
             SmtpConfig smtpConfig = new SmtpConfig

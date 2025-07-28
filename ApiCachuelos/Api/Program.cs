@@ -5,6 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using Repositories.Auth;
 using Repositories.CatalogRepo;
 using Repositories.DocumentoRepo;
+using Repositories.Otp;
 using Repositories.UsuarioRepo;
 using Services.Auth;
 using Services.CatalogoSeri;
@@ -36,6 +37,8 @@ builder.Services.AddScoped<IUsuariosRepository, UsuariosRepository>();
 
 builder.Services.AddScoped<ICatalogoService, CatalogoService>();
 builder.Services.AddScoped<ICatalogoRepository, CatalogoRepository>();
+
+builder.Services.AddScoped<IOtpRepository, OtpRepository>();
 #endregion
 
 builder.Services.AddDbContext<CachuelosSaContext>((serviceProvider, options) =>

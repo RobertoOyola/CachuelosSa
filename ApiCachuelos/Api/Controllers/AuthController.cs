@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Entitys.CachuelosSA;
+﻿using Entitys.CachuelosSA;
 using Entitys.Entitys;
 using Entitys.Entitys.Auth;
 using Entitys.Entitys.Mail;
@@ -8,6 +7,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Services.Auth;
+using System.Threading.Tasks;
+using Utils.Utilities;
 
 namespace Api.Controllers
 {
@@ -101,10 +102,10 @@ namespace Api.Controllers
             return Ok(new { isAuthenticated = true });
         }
 
-        [HttpPost("emailOtp")]
-        public async Task<IActionResult> emailOtp([FromBody] MailInfo mailInfo)
+        [HttpPost("EmailOtpVerificarUsu")]
+        public async Task<IActionResult> EmailOtpVerificarUsu([FromBody] MailInfo mailInfo)
         {
-            ServiceResult<MailReturn> result = await _authServ.EnviarCorreoOtp(mailInfo);
+            ServiceResult<MailReturn> result = await _authServ.EnviarCorreoOtp(mailInfo, Const.OtpTipo.VerificarUsu);
 
             if (!result.Exitoso)
             {
@@ -117,6 +118,51 @@ namespace Api.Controllers
             }
 
             return Ok(new CustomResponse<MailReturn>
+            {
+                Header = new CustomHeader { Codigo = result.Codigo, Mensaje = result.Mensaje },
+                Body = result.Datos
+            });
+
+        }
+
+        [HttpPost("EmailOtpCambioContrasena")]
+        public async Task<IActionResult> EmailOtpCambioContra([FromBody] MailInfo mailInfo)
+        {
+            ServiceResult<MailReturn> result = await _authServ.EnviarCorreoOtp(mailInfo, Const.OtpTipo.CambioContra);
+
+            if (!result.Exitoso)
+            {
+
+                return BadRequest(new CustomResponse<string>
+                {
+                    Header = new CustomHeader { Codigo = result.Codigo, Mensaje = result.Mensaje },
+                    Body = null
+                });
+            }
+
+            return Ok(new CustomResponse<MailReturn>
+            {
+                Header = new CustomHeader { Codigo = result.Codigo, Mensaje = result.Mensaje },
+                Body = result.Datos
+            });
+
+        }
+
+        [HttpPost("VerificarUsuario")]
+        public async Task<IActionResult> VerificarUsuario([FromBody] IngresoOtp Otp)
+        {
+            ServiceResult<Usuario> result = await _authServ.VerificarUsuario(Otp.Otp);
+
+            if (!result.Exitoso)
+            {
+                return BadRequest(new CustomResponse<string>
+                {
+                    Header = new CustomHeader { Codigo = result.Codigo, Mensaje = result.Mensaje },
+                    Body = null
+                });
+            }
+
+            return Ok(new CustomResponse<Usuario>
             {
                 Header = new CustomHeader { Codigo = result.Codigo, Mensaje = result.Mensaje },
                 Body = result.Datos

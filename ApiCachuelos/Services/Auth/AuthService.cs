@@ -1,6 +1,7 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using System.Threading.Tasks;
 using Entitys.CachuelosSA;
 using Entitys.Entitys;
 using Entitys.Entitys.Auth;
@@ -10,6 +11,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Repositories.Auth;
+using Repositories.Otp;
 using Repositories.UsuarioRepo;
 using Services.CatalogoSeri;
 using Utils.Utilities;
@@ -20,22 +22,25 @@ namespace Services.Auth
     {
         private readonly IAuthRepository _authRepo;
         private readonly IUsuariosRepository _userRepo;
+        private readonly IOtpRepository _otpsRepo;
+        private readonly ICatalogoService _cataServ;
         private readonly IConfiguration _configuration;
         private readonly IHttpContextAccessor _contextAccessor;
-        private readonly ICatalogoService _cataServ;
 
         public AuthService(
-            IAuthRepository authRepo, 
-            IConfiguration configuration, 
+            IAuthRepository authRepo,
+            IConfiguration configuration,
             IHttpContextAccessor httpContextAccessor,
             IUsuariosRepository userRepo,
-            ICatalogoService cataServ)
+            ICatalogoService cataServ,
+            IOtpRepository otpsRepo)
         {
             _authRepo = authRepo;
             _configuration = configuration;
             _contextAccessor = httpContextAccessor;
             _userRepo = userRepo;
             _cataServ = cataServ;
+            _otpsRepo = otpsRepo;
         }
 
         public async Task<ServiceResult<Usuario>> Login(Login login)
@@ -103,10 +108,10 @@ namespace Services.Auth
         {
             Claim[] claims = new Claim[]
             {
-                new Claim(Const.TokenId, user.Id.ToString()),
-                new Claim(Const.TokenUsuario, user.NombreUsuario),
-                new Claim(Const.TokenRol, user.RolId.ToString()),
-                new Claim(Const.TokenEsSuscriptor, user.Subscrito.ToString())
+                new Claim(Const.Token.Id, user.Id.ToString()),
+                new Claim(Const.Token.Usuario, user.NombreUsuario),
+                new Claim(Const.Token.Rol, user.RolId.ToString()),
+                new Claim(Const.Token.EsSuscriptor, user.Subscrito.ToString())
             };
 
             SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!));
@@ -132,10 +137,10 @@ namespace Services.Auth
 
                 Usuarios infoUsuario = new Usuarios()
                 {
-                    Id = int.Parse(user.FindFirst(Const.TokenId)?.Value),
-                    NombreUsuario = user.FindFirst(Const.TokenUsuario)?.Value,
-                    RolId = user.FindFirst(Const.TokenRol)?.Value,
-                    EsSuscriptor = user.FindFirst(Const.TokenEsSuscriptor)?.Value
+                    Id = int.Parse(user.FindFirst(Const.Token.Id)?.Value),
+                    NombreUsuario = user.FindFirst(Const.Token.Usuario)?.Value,
+                    RolId = user.FindFirst(Const.Token.Rol)?.Value,
+                    EsSuscriptor = user.FindFirst(Const.Token.EsSuscriptor)?.Value
                 };
 
                 return infoUsuario;
@@ -146,30 +151,25 @@ namespace Services.Auth
             }
         }
 
-        public async Task<ServiceResult<MailReturn>> EnviarCorreoOtp(MailInfo mailInfo)
+        public async Task<ServiceResult<MailReturn>> EnviarCorreoOtp(MailInfo mailInfo, string tipoOtp)
         {
-            string otp = Encript.CrearOtp();
-
             var key = _authRepo.ObtenerHashKey();
             var emailPw = _authRepo.ObtenerMailKey();
 
             if (string.IsNullOrEmpty(key) || string.IsNullOrEmpty(emailPw))
                 return ServiceResult<MailReturn>.Fail("Error al obtener SecurityKeys Contacte al Servicio Cliente", 403);
 
-            Login userInfo = new Login
-            {
-                email = mailInfo.Mail,
-                password = Encript.EncriptarContra(mailInfo.Password, key)
-            };
-
-            Usuario user = await _authRepo.LoginUser(userInfo);
+            Usuario user = await _userRepo.ObtenerUserXCorreo(mailInfo.Mail);
             if (user == null)
                 return ServiceResult<MailReturn>.Fail("Usuario desactivado o bloqueado", 401);
 
-            user.TokenRecuperacion = otp;
-            user.ExpiracionToken = DateTime.Now.AddMinutes(10);
+            bool verificarAntiguas = await _otpsRepo.EliminarOtpsNoUsadas(user.Id, tipoOtp);
 
-            Usuario userOtp = await _userRepo.ActualizarUsuario(user);
+            string otp = Encript.CrearOtp();
+
+            OtpAction otpAction = await _otpsRepo.CrearOtp(user.Id, otp, tipoOtp, 10);
+            if (otpAction == null)
+                return ServiceResult<MailReturn>.Fail("Error al crear la otp", 401);
 
             SmtpConfig smtpConfig = await _cataServ.GetSmtpInfo();
 
@@ -186,6 +186,38 @@ namespace Services.Auth
                 return ServiceResult<MailReturn>.Fail(mailReturn.Message, 403);
             }
 
+        }
+
+        public async Task<ServiceResult<Usuario>> VerificarUsuario(string otp)
+        {
+            if (string.IsNullOrEmpty(otp))
+                return ServiceResult<Usuario>.Fail("OTP no puede ser nulo o vacio", 400);
+            
+            OtpAction otpAction = await _otpsRepo.ObtenerOtpXOtp(otp, Const.OtpTipo.VerificarUsu);
+            if (otpAction == null )
+                return ServiceResult<Usuario>.Fail("Otp equivocada", 404);
+            if (otpAction.Expiracion < DateTime.Now)
+                return ServiceResult<Usuario>.Fail("OTP caducada", 400);
+
+            Usuario user = await _userRepo.ObtenerUserXId(otpAction.IdUsuario);
+            if (user == null)
+                return ServiceResult<Usuario>.Fail("Error Usuario Bloqueado", 403);
+
+            user.Verificado = true;
+
+            user = await _userRepo.ActualizarUsuario(user);
+            otpAction = await _otpsRepo.UsarOtp(otpAction);
+            if (user == null)
+                return ServiceResult<Usuario>.Fail("Falla al verificar el Usuario", 404);
+            if (otpAction == null)
+                return ServiceResult<Usuario>.Fail("Falla al verificar la Otp", 404);
+
+            if (user != null)
+            {
+                return ServiceResult<Usuario>.Ok(user, "Usuario verificado con éxito", 200);
+            }
+            else
+                return ServiceResult<Usuario>.Fail("Error al verificar el usuario", 500);
         }
     }
 }

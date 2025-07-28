@@ -12,4 +12,9 @@
         public string Otp { get; set; }
         public DateTime HoraCaducidad { get; set; }
     }
+
+    public class IngresoOtp
+    {
+        public string Otp { get; set; }
+    }
 }

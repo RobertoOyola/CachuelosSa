@@ -3,6 +3,7 @@ using Entitys.CachuelosSA;
 using Entitys.Entitys.Auth;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Utils.Utilities;
 
 namespace Repositories.Auth
 {
@@ -153,6 +154,29 @@ namespace Repositories.Auth
             {
                 return null;
             }
+        }
+
+        public async Task<Usuario> UsuarioXOtp(string otp)
+        {
+            try
+            {
+                string key = ObtenerHashKey();
+                otp = Encript.EncriptarContra(otp, key);
+
+                Usuario User = await _context.Usuarios
+                        .Where(x => x.TokenRecuperacion == otp &&
+                               x.Activo == true)
+                        .FirstOrDefaultAsync();
+
+                if (User == null) { return null; }
+
+                return User;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
         }
     }
 }

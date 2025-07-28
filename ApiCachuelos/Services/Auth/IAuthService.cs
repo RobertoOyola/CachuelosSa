@@ -12,6 +12,7 @@ namespace Services.Auth
         Task<ServiceResult<Usuario>> Register(Register register);
         string GenerarToken(Usuario user);
         Usuarios OtenerTokenInfo();
-        Task<ServiceResult<MailReturn>> EnviarCorreoOtp(MailInfo mailInfo);
+        Task<ServiceResult<MailReturn>> EnviarCorreoOtp(MailInfo mailInfo, string TipoMail);
+        Task<ServiceResult<Usuario>> VerificarUsuario(string otp);
     }
 }
