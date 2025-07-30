@@ -19,7 +19,7 @@ namespace Repositories.UsuarioRepo
             try
             {
                 Usuario usuario = await _context.Usuarios
-                            .Where(x => x.Id == idUser && x.Activo == true)
+                            .Where(x => x.Id == idUser)
                             .FirstOrDefaultAsync();
 
                 return usuario;

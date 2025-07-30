@@ -45,7 +45,30 @@ namespace Repositories.Otp
             }
         }
 
-        public async Task<OtpAction> ObtenerOtpXOtp(string otp, string TipoOtp)
+        public async Task<OtpAction> ObtenerOtpXOtp(string otp)
+        {
+            try
+            {
+                string key = _authRepo.ObtenerHashKey();
+                otp = Encript.EncriptarContra(otp, key);
+
+                OtpAction otpAction = await _context.OtpActions
+                    .Where(x => x.CodigoOtp == otp &&
+                                x.Activo == true &&
+                                x.Usado == false)
+                    .FirstOrDefaultAsync();
+
+                if (otpAction == null)
+                    return null;
+               
+                return otpAction;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public async Task<OtpAction> ObtenerOtpXOtpTipo(string otp, string TipoOtp)
         {
             try
             {
@@ -61,7 +84,7 @@ namespace Repositories.Otp
 
                 if (otpAction == null)
                     return null;
-               
+
                 return otpAction;
             }
             catch (Exception ex)

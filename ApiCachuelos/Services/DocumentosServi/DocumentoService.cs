@@ -31,7 +31,8 @@ namespace Services.DocumentosServi
 
             Usuario user = await _userRepo.ObtenerUserXId(usuario.Id);
 
-            if (user == null) return ServiceResult<DocResponse>.Fail("Usuario no Encontrado o Bloqueado", 204);
+            if (user == null || user.Activo == false) 
+                return ServiceResult<DocResponse>.Fail("Usuario no Encontrado o Bloqueado", 204);
 
             Docus busqudaDoc = new Docus();
 
