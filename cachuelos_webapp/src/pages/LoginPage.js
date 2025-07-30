@@ -1,10 +1,19 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { login } from "../sevices/apis/authServ";
+import OtpModal from "./modals/OtpModal";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPage({ onLogin }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showOtpModal, setShowOtpModal] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleSuccess = (response) => {
+    navigate(`/cambiar-contrasena`, {state: {user: response.body}});
+    };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,14 +34,14 @@ export default function LoginPage({ onLogin }) {
   };
 
   return (
-    <div className="d-flex vh-95">
+    <div className="d-flex vh-90">
       {/* Imagen (solo en pantallas grandes) */}
       <div className="d-none d-md-flex flex-column justify-content-center align-items-center flex-grow-1 bg-light position-relative">
         <img
           src="img/login img.png"
           alt="Login illustration"
           className="img-fluid p-5"
-          style={{ maxHeight: "700px" }}
+          style={{ maxHeight: "600px" }}
         />
       </div>
 
@@ -69,13 +78,27 @@ export default function LoginPage({ onLogin }) {
               Iniciar sesión
             </button>
 
-            <div className="text-center mt-3">
-              <span>¿Nuevo aquí?</span>{" "}
+            <div className="text-center mt-3 mb-0">
+              <span>¿Nuevo aquí? </span>
               <a href="/register" className="text-decoration-none">Crea una cuenta</a>
+            </div>
+            <div className="text-center">
+              <span>¿Olvidaste la contaseña? </span>
+              <a href="#!" onClick={() => setShowOtpModal(true)} className="text-decoration-none text-primary">
+                Recuperar Contraseña
+              </a>
             </div>
           </form>
         </div>
       </div>
+      {showOtpModal && (
+        <OtpModal
+          onClose={() => setShowOtpModal(false)}
+          actionType="CAMBIO_CONTRA"
+          email=""
+          onSuccess={handleSuccess}
+        />
+      )}
     </div>
   );
 }

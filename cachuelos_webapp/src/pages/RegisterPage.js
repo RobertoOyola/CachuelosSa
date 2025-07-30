@@ -41,7 +41,7 @@ export default function RegisterPage() {
           src="img/register img.png"
           alt="register-illustration"
           className="img-fluid p-5"
-          style={{ maxHeight: "700px" }}
+          style={{ maxHeight: "600px" }}
         />
       </div>
 

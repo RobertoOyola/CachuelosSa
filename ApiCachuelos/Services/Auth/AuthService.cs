@@ -56,10 +56,10 @@ namespace Services.Auth
             login.password = Encript.EncriptarContra(login.password, key);
 
             Usuario newUser = await _authRepo.LoginUser(login);
-            newUser.ContrasenaHash = string.Empty;
 
             if (newUser != null)
             {
+                newUser.ContrasenaHash = string.Empty;
                 if (newUser.Activo == false)
                     return ServiceResult<Usuario>.Fail("Usuario desactivado o bloqueado", 401);
 
@@ -162,7 +162,7 @@ namespace Services.Auth
 
             Usuario user = await _userRepo.ObtenerUserXCorreo(mailInfo.Mail);
             if (user == null)
-                return ServiceResult<MailReturn>.Fail("Usuario desactivado o bloqueado o no existe", 401);
+                return ServiceResult<MailReturn>.Fail("Usuario desactivado, bloqueado o no existe", 401);
 
             bool verificarAntiguas = await _otpsRepo.EliminarOtpsNoUsadas(user.Id, tipoOtp);
 
@@ -198,7 +198,7 @@ namespace Services.Auth
             
             OtpAction otpAction = await _otpsRepo.ObtenerOtpXOtp(otp);
             if (otpAction == null )
-                return ServiceResult<Usuario>.Fail("Otp equivocada", 404);
+                return ServiceResult<Usuario>.Fail("Otp incorrecto", 404);
             if (otpAction.Expiracion < DateTime.Now)
                 return ServiceResult<Usuario>.Fail("OTP caducada", 400);
 
@@ -258,7 +258,7 @@ namespace Services.Auth
 
             Usuario user = await _userRepo.ObtenerUserXId(recuperar.Id);
             if (user == null) return ServiceResult<string>.Fail("Usuario desactivado o bloqueado o no existe", 401);
-            if (user.Correo != recuperar.Mail) 
+            if (user.Correo != recuperar.Mail)
                 return ServiceResult<string>.Fail("Correo Equivocado", 409);
             if (user.ContrasenaHash == Encript.EncriptarContra(recuperar.Password, key)) 
                 return ServiceResult<string>.Fail("Contraseña usada previamente", 409);
