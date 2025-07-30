@@ -13,6 +13,7 @@ namespace Services.Auth
         string GenerarToken(Usuario user);
         Usuarios OtenerTokenInfo();
         Task<ServiceResult<MailReturn>> EnviarCorreoOtp(MailInfo mailInfo, string TipoMail);
-        Task<ServiceResult<Usuario>> VerificarUsuario(string otp);
+        Task<ServiceResult<Usuario>> VerificarOtp(string otp);
+        Task<ServiceResult<string>> CambiarContrasena(RecuperarContrasena recuperar);
     }
 }

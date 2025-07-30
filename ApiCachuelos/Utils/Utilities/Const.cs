@@ -50,6 +50,7 @@ namespace Utils.Utilities
             public const string EliminarUsu = "EU";
             public const string IniciarTbj = "IT";
             public const string FinalizarTbj = "FT";
+            public const string DesbloquearUsu = "DU";
         }
 
     }
