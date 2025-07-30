@@ -2,16 +2,20 @@
 using Entitys.CachuelosSA;
 using Entitys.Entitys.Auth;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Utils.Utilities;
 
 namespace Repositories.Auth
 {
     public class AuthRepository : IAuthRepository
     {
         private readonly CachuelosSaContext _context;
+        private readonly IConfiguration _configuration;
 
-        public AuthRepository(CachuelosSaContext context)
+        public AuthRepository(CachuelosSaContext context, IConfiguration configuration)
         {
             _context = context;
+            _configuration = configuration;
         }
 
         public async Task<bool> UsuarioExiste( string nombreUsuario)
@@ -84,7 +88,7 @@ namespace Repositories.Auth
             
         }
 
-        public async Task<bool> CreateUserInfo(Usuario user)
+        public async Task<bool> CreateUserInfo( Usuario user )
         {
             try
             {
@@ -111,23 +115,58 @@ namespace Repositories.Auth
             {
                 Usuario User = await _context.Usuarios
                         .Where(x => x.Correo == login.email &&
-                                            x.ContrasenaHash == login.password)
-                        .Select(x => new Usuario()
-                        {
-                            Id = x.Id,
-                            NombreUsuario = x.NombreUsuario,
-                            Correo = x.Correo,
-                            Verificado = x.Verificado,
-                            Activo = x.Activo,
-                            RolId = x.RolId,
-                            Subscrito = x.Subscrito,
-                            FechaCreacion = x.FechaCreacion,
-                            FechaUltimoLogin = x.FechaUltimoLogin,
-                            FechaActualizacion = x.FechaActualizacion,
-                            TokenRecuperacion = x.TokenRecuperacion,
-                            ExpiracionToken = x.ExpiracionToken
+                               x.ContrasenaHash == login.password &&
+                               x.Activo == true)
+                        .FirstOrDefaultAsync();
 
-                        }).FirstAsync();
+                if (User == null) { return null; }
+
+                return User;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+        }
+
+        public string ObtenerHashKey()
+        {
+            try
+            {
+                string key = _configuration["Security:PasswordKey"];
+                return key;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public string ObtenerMailKey()
+        {
+            try
+            {
+                string key = _configuration["Security:MailKey"];
+                return key;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public async Task<Usuario> UsuarioXOtp(string otp)
+        {
+            try
+            {
+                string key = ObtenerHashKey();
+                otp = Encript.EncriptarContra(otp, key);
+
+                Usuario User = await _context.Usuarios
+                        .Where(x => x.TokenRecuperacion == otp &&
+                               x.Activo == true)
+                        .FirstOrDefaultAsync();
 
                 if (User == null) { return null; }
 

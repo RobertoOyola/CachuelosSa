@@ -11,6 +11,32 @@ public partial class UsuarioInfo
 
     public int IdUsuario { get; set; }
 
+    public string Nombre { get; set; }
+
+    public string Apellido { get; set; }
+
+    public DateTime? FechaNacimiento { get; set; }
+
+    public string TipoIdentificacion { get; set; }
+
+    public string Identificacion { get; set; }
+
+    public string EstadoCivil { get; set; }
+
+    public string Direccion { get; set; }
+
+    public string Telefono { get; set; }
+
+    public string Ciudad { get; set; }
+
+    public string Provincia { get; set; }
+
+    public string Nacionalidad { get; set; }
+
+    public bool? Discapacidad { get; set; }
+
+    public string TipoDiscapacidad { get; set; }
+
     public string UrlImg { get; set; }
 
     public string Descripcion { get; set; }

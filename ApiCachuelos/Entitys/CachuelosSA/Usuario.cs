@@ -35,6 +35,8 @@ public partial class Usuario
 
     public DateTime? ExpiracionToken { get; set; }
 
+    public virtual ICollection<OtpAction> OtpActions { get; set; } = new List<OtpAction>();
+
     public virtual Role Rol { get; set; }
 
     public virtual ICollection<UsuarioInfo> UsuarioInfos { get; set; } = new List<UsuarioInfo>();

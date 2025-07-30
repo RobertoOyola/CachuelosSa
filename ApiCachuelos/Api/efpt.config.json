@@ -3,7 +3,7 @@
    "ContextClassName": "CachuelosSaContext",
    "ContextNamespace": null,
    "FilterSchemas": false,
-   "IncludeConnectionString": false,
+   "IncludeConnectionString": true,
    "ModelNamespace": null,
    "OutputContextPath": null,
    "OutputPath": "CachuelosSA",
@@ -15,7 +15,15 @@
    "T4TemplatePath": null,
    "Tables": [
       {
+         "Name": "[dbo].[Catalogo]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[dbo].[Documento]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[OtpAction]",
          "ObjectType": 0
       },
       {

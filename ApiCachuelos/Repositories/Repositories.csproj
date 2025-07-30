@@ -7,12 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Entitys\Entitys.csproj" />
-    <ProjectReference Include="..\Utils\Utils.csproj" />
+    <Compile Remove="Rol\**" />
+    <EmbeddedResource Remove="Rol\**" />
+    <None Remove="Rol\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Rol\" />
+    <ProjectReference Include="..\Entitys\Entitys.csproj" />
+    <ProjectReference Include="..\Utils\Utils.csproj" />
   </ItemGroup>
 
 </Project>

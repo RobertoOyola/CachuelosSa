@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Entitys.CachuelosSA;
+using Entitys.Entitys.Auth;
 using Microsoft.EntityFrameworkCore;
 
 namespace Repositories.UsuarioRepo
@@ -19,20 +20,7 @@ namespace Repositories.UsuarioRepo
             {
                 Usuario usuario = await _context.Usuarios
                             .Where(x => x.Id == idUser && x.Activo == true)
-                            .Select(x => new Usuario()
-                            {
-                                Id = x.Id,
-                                NombreUsuario = x.NombreUsuario,
-                                Correo = x.Correo,
-                                Verificado = x.Verificado,
-                                Activo = x.Activo,
-                                RolId = x.RolId,
-                                FechaCreacion = x.FechaCreacion,
-                                FechaUltimoLogin = x.FechaUltimoLogin,
-                                FechaActualizacion = x.FechaActualizacion,
-                                TokenRecuperacion = x.TokenRecuperacion,
-                                ExpiracionToken = x.ExpiracionToken
-                            }).FirstOrDefaultAsync();
+                            .FirstOrDefaultAsync();
 
                 return usuario;
 
@@ -84,6 +72,56 @@ namespace Repositories.UsuarioRepo
             {
                 return null;
             }
+        }
+
+        public async Task<Usuario> ActualizarUsuario(Usuario user)
+        {
+            try
+            {
+                _context.Update(user);
+                await _context.SaveChangesAsync();
+
+                Usuario updatedUser = await _context.Usuarios
+                    .Where(x => x.Id == user.Id)
+                    .Select(x => new Usuario()
+                     {
+                         Id = x.Id,
+                         NombreUsuario = x.NombreUsuario,
+                         Correo = x.Correo,
+                         Verificado = x.Verificado,
+                         Activo = x.Activo,
+                         Subscrito = x.Activo,
+                         FechaFinSubscrito = x.FechaFinSubscrito,
+                         FechaCreacion = x.FechaCreacion,
+                         FechaActualizacion = x.FechaActualizacion
+                     }).FirstOrDefaultAsync();
+
+                return updatedUser;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public async Task<Usuario> ObtenerUserXCorreo(string email)
+        {
+            try
+            {
+                Usuario User = await _context.Usuarios
+                        .Where(x => x.Correo == email &&
+                               x.Activo == true)
+                        .FirstOrDefaultAsync();
+
+                if (User == null) { return null; }
+
+                return User;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
         }
     }
 }

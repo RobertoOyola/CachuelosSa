@@ -35,8 +35,8 @@ namespace Services.DocumentosServi
 
             Docus busqudaDoc = new Docus();
 
-            int idCurriculum = await _docuRepo.ObtenerIdDocuXNombre(Const.TipDocCurriculum);
-            int idHistPoli = await _docuRepo.ObtenerIdDocuXNombre(Const.TipDocHistoPoli);
+            int idCurriculum = await _docuRepo.ObtenerIdDocuXNombre(Const.TipoDocumento.Curriculum);
+            int idHistPoli = await _docuRepo.ObtenerIdDocuXNombre(Const.TipoDocumento.HistoPoli);
 
             if (documento.idTipoDocumento == idCurriculum)
             {
