@@ -30,3 +30,22 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# C# and .NET build outputs
+**/bin/
+**/obj/
+*.dll
+*.pdb
+*.exe
+*.cache
+*.json
+*.props
+*.targets
+*.sourcelink.json
+*.csproj.FileListAbsolute.txt
+*.nuget.*
+*.AssemblyInfo.cs
+*.AssemblyInfoInputs.cache
+*.genruntimeconfig.cache
+*.refint/
+
+
