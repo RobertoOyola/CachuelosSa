@@ -40,14 +40,14 @@ namespace Api.Controllers
                 });
             }
 
-            string token = _authServ.GenerarToken(result.Datos);
+            string token = await _authServ.GenerarToken(result.Datos);
 
             Response.Cookies.Append("auth_token", token, new CookieOptions
             {
-                HttpOnly = true,
+                HttpOnly = false,
                 Secure = true,
                 SameSite = SameSiteMode.None,
-                Expires = DateTimeOffset.UtcNow.AddHours(1)
+                Expires = DateTimeOffset.UtcNow.AddHours(4)
             });
 
             return Ok(new CustomResponse<object>

@@ -11,8 +11,10 @@ export const login = async (credentials) => {
         const response = await api.post("login", credentials);
         return response.data;
     } catch (error) {
-        console.error("Error en login:", error.response?.data || error.message);
-        throw error;
+        if (error.response?.data.header.codigo !== 206){
+        console.error("Error en login:", error.response?.data || error.message);    
+        }
+        return error.response?.data;
     }
 };
 
@@ -21,8 +23,10 @@ export const Register = async (credentials) =>{
         const response = await api.post('Register', credentials);
         return response.data
     } catch (error) {
+        if (error.response?.data.header.codigo !== 409){
         console.error("Error en Register:", error.response?.data || error.message);
-        throw error;
+        }
+        return error.response?.data;
     }
 };
 
@@ -32,7 +36,7 @@ export const logout = async () => {
         return response.data;
     } catch (error) {
         console.error("Error en login:", error.response?.data || error.message);
-        throw error;
+        return error.response?.data;
     }
 };
 
