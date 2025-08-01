@@ -26,8 +26,8 @@ export default function CambiarContrasena() {
             return toast.error('Las contraseñas no coinciden');
         }
 
-        if (newPassword.length < 6) {
-            return toast.error('La contraseña debe tener al menos 6 caracteres');
+        if (newPassword.length <= 6) {
+            return toast.error('La contraseña debe tener mas de 6 caracteres');
         }
 
         try {

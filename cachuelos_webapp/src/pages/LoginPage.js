@@ -8,12 +8,13 @@ export default function LoginPage({ onLogin }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showOtpModal, setShowOtpModal] = useState(false);
+  const [showOtpModalV, setShowOtpModalV] = useState(false);
 
   const navigate = useNavigate();
 
   const handleSuccess = (response) => {
-    navigate(`/cambiar-contrasena`, {state: {user: response.body}});
-    };
+    navigate(`/cambiar-contrasena`, { state: { user: response.body } });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,7 +26,11 @@ export default function LoginPage({ onLogin }) {
       if (data.body?.datos) {
         toast.success("¡Login exitoso!");
         onLogin(data.body.token);
-      } else {
+      }
+      else if (data.header.codigo === 206) {
+        setShowOtpModalV(true)
+      }
+      else {
         toast.error(data.header?.mensaje || "Credenciales inválidas");
       }
     } catch {
@@ -33,9 +38,23 @@ export default function LoginPage({ onLogin }) {
     }
   };
 
+  const verify_login = async () => {
+    try {
+      const data = await login({ email, password });
+      if (data.body?.datos) {
+        toast.success("¡Login exitoso!");
+        onLogin(data.body.token);
+      }
+      else {
+        toast.error(data.header?.mensaje || "Credenciales inválidas");
+      }
+    } catch {
+      toast.error("Error al iniciar sesión");
+    }
+  }
+
   return (
-    <div className="d-flex vh-90">
-      {/* Imagen (solo en pantallas grandes) */}
+    <div className="d-flex vh-90 container mt-4">
       <div className="d-none d-md-flex flex-column justify-content-center align-items-center flex-grow-1 bg-light position-relative">
         <img
           src="img/login img.png"
@@ -45,7 +64,6 @@ export default function LoginPage({ onLogin }) {
         />
       </div>
 
-      {/* Formulario */}
       <div className="d-flex flex-column justify-content-center align-items-center p-5 bg-white shadow w-100" style={{ maxWidth: 480 }}>
         <div className="w-100">
           <h3 className="mb-3 text-center">Bienvenido a Cachuelos SA</h3>
@@ -97,6 +115,14 @@ export default function LoginPage({ onLogin }) {
           actionType="CAMBIO_CONTRA"
           email=""
           onSuccess={handleSuccess}
+        />
+      )}
+      {showOtpModalV && (
+        <OtpModal
+          onClose={() => setShowOtpModalV(false)}
+          actionType="VERIFICAR_USU"
+          email=""
+          onSuccess={verify_login}
         />
       )}
     </div>

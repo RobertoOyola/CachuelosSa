@@ -1,6 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { EmailOtpCambioContra, EmailOtpIniciarTbj, VerificarOtp } from '../../sevices/apis/authServ';
+import {
+    EmailOtpCambioContra,
+    EmailOtpIniciarTbj,
+    VerificarOtp,
+    EmailOtpVerificarUsu
+} from '../../sevices/apis/authServ';
 
 import './OtpModal.css'
 
@@ -9,6 +14,24 @@ export default function OtpModal({ onClose, actionType, email, onSuccess }) {
     const [newEmail, setNewEmail] = useState(email || '');
     const [step, setStep] = useState(1); // 1: Ingresar correo, 2: Ingresar OTP
     const [loading, setLoading] = useState(false);
+    const [title, settitle] = useState('');
+
+    useEffect(() => {
+        switch (actionType) {
+            case 'CAMBIO_CONTRA':
+                settitle('Recuperar Contraseña');
+                break;
+            case 'INICIO_TBJ':
+                settitle('Iniciar Trabajo');
+                break;
+            case 'VERIFICAR_USU':
+                settitle('Verificacion de Usuario');
+                break;
+            default:
+                settitle('Autentificacion Otp');
+        }
+    }, [actionType, settitle])
+
 
     const isEmailValid = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(newEmail);
 
@@ -26,6 +49,9 @@ export default function OtpModal({ onClose, actionType, email, onSuccess }) {
                 case 'INICIO_TBJ':
                     response = await EmailOtpIniciarTbj({ Mail: newEmail });
                     break;
+                case 'VERIFICAR_USU':
+                    response = await EmailOtpVerificarUsu({ Mail: newEmail });
+                    break;
                 default:
                     response = await EmailOtpCambioContra({ Mail: newEmail });
             }
@@ -36,14 +62,14 @@ export default function OtpModal({ onClose, actionType, email, onSuccess }) {
             } else {
                 toast.error(response.header.mensaje);
             }
-        } catch (error){
+        } catch (error) {
             toast.error("Error al enviar el OTP", error);
         } finally {
             setLoading(false);
         }
     };
 
-    
+
     const handleOtpSubmit = async (e) => {
         e.preventDefault();
         if (!otp.trim()) return toast.error("Ingrese el OTP");
@@ -70,9 +96,9 @@ export default function OtpModal({ onClose, actionType, email, onSuccess }) {
             <div className="modal-Otp-content">
                 {step === 1 ? (
                     <form onSubmit={handleEmailSubmit}>
-                        <h3>Recuperar Contraseña</h3>
+                        <h3>{title}</h3>
                         <div className='row'>
-                            <label 
+                            <label
                                 className=' 
                                     col-5 
                                     d-flex 
@@ -96,7 +122,7 @@ export default function OtpModal({ onClose, actionType, email, onSuccess }) {
                                 mx-auto
                                 p-2'>
                             <button
-                                type="submit" 
+                                type="submit"
                                 disabled={!isEmailValid || loading}
                                 className={`btn ${isEmailValid ? 'btn-primary' : 'btn-secondary'} w-100`}>
                                 {loading ? 'Enviando...' : 'Enviar OTP'}
@@ -107,13 +133,13 @@ export default function OtpModal({ onClose, actionType, email, onSuccess }) {
                     <form onSubmit={handleOtpSubmit}>
                         <h3>Ingresa el OTP</h3>
                         <div className='row'>
-                            <label 
+                            <label
                                 className='
                                     col-4
                                     align-items-center
                                     justify-content-center 
                                     d-flex '
-                                >
+                            >
                                 OTP
                             </label>
                             <input
@@ -128,7 +154,7 @@ export default function OtpModal({ onClose, actionType, email, onSuccess }) {
                                 }}
                                 placeholder="Ingresa el OTP"
                                 required
-                                />
+                            />
                         </div>
                         <div
                             className='
@@ -136,9 +162,9 @@ export default function OtpModal({ onClose, actionType, email, onSuccess }) {
                                 col-8 
                                 mx-auto
                                 p-2'>
-                            <button id='btn-confirm-otp' 
-                                type="submit" 
-                                disabled={loading || otp.length !== 6 }
+                            <button id='btn-confirm-otp'
+                                type="submit"
+                                disabled={loading || otp.length !== 6}
                                 className={`btn ${otp.length === 6 ? 'btn-primary' : 'btn-secondary'} w-100`}>
                                 {loading ? 'Verificando...' : 'Verificar OTP'}
                             </button>

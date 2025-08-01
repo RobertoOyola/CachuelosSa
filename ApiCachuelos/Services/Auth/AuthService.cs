@@ -105,18 +105,25 @@ namespace Services.Auth
 
         }
 
-        public string GenerarToken(Usuario user)
+        public async Task<string> GenerarToken(Usuario user)
         {
+            UsuarioInfo userinfo = await _userRepo.ObtenerUserInfoXId(user.Id);
+
+            string imgUrl = string.Empty;
+            if (userinfo != null && userinfo.UrlImg != null) imgUrl = userinfo.UrlImg; 
+
             Claim[] claims = new Claim[]
             {
-                new Claim(Const.Token.Id, user.Id.ToString()),
-                new Claim(Const.Token.Usuario, user.NombreUsuario),
-                new Claim(Const.Token.Rol, user.RolId.ToString()),
-                new Claim(Const.Token.EsSuscriptor, user.Subscrito.ToString())
+                new Claim("Id", user.Id.ToString()),
+                new Claim("UserName", user.NombreUsuario),
+                new Claim("ImgPerfil", imgUrl),
+                new Claim("RodId", user.RolId.ToString()),
+                new Claim("EsSubscriptor", user.Subscrito.ToString()),
+                new Claim("EsVerificado", user.Verificado.ToString())
             };
 
             SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!));
-            SigningCredentials creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+            SigningCredentials creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512);
 
             var token = new JwtSecurityToken(
                 issuer: _configuration["Jwt:Issuer"],

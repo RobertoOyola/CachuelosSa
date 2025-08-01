@@ -1,0 +1,86 @@
+.header {
+    background-color: #f8f9f9;
+    border-top: 3px solid #7a74dd;
+    border-bottom: 1px solid #e3e6e8;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.header-content {
+    max-width: 1264px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    padding: 0 12px;
+    gap: 8px;
+}
+
+.logo-section {
+    margin-right: 16px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 19px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.logo-text {
+    color: #ce42c7;
+}
+
+.logo-accent {
+    color: #000000;
+}
+
+.auth-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+}
+
+.auth-buttons button {
+    height: 33px;
+    padding: 0 12px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+}
+
+.auth-buttons .btn-login {
+    color: #39739d;
+    background-color: #e1ecf4;
+    border-color: #7aa7c7;
+}
+
+.auth-buttons .btn-login:hover {
+    background-color: #b3d3ea;
+}
+
+.auth-buttons .btn-signup {
+    color: white;
+    background-color: #0074cc;
+    border-color: #0074cc;
+}
+
+.auth-buttons .btn-signup:hover {
+    background-color: #0063bf;
+}
+
+.avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ddd;
+    border-radius: 50%;
+    font-size: 14px;
+    color: #fff;
+}
