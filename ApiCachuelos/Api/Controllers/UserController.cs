@@ -43,11 +43,11 @@ namespace Api.Controllers
         }
 
         [Authorize]
-        [HttpPost("ObtenerUserInfo")]
-        public async Task<IActionResult> ObtenerUserInfo()
+        [HttpPost("ObtenerUser")]
+        public async Task<IActionResult> ObtenerUsuario()
         {
 
-            ServiceResult<UsuarioXInfoCompleta> result = await _userServ.ObtenerInfoUsuario();
+            ServiceResult<UsuarioxUsuarioInfo> result = await _userServ.ObtenerUsuario();
 
             if (!result.Exitoso)
             {
@@ -59,7 +59,55 @@ namespace Api.Controllers
                 });
             }
 
-            return Ok(new CustomResponse<UsuarioXInfoCompleta>
+            return Ok(new CustomResponse<UsuarioxUsuarioInfo>
+            {
+                Header = new CustomHeader { Codigo = result.Codigo, Mensaje = result.Mensaje },
+                Body = result.Datos
+            });
+        }
+
+        [Authorize]
+        [HttpPost("ObtenerUsuarioOtros")]
+        public async Task<IActionResult> ObtenerUsuario([FromBody] int id)
+        {
+
+            ServiceResult<UsuarioxUsuarioInfo> result = await _userServ.ObtenerUsuario(id);
+
+            if (!result.Exitoso)
+            {
+
+                return BadRequest(new CustomResponse<string>
+                {
+                    Header = new CustomHeader { Codigo = result.Codigo, Mensaje = result.Mensaje },
+                    Body = null
+                });
+            }
+
+            return Ok(new CustomResponse<UsuarioxUsuarioInfo>
+            {
+                Header = new CustomHeader { Codigo = result.Codigo, Mensaje = result.Mensaje },
+                Body = result.Datos
+            });
+        }
+
+        [Authorize]
+        [HttpPost("ActualizarUsuario")]
+        public async Task<IActionResult> ActualizarUsuario([FromBody] UsuarioInfoDto request)
+        {
+
+            ServiceResult<UsuarioInfo> result = await _userServ.ActualizarUsuario(request);
+
+            if (!result.Exitoso)
+            {
+
+                return BadRequest(new CustomResponse<string>
+                {
+                    Header = new CustomHeader { Codigo = result.Codigo, Mensaje = result.Mensaje },
+                    Body = null
+                });
+            }
+
+            return Ok(new CustomResponse<UsuarioInfo>
             {
                 Header = new CustomHeader { Codigo = result.Codigo, Mensaje = result.Mensaje },
                 Body = result.Datos

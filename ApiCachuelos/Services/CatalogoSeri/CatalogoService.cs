@@ -1,5 +1,6 @@
 ﻿using Entitys.CachuelosSA;
 using Entitys.Entitys;
+using Entitys.Entitys.Catalogos;
 using Entitys.Entitys.Mail;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Configuration;
@@ -49,6 +50,30 @@ namespace Services.CatalogoSeri
             };
 
             return smtpConfig;
+        }
+
+        public async Task<ServiceResult<CatalogosUpdateInfo>> InfoParaRegister()
+        {
+            List<Catalogo> TipoIdentificacion = await _cataRepo.ObtenerCatInfo(Const.Catalogos.TIdentificacion);
+            List<Catalogo> EstadoCivil = await _cataRepo.ObtenerCatInfo(Const.Catalogos.EstadoCivil);
+            List<Catalogo> Nacionalidades = await _cataRepo.ObtenerCatInfo(Const.Catalogos.Nacionalidades);
+            List<Catalogo> Provincias = await _cataRepo.ObtenerCatInfo(Const.Catalogos.Provincias);
+            List<Catalogo> Ciudades = await _cataRepo.ObtenerCatInfo(Const.Catalogos.Ciudades);
+
+            if (TipoIdentificacion == null || EstadoCivil == null || Nacionalidades == null || Provincias == null || Ciudades == null)
+                return ServiceResult<CatalogosUpdateInfo>.Fail("Alguno de los Catalogos estan vacios", 404);
+
+            CatalogosUpdateInfo result = new CatalogosUpdateInfo()
+            {
+                TipoIdentificacion = TipoIdentificacion,
+                EstadoCivil = EstadoCivil,
+                Nacionalidades = Nacionalidades,
+                Provincias = Provincias,
+                Ciudades = Ciudades
+            };
+
+            return ServiceResult<CatalogosUpdateInfo>.Ok(result, "Catalogos obtenidos con Exito", 200);
+
         }
 
     }

@@ -1,4 +1,6 @@
 ﻿using Entitys.CachuelosSA;
+using Entitys.Entitys;
+using Entitys.Entitys.Catalogos;
 using Entitys.Entitys.Mail;
 using System;
 using System.Collections.Generic;
@@ -12,5 +14,6 @@ namespace Services.CatalogoSeri
     {
         Task<List<Catalogo>> GetCatalogoDetails(string nombreCatalogo);
         Task<SmtpConfig> GetSmtpInfo();
+        Task<ServiceResult<CatalogosUpdateInfo>> InfoParaRegister();
     }
 }
