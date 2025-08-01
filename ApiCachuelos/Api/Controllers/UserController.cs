@@ -20,34 +20,10 @@ namespace Api.Controllers
 
         [Authorize]
         [HttpPost("CambiarFotoUsuario")]
-        public async Task<IActionResult> CambiarFotoUsuario(UsuariosInfoDto usuariosInfo)
+        public async Task<IActionResult> CambiarFotoUsuario([FromBody] string fotoId)
         {
 
-            ServiceResult<UsuarioInfo> result = await _userServ.CambiarFotoUsuario(usuariosInfo);
-
-            if (!result.Exitoso)
-            {
-
-                return BadRequest(new CustomResponse<string>
-                {
-                    Header = new CustomHeader { Codigo = result.Codigo, Mensaje = result.Mensaje },
-                    Body = null
-                });
-            }
-
-            return Ok(new CustomResponse<UsuarioInfo>
-            {
-                Header = new CustomHeader { Codigo = result.Codigo, Mensaje = result.Mensaje },
-                Body = result.Datos
-            });
-        }
-
-        [Authorize]
-        [HttpPost("CambiarDescripcionUsuario")]
-        public async Task<IActionResult> CambiarDescripcionUsuario(UsuariosInfoDto usuariosInfo)
-        {
-
-            ServiceResult<UsuarioInfo> result = await _userServ.CambiarDescripcionUsuario(usuariosInfo);
+            ServiceResult<UsuarioInfo> result = await _userServ.CambiarFotoUsuario(fotoId);
 
             if (!result.Exitoso)
             {

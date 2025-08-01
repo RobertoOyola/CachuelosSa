@@ -8,9 +8,9 @@ namespace Services.Auth
 {
     public interface IAuthService
     {
-        Task<ServiceResult<Usuario>> Login(Login login);
+        Task<ServiceResult<UsuarioDto>> Login(Login login);
         Task<ServiceResult<Usuario>> Register(Register register);
-        Task<string> GenerarToken(Usuario user);
+        Task<string> GenerarToken(int id);
         Usuarios OtenerTokenInfo();
         Task<ServiceResult<MailReturn>> EnviarCorreoOtp(MailInfo mailInfo, string TipoMail);
         Task<ServiceResult<Usuario>> VerificarOtp(string otp);

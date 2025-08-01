@@ -17,35 +17,20 @@ namespace Services.UsersServi
             _authServ = authServ;
         }
 
-        public async Task<ServiceResult<UsuarioInfo>> CambiarFotoUsuario(UsuariosInfoDto usuariosInfoDto)
+        public async Task<ServiceResult<UsuarioInfo>> CambiarFotoUsuario(string IdFoto)
         {
             Usuarios usuario = _authServ.OtenerTokenInfo();
 
-            UsuarioInfo usuarioInfo = await _usuRepo.ObtenerUserInfoXId(usuario.Id);
+            UsuarioInfo usuarioInfo = await _usuRepo.ObtenerUserInfoXIdUser(usuario.Id);
             if (usuarioInfo == null) return ServiceResult<UsuarioInfo>.Fail("UsuarioInfo no Encontrado", 204);
 
-            usuarioInfo.UrlImg = usuariosInfoDto.UrlImg;
+            usuarioInfo.UrlImg = IdFoto;
 
             usuarioInfo = await _usuRepo.ActualizarUserInfoXId(usuarioInfo);
             if (usuarioInfo == null) return ServiceResult<UsuarioInfo>.Fail("Imagen no Actualizada", 409);
 
             return ServiceResult<UsuarioInfo>.Ok(usuarioInfo, "Imagen actualizada con Exito", 201);
 
-        }
-
-        public async Task<ServiceResult<UsuarioInfo>> CambiarDescripcionUsuario(UsuariosInfoDto usuariosInfoDto)
-        {
-            Usuarios usuario = _authServ.OtenerTokenInfo();
-
-            UsuarioInfo usuarioInfo = await _usuRepo.ObtenerUserInfoXId(usuario.Id);
-            if (usuarioInfo == null) return ServiceResult<UsuarioInfo>.Fail("UsuarioInfo no Encontrado", 204);
-
-            usuarioInfo.Descripcion = usuariosInfoDto.Descripcion;
-
-            usuarioInfo = await _usuRepo.ActualizarUserInfoXId(usuarioInfo);
-            if (usuarioInfo == null) return ServiceResult<UsuarioInfo>.Fail("Imagen no Actualizada", 409);
-
-            return ServiceResult<UsuarioInfo>.Ok(usuarioInfo, "Imagen actualizada con Exito", 201);
         }
 
         public async Task<ServiceResult<UsuarioXInfoCompleta>> ObtenerInfoUsuario()
@@ -55,7 +40,7 @@ namespace Services.UsersServi
             Usuario user = await _usuRepo.ObtenerUserXId(usuario.Id);
             if (user == null) return ServiceResult<UsuarioXInfoCompleta>.Fail("Usuario no Encontrado", 204);
 
-            UsuarioInfo usuarioInfo = await _usuRepo.ObtenerUserInfoXId(usuario.Id);
+            UsuarioInfo usuarioInfo = await _usuRepo.ObtenerUserInfoXIdUser(usuario.Id);
             if (usuarioInfo == null) return ServiceResult<UsuarioXInfoCompleta>.Fail("UsuarioInfo no Encontrado", 204);
 
             UsuarioXInfoCompleta usuarioXInfoCompleta = MappingUsuarios.MapearInfoCompleta(user, usuarioInfo);

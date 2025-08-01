@@ -26,5 +26,34 @@ namespace Entitys.Entitys.Usuarios
                 return null;
             }
         }
+
+        public static UsuarioDto MapearUsuarioDto(Usuario user)
+        {
+            try
+            {
+                UsuarioDto usuarioXInfoCompleta = new UsuarioDto()
+                {
+                    Id = user.Id,
+                    NombreUsuario = user.NombreUsuario,
+                    Correo = user.Correo,
+                    Verificado = user.Verificado,
+                    Activo = user.Activo,
+                    Subscrito = user.Subscrito,
+                    FechaFinSubscrito = user.FechaFinSubscrito,
+                    FechaCreacion = user.FechaCreacion,
+                    FechaUltimoLogin = user.FechaUltimoLogin,
+                    FechaActualizacion = user.FechaActualizacion,
+                    RolId = user.RolId,
+                    TokenRecuperacion = user.TokenRecuperacion,
+                    ExpiracionToken = user.ExpiracionToken,
+                };
+
+                return usuarioXInfoCompleta;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }
