@@ -6,8 +6,7 @@ namespace Services.UsersServi
 {
     public interface IUsuarioService
     {
-        Task<ServiceResult<UsuarioInfo>> CambiarFotoUsuario(UsuariosInfoDto usuariosInfoDto);
-        Task<ServiceResult<UsuarioInfo>> CambiarDescripcionUsuario(UsuariosInfoDto usuariosInfoDto);
+        Task<ServiceResult<UsuarioInfo>> CambiarFotoUsuario(string usuariosInfoDto);
         Task<ServiceResult<UsuarioXInfoCompleta>> ObtenerInfoUsuario();
     }
 }

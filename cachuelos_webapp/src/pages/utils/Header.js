@@ -4,8 +4,7 @@ import './Header.css';
 import { obtenerInfoToken } from '../../sevices/apis/userServ';
 import { useEffect, useState, useCallback } from 'react'; // Importa useCallback
 import { logout } from '../../sevices/apis/authServ';
-import { cld } from '../../sevices/apis/docuServ';
-import { fill } from '@cloudinary/url-gen/actions/resize';
+import { obtenerFoto } from '../../sevices/apis/docuServ';
 import { AdvancedImage } from '@cloudinary/react';
 
 export default function Header({ onLogout }) {
@@ -51,8 +50,7 @@ export default function Header({ onLogout }) {
         setInfo();
     }, [setInfo]);
 
-    const myImage = cld.image(userInfo.imagen_url); 
-    myImage.resize(fill().width(100).height(100));
+    const myImage = obtenerFoto(userInfo.imagen_url, 'icon'); 
 
     const handleHomeClick = () => {
         navigate('/home');

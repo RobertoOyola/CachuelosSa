@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
-import { uploadPhoto } from '../../sevices/apis/docuServ';
+import { obtenerFoto, uploadPhoto } from '../../sevices/apis/docuServ';
 import { AdvancedImage } from '@cloudinary/react';
 
 export const UploadImage = () => {
@@ -23,9 +23,10 @@ export const UploadImage = () => {
         setUploading(true);
 
         try {
-            const myImg = await uploadPhoto(image);  // Subir imagen
-            if (myImg) {
-                setCldImage(myImg.img);  // Actualizar la imagen cargada
+            const ImgId = await uploadPhoto(image);  // Subir imagen
+            if (ImgId) {
+                const img = obtenerFoto(ImgId, 'orig');
+                setCldImage(img);
             }
         } catch (error) {
             if (error.message !== errorMessage) {

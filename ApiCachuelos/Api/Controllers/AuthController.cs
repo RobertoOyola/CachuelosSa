@@ -28,7 +28,7 @@ namespace Api.Controllers
         [HttpPost("Login")]
         public async Task<IActionResult> Login([FromBody] Login logInfo)
         {
-            ServiceResult<Usuario> result = await _authServ.Login(logInfo);
+            ServiceResult<UsuarioDto> result = await _authServ.Login(logInfo);
 
             if (!result.Exitoso)
             {
@@ -40,7 +40,7 @@ namespace Api.Controllers
                 });
             }
 
-            string token = await _authServ.GenerarToken(result.Datos);
+            string token = await _authServ.GenerarToken(result.Datos.Id);
 
             Response.Cookies.Append("auth_token", token, new CookieOptions
             {

@@ -44,14 +44,14 @@ namespace Services.Auth
             _otpsRepo = otpsRepo;
         }
 
-        public async Task<ServiceResult<Usuario>> Login(Login login)
+        public async Task<ServiceResult<UsuarioDto>> Login(Login login)
         {
             bool existeUsuario = await _authRepo.CorreoExiste(login.email);
-            if (!existeUsuario) return ServiceResult<Usuario>.Fail("Correo no encontrado", 204);
+            if (!existeUsuario) return ServiceResult<UsuarioDto>.Fail("Correo no encontrado", 204);
 
             var key = _authRepo.ObtenerHashKey();
             if (string.IsNullOrEmpty(key))
-                return ServiceResult<Usuario>.Fail("Error al encriptar Contacte al Servicio Cliente", 403);
+                return ServiceResult<UsuarioDto>.Fail("Error al encriptar Contacte al Servicio Cliente", 403);
 
             login.password = Encript.EncriptarContra(login.password, key);
 
@@ -59,18 +59,19 @@ namespace Services.Auth
 
             if (newUser != null)
             {
-                newUser.ContrasenaHash = string.Empty;
-                if (newUser.Activo == false)
-                    return ServiceResult<Usuario>.Fail("Usuario desactivado o bloqueado", 401);
+                UsuarioDto userDto = MappingUsuarios.MapearUsuarioDto(newUser);
 
-                if (newUser.Verificado == false)
-                    return ServiceResult<Usuario>.Fail("Usuario no verificado", 206);
+                if (userDto.Activo == false)
+                    return ServiceResult<UsuarioDto>.Fail("Usuario desactivado o bloqueado", 401);
 
-                return ServiceResult<Usuario>.Ok(newUser, "Login con Exito", 200);
+                if (userDto.Verificado == false)
+                    return ServiceResult<UsuarioDto>.Fail("Usuario no verificado", 206);
+
+                return ServiceResult<UsuarioDto>.Ok(userDto, "Login con Exito", 200);
             }
             else
             {
-                return ServiceResult<Usuario>.Fail("Contrasenia Erronea", 403);
+                return ServiceResult<UsuarioDto>.Fail("Contrasenia Erronea", 403);
             }
         }
 
@@ -105,9 +106,10 @@ namespace Services.Auth
 
         }
 
-        public async Task<string> GenerarToken(Usuario user)
+        public async Task<string> GenerarToken(int id)
         {
-            UsuarioInfo userinfo = await _userRepo.ObtenerUserInfoXId(user.Id);
+            Usuario user = await _userRepo.ObtenerUserXId(id);
+            UsuarioInfo userinfo = await _userRepo.ObtenerUserInfoXIdUser(id);
 
             string imgUrl = string.Empty;
             if (userinfo != null && userinfo.UrlImg != null) imgUrl = userinfo.UrlImg; 
