@@ -3,7 +3,9 @@ using Entitys.CachuelosSA;
 using Entitys.Entitys;
 using Entitys.Entitys.Usuarios;
 using Repositories.UsuarioRepo;
+using Utils.Utilities;
 using Services.Auth;
+using Repositories.CatalogRepo;
 
 namespace Services.UsersServi
 {
@@ -11,10 +13,12 @@ namespace Services.UsersServi
     {
         private readonly IUsuariosRepository _usuRepo;
         private readonly IAuthService _authServ;
-        public UsuarioService(IUsuariosRepository usuRepo, IAuthService authServ)
+        private readonly ICatalogoRepository _cataRepo;
+        public UsuarioService(IUsuariosRepository usuRepo, IAuthService authServ, ICatalogoRepository cataRepo)
         {
             _usuRepo = usuRepo;
             _authServ = authServ;
+            _cataRepo = cataRepo;
         }
 
         public async Task<ServiceResult<UsuarioInfo>> CambiarFotoUsuario(string IdFoto)
@@ -47,10 +51,16 @@ namespace Services.UsersServi
             UsuarioInfoDto usuarioInfoDto = MappingUsuarios.MapearUsuarioInfoDto(usuarioInfo);
             if (usuarioDto == null || usuarioInfoDto == null) return ServiceResult<UsuarioxUsuarioInfo>.Fail("Error al formatear la informacion", 204);
 
+            Catalogo Pais = await _cataRepo.ObtenerCodXCat(Const.Catalogos.Nacionalidades, usuarioInfo.Nacionalidad);
+            Catalogo Ciudad = await _cataRepo.ObtenerCodXCat(Const.Catalogos.Ciudades, usuarioInfo.Ciudad);
+            Catalogo Provincia = await _cataRepo.ObtenerCodXCat(Const.Catalogos.Provincias, usuarioInfo.Provincia);
+
             UsuarioxUsuarioInfo response = new UsuarioxUsuarioInfo()
             {
                 UsuarioDto = usuarioDto,
-                UsuarioInfoDto = usuarioInfoDto
+                UsuarioInfoDto = usuarioInfoDto,
+                Edad = Commons.CalcularEdad(usuarioInfoDto.FechaNacimiento ?? DateTime.Now),
+                Direccion = $"{Pais.Nombre}, {Provincia.Nombre}, {Ciudad.Nombre}"
             };
 
             return ServiceResult<UsuarioxUsuarioInfo>.Ok(response, "Informacion Obtenida con Exito", 200);
@@ -68,10 +78,16 @@ namespace Services.UsersServi
             UsuarioInfoDto usuarioInfoDto = MappingUsuarios.MapearUsuarioInfoDto(usuarioInfo);
             if (usuarioDto == null || usuarioInfoDto == null) return ServiceResult<UsuarioxUsuarioInfo>.Fail("Error al formatear la informacion", 204);
 
+            Catalogo Pais = await _cataRepo.ObtenerCodXCat(Const.Catalogos.Nacionalidades, usuarioInfo.Nacionalidad);
+            Catalogo Ciudad = await _cataRepo.ObtenerCodXCat(Const.Catalogos.Ciudades, usuarioInfo.Ciudad);
+            Catalogo Provincia = await _cataRepo.ObtenerCodXCat(Const.Catalogos.Provincias, usuarioInfo.Provincia);
+
             UsuarioxUsuarioInfo response = new UsuarioxUsuarioInfo()
             {
                 UsuarioDto = usuarioDto,
-                UsuarioInfoDto = usuarioInfoDto
+                UsuarioInfoDto = usuarioInfoDto,
+                Edad = Commons.CalcularEdad(usuarioInfoDto.FechaNacimiento ?? DateTime.Now),
+                Direccion = $"{Pais.Nombre}, {Provincia.Nombre}, {Ciudad.Nombre}"
             };
 
             return ServiceResult<UsuarioxUsuarioInfo>.Ok(response, "Informacion Obtenida con Exito", 200);

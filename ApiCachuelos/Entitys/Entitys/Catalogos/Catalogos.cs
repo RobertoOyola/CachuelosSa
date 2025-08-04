@@ -9,11 +9,20 @@ namespace Entitys.Entitys.Catalogos
 {
     public class CatalogosUpdateInfo
     {
-        public List<Catalogo> TipoIdentificacion { get; set; }
-        public List<Catalogo> EstadoCivil { get; set; }
-        public List<Catalogo> Nacionalidades { get; set; }
-        public List<Catalogo> Provincias { get; set; }
-        public List<Catalogo> Ciudades { get; set; }
+        public List<CatalogoDto> TipoIdentificacion { get; set; }
+        public List<CatalogoDto> EstadoCivil { get; set; }
+        public List<CatalogoDto> Nacionalidades { get; set; }
+        public List<CatalogoDto> Provincias { get; set; }
+        public List<CatalogoDto> Ciudades { get; set; }
 
+    }
+
+    public class CatalogoDto
+    {
+        public string Codigo { get; set; }
+
+        public string Nombre { get; set; }
+
+        public string Adicional { get; set; }
     }
 }

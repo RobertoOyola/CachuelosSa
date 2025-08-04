@@ -25,6 +25,9 @@
     {
         public UsuarioDto UsuarioDto { get; set; }
         public UsuarioInfoDto UsuarioInfoDto { get; set; }
+
+        public int? Edad { get; set; }
+        public string Direccion { get; set; }
     }
 
     public class UsuarioDto

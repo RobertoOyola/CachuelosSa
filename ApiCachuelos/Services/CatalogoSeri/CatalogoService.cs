@@ -65,15 +65,28 @@ namespace Services.CatalogoSeri
 
             CatalogosUpdateInfo result = new CatalogosUpdateInfo()
             {
-                TipoIdentificacion = TipoIdentificacion,
-                EstadoCivil = EstadoCivil,
-                Nacionalidades = Nacionalidades,
-                Provincias = Provincias,
-                Ciudades = Ciudades
+                TipoIdentificacion = ListCataToListCataDto(TipoIdentificacion),
+                EstadoCivil = ListCataToListCataDto(EstadoCivil),
+                Nacionalidades = ListCataToListCataDto(Nacionalidades),
+                Provincias = ListCataToListCataDto(Provincias),
+                Ciudades = ListCataToListCataDto(Ciudades)
             };
 
             return ServiceResult<CatalogosUpdateInfo>.Ok(result, "Catalogos obtenidos con Exito", 200);
 
+        }
+
+        private List<CatalogoDto> ListCataToListCataDto(List<Catalogo> listCata)
+        {
+            List<CatalogoDto> listCataDto = new List<CatalogoDto>();
+
+            foreach (Catalogo cata in listCata)
+            {
+                CatalogoDto cataDto = MappingCatalogo.MapearCatalogoDto(cata);
+                listCataDto.Add(cataDto);
+            }
+
+            return listCataDto;
         }
 
     }

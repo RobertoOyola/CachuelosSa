@@ -26,7 +26,6 @@ namespace Entitys.Entitys.Usuarios
                 return null;
             }
         }
-
         public static UsuarioInfoDto MapearUsuarioInfoDto(UsuarioInfo userInfo)
         {
             try
@@ -83,7 +82,6 @@ namespace Entitys.Entitys.Usuarios
                 return null;
             }
         }
-
         public static UsuarioDto MapearUsuarioDto(Usuario user)
         {
             try
