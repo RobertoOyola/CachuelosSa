@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom'; // `Outlet` es el lugar donde se renderizarán las rutas hijas
+import { Outlet } from 'react-router-dom';
 import Header from './Header';
 
 const Layout = ({ onLogout }) => {
@@ -6,7 +6,7 @@ const Layout = ({ onLogout }) => {
         <div className="">
             {/* Pasa onLogout al Header */}
             <Header onLogout={onLogout} />
-            <Outlet />  {/* Aquí se renderizarán las rutas hijas */}
+            <Outlet />
         </div>
     );
 };

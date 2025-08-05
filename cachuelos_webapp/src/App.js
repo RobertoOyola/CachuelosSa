@@ -9,6 +9,7 @@ import CambiarContrasena from './pages/utils/CambiarContrasena';
 import Layout from './pages/utils/Layout ';
 import { obtenerInfoToken } from './sevices/apis/userServ';
 import { UploadImage } from './pages/utils/UploadImage ';
+import PerfilPage from './pages/PerfilPage';
 
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -21,7 +22,6 @@ export default function App() {
       if (token != null) {
         setIsAuthenticated(true);
         setLoading(false);
-        navigate('/home');
       } else {
         const resultado = await checkAuth();
         setIsAuthenticated(resultado);
@@ -57,11 +57,11 @@ export default function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/cambiar-contrasena" element={<CambiarContrasena />} />
         <Route path="/prueba-img" element={<UploadImage />} />
-        <Route element={<ProtectedRoute>
-          <Layout onLogout={handleLogout} />
-        </ProtectedRoute>}>
+        {/* Ruta protegida */}
+        <Route element={<ProtectedRoute><Layout onLogout={handleLogout} /></ProtectedRoute>}>
           <Route path="/home" element={<HomePage onLogout={() => setIsAuthenticated(false)} />} />
-        </Route>
+          <Route path="/perfil/:id" element={<PerfilPage />} />
+        </Route>  
 
         {/* Redirección para cualquier ruta no definida */}
         <Route path="*" element={<Navigate to={isAuthenticated ? "/home" : "/login"} replace />} />

@@ -21,6 +21,15 @@
         public string UrlImg { get; set; }
     }
 
+    public class UsuarioxUsuarioInfo
+    {
+        public UsuarioDto UsuarioDto { get; set; }
+        public UsuarioInfoDto UsuarioInfoDto { get; set; }
+
+        public int? Edad { get; set; }
+        public string Direccion { get; set; }
+    }
+
     public class UsuarioDto
     {
         public int Id { get; set; }
@@ -50,6 +59,40 @@
         public string TokenRecuperacion { get; set; }
 
         public DateTime? ExpiracionToken { get; set; }
+    }
+
+    public partial class UsuarioInfoDto
+    {
+
+        public string Nombre { get; set; }
+
+        public string Apellido { get; set; }
+
+        public DateTime? FechaNacimiento { get; set; }
+
+        public string TipoIdentificacion { get; set; }
+
+        public string Identificacion { get; set; }
+
+        public string EstadoCivil { get; set; }
+
+        public string Direccion { get; set; }
+
+        public string Telefono { get; set; }
+
+        public string Ciudad { get; set; }
+
+        public string Provincia { get; set; }
+
+        public string Nacionalidad { get; set; }
+
+        public bool? Discapacidad { get; set; }
+
+        public string TipoDiscapacidad { get; set; }
+
+        public string UrlImg { get; set; }
+
+        public string Descripcion { get; set; }
     }
 
     public class UsuarioXInfoCompleta
