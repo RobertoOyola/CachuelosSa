@@ -10,6 +10,7 @@ import Layout from './pages/utils/Layout ';
 import { obtenerInfoToken } from './sevices/apis/userServ';
 import { UploadImage } from './pages/utils/UploadImage ';
 import PerfilPage from './pages/PerfilPage';
+import UploadFile from './pages/utils/UploadFile';
 
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -57,6 +58,7 @@ export default function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/cambiar-contrasena" element={<CambiarContrasena />} />
         <Route path="/prueba-img" element={<UploadImage />} />
+        <Route path="/prueba-file" element={<UploadFile />} />
         {/* Ruta protegida */}
         <Route element={<ProtectedRoute><Layout onLogout={handleLogout} /></ProtectedRoute>}>
           <Route path="/home" element={<HomePage onLogout={() => setIsAuthenticated(false)} />} />

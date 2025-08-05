@@ -4,7 +4,7 @@ import axios from "axios";
 
 const CLOUDNAME = 'dkbtvl4oz';
 const PRESETPERFIL = 'profile';
-//const PRESETDOCU = 'documents';
+const PRESETDOCU = 'documents';
 
 export const cld = new Cloudinary({
     cloud: {
@@ -66,3 +66,33 @@ export const uploadPhoto = async (image) => {
         throw new Error('Error al cargar la imagen: ' + (error.response?.data?.message || error.message));
     }
 };
+
+export const uploadFile = async (file) => {
+    const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", PRESETDOCU);
+
+    if (!file || file.type !== 'application/pdf') {
+        throw new Error('Solo se permiten PDF');
+    }
+
+    try {
+            const response = await fetch(
+                `https://api.cloudinary.com/v1_1/${CLOUDNAME}/raw/upload`,
+                {
+                    method: "POST",
+                    body: formData,
+                }
+            );
+            const data = await response.json();
+            if (data.secure_url) {
+                console.log('tiene secure pdf')
+                return data.secure_url;
+            } else {
+                throw new Error("No se pudo subir el archivo.");
+            }
+        } catch (error) {
+            console.error("Error al subir el archivo:", error);
+            throw new Error('Error al cargar la imagen: ' + (error.response?.data?.message || error.message));
+        }
+}

@@ -43,6 +43,7 @@ export default function Header({ onLogout }) {
                 }
             } catch (error) {
                 toast.error("Error al cerrar sesión");
+                navigate('/login'); 
             }
         };
 
