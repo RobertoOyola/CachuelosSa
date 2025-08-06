@@ -8,32 +8,45 @@ export default function PerfilInfo() {
 
     return (
         <div className="container perfil-container mt-3 p-3">
-            <div className="row">
+            <div className="row justify-content-between d-flex flex-md-row flex-column align-items-start gap-2">
+                <div className='col-auto'>
+                    <button className='btn btn-secondary btn-sm btn-actualizar'>
+                        Actualizar Perfil
+                    </button>
+                </div>
+                <div className='col-auto'>
+                    <button className='btn btn-secondary btn-sm btn-actualizar'>
+                        Actualizar Foto
+                    </button>
+                </div>
+            </div>
+
+            <div className="row align-items-center text-center p-2">
                 <div className="col">
-                    <h1 className="title">Roberto Oyola Vera</h1>
+                    <h1 className="title mt-md-0 mt-3">Roberto Donato Oyola Vera</h1>
                 </div>
             </div>
             <div className="row">
-                <div className="col-lg-6 col-md-12">
+                <div className="col-lg-5 col-md-12 p-2">
                     <h3 className="section-title">Descripción</h3>
-                    <h5 className="description">Estudiante de software probando para su tesis</h5>
-                    <div style={{ height: '80vh' }}>
+                    <h5 className="description">Dolor esse pariatur eu et sunt</h5>
+                    <div style={{}}>
                         <a href={pdfUrl} download target="_blank" rel="noopener noreferrer">
                             Descargar PDF
                         </a>
                     </div>
                 </div>
-                <div className="col-lg-3 col-md-6">
+                <div className="col-lg-3 col-md-6 text-center p-2">
                     <AdvancedImage cldImg={img} className="Fperfil" />
                 </div>
-                <div className="col-lg-3 col-md-6">
+                <div className="col-lg-4 col-md-6 p-2">
                     <h4 className="section-title">Información Personal</h4>
                     <div className="InfoPerfil">
-                        <h5>Nombre de Usuario: royolas</h5>
-                        <h5>Correo: royolavera@gmail.com</h5>
-                        <h5>Ubicación: Ecuador, Guayas, Guayaquil</h5>
-                        <h5>Teléfono: 0992940360</h5>
-                        <h5>Edad: 23</h5>
+                        <h5 className='text-break'>Nombre de Usuario: royolas</h5>
+                        <h5 className='text-break'>Correo: royolavera@gmail.com</h5>
+                        <h5 className='text-break'>Ubicación: Ecuador, Guayas, Guayaquil</h5>
+                        <h5 className='text-break'>Teléfono: 0992940360</h5>
+                        <h5 className='text-break'>Edad: 23</h5>
                     </div>
                 </div>
             </div>

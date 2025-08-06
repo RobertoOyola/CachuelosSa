@@ -1,19 +1,18 @@
 import React, { useState } from "react";
 import { uploadFile } from "../../sevices/apis/docuServ";
 
-interface UploaderProps {
-    onUploadSuccess: (url: string) => void;
-}
-
-const Uploader: React.FC<UploaderProps> = ({ onUploadSuccess }) => {
-    const [file, setFile] = useState<File | null>(null);
+const Uploader = ({ onUploadSuccess, label }) => {
+    const [file, setFile] = useState(null);
+    const [fileName, setFileName] = useState("");
     const [uploadStatus, setUploadStatus] = useState({
         isUploading: false,
         success: false,
     });
-    const [pdfUrl, setPdfUrl] = useState<string | null>(null);
+    const [pdfUrl, setPdfUrl] = useState(null);
 
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputId = `file-input-${label.replace(/\s+/g, '-')}`;
+
+    const handleFileChange = (e) => {
         const selectedFile = e.target.files?.[0];
         if (!selectedFile) return;
 
@@ -23,6 +22,7 @@ const Uploader: React.FC<UploaderProps> = ({ onUploadSuccess }) => {
         }
 
         setFile(selectedFile);
+        setFileName(selectedFile.name); // 🆕 guardar el nombre
     };
 
     const handleUpload = async () => {
@@ -36,7 +36,7 @@ const Uploader: React.FC<UploaderProps> = ({ onUploadSuccess }) => {
 
             setUploadStatus({ isUploading: false, success: true });
             setPdfUrl(url);
-            onUploadSuccess(url); // 🔥 devolver la URL al padre
+            onUploadSuccess(url);
         } catch (err) {
             console.error("Error al subir el archivo:", err);
             alert("Ocurrió un error al subir el archivo.");
@@ -47,48 +47,45 @@ const Uploader: React.FC<UploaderProps> = ({ onUploadSuccess }) => {
     };
 
     return (
-        <div className="space-y-4 p-4 border border-gray-200 rounded-lg">
+        <div className="p-1">
             <input
                 type="file"
                 accept="application/pdf"
-                id="hiddenFileInput"
+                id={inputId}
                 style={{ display: "none" }}
                 onChange={handleFileChange}
             />
 
-            {!file && (
+            {!file && !uploadStatus.success && (
                 <button
-                    className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
-                    onClick={() => document.getElementById("hiddenFileInput")?.click()}
+                    className="px-3 rounded bg-blue-500 text-white"
+                    onClick={() => document.getElementById(inputId)?.click()}
                 >
                     Seleccionar PDF
                 </button>
             )}
 
-            {file && (
-                <div className="flex items-center gap-4">
-                    <span className="text-gray-700">{file.name}</span>
-                    <button
-                        className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded"
-                        onClick={handleUpload}
-                        disabled={uploadStatus.isUploading}
-                    >
-                        {uploadStatus.isUploading ? "Subiendo..." : "Subir"}
-                    </button>
-                </div>
-            )}
+            {(file || uploadStatus.success) && (
+                <div className="flex items-center gap-4 mt-2">
+                    {file && (
+                        <button
+                            className="px-4 rounded bg-green-600 text-white"
+                            onClick={handleUpload}
+                            disabled={uploadStatus.isUploading}
+                        >
+                            {uploadStatus.isUploading ? "Subiendo..." : "Subir"}
+                        </button>
+                    )}
 
-            {uploadStatus.success && pdfUrl && (
-                <div className="text-green-600">
-                    ✅ Archivo subido correctamente.{" "}
-                    <a
-                        href={pdfUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline text-blue-600"
-                    >
-                        Ver PDF
-                    </a>
+                    {fileName && !uploadStatus.success && (
+                        <span className="text-sm text-gray-700">{fileName}</span>
+                    )}
+
+                    {uploadStatus.success && pdfUrl && (
+                        <span className="text-green-600 whitespace-nowrap">
+                            {fileName} subido correctamente
+                        </span>
+                    )}
                 </div>
             )}
         </div>

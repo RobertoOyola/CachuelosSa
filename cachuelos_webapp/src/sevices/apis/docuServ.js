@@ -5,6 +5,12 @@ import axios from "axios";
 const CLOUDNAME = 'dkbtvl4oz';
 const PRESETPERFIL = 'profile';
 const PRESETDOCU = 'documents';
+const BASE_URL = 'https://localhost:7256/api/Documento/';
+
+const api = axios.create({
+    baseURL: BASE_URL,
+    withCredentials: true
+});
 
 export const cld = new Cloudinary({
     cloud: {
@@ -86,7 +92,6 @@ export const uploadFile = async (file) => {
             );
             const data = await response.json();
             if (data.secure_url) {
-                console.log('tiene secure pdf')
                 return data.secure_url;
             } else {
                 throw new Error("No se pudo subir el archivo.");
@@ -95,4 +100,16 @@ export const uploadFile = async (file) => {
             console.error("Error al subir el archivo:", error);
             throw new Error('Error al cargar la imagen: ' + (error.response?.data?.message || error.message));
         }
-}
+};
+
+export const updateDocu = async (credentials) =>{
+    try{
+        const response = await api.post('CrearDocumento', credentials);
+        return response.data
+    } catch (error) {
+        if (error.response?.data.header.codigo !== 409){
+        console.error("Error al Actualizar Documento:", error.response?.data || error.message);
+        }
+        return error.response?.data;
+    }
+};

@@ -52,7 +52,7 @@ export default function App() {
   };
 
   return (
-    <div className="">
+    <div>
       <Routes>
         <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
         <Route path="/register" element={<RegisterPage />} />

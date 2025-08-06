@@ -14,7 +14,7 @@ export default function Header({ onLogout }) {
         nombre_usuario: 'A',
         imagen_url: ''
     });
-    
+
     const setInfo = useCallback(async () => {
         try {
             const data = await obtenerInfoToken();
@@ -24,7 +24,7 @@ export default function Header({ onLogout }) {
                     imagen_url: data.ImgPerfil
                 });
             } else {
-                navigate('/login'); 
+                navigate('/login');
             }
         } catch (error) {
             toast.error("Error al obtener la información del usuario");
@@ -32,26 +32,30 @@ export default function Header({ onLogout }) {
     }, [navigate]);
 
     const handleLogout = async () => {
-            try {
-                const data = await logout();
-                if (data.header.codigo === 200) {
-                    toast.success("Logout Exitoso!");
-                    onLogout();
-                    navigate('/login');
-                } else {
-                    toast.error(data.header.mensaje);
-                }
-            } catch (error) {
-                toast.error("Error al cerrar sesión");
-                navigate('/login'); 
+        try {
+            const data = await logout();
+            if (data.header.codigo === 200) {
+                toast.success("Logout Exitoso!");
+                onLogout();
+                navigate('/login');
+            } else {
+                toast.error(data.header.mensaje);
             }
-        };
+        } catch (error) {
+            toast.error("Error al cerrar sesión");
+            navigate('/login');
+        }
+    };
+
+    const Perfil = () => {
+        navigate(`/perfil/${userInfo.Id}`)
+    }
 
     useEffect(() => {
         setInfo();
     }, [setInfo]);
 
-    const myImage = obtenerFoto(userInfo.imagen_url, 'icon'); 
+    const myImage = obtenerFoto(userInfo.imagen_url, 'icon');
 
     const handleHomeClick = () => {
         navigate('/home');
@@ -70,22 +74,30 @@ export default function Header({ onLogout }) {
 
                 {/* Auth/User */}
                 <div className="auth-buttons">
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                        <div className="avatar" style={{ width: '32px', height: '32px', borderRadius: '50%', backgroundColor: '#ddd' }}>
+                    <div
+                        style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}
+                        onClick={Perfil}
+                        title="Ver perfil"
+                    >
+                        <div
+                            className="avatar"
+                            style={{ width: '32px', height: '32px', borderRadius: '50%', backgroundColor: '#ddd' }}
+                        >
                             {userInfo.imagen_url ? (
-                                <AdvancedImage cldImg={myImage} style={{ width: '100%', height: '100%', borderRadius: '50%' }}/>
+                                <AdvancedImage cldImg={myImage} style={{ width: '100%', height: '100%', borderRadius: '50%' }} />
                             ) : (
-                                userInfo.nombre_usuario[0].toUpperCase()  // Usamos la primera letra del nombre si no hay imagen
+                                userInfo.nombre_usuario[0].toUpperCase()
                             )}
                         </div>
-                        <span>{userInfo.nombre_usuario}</span>  {/* Muestra el nombre de usuario */}
+                        <span style={{ fontWeight: '500', color: '#333' }}>{userInfo.nombre_usuario}</span>
                     </div>
                 </div>
 
+
                 <div>
-                    <button 
+                    <button
                         className='btn'
-                        onClick={() => {handleLogout()}}>
+                        onClick={() => { handleLogout() }}>
                         Cerrar Session
                     </button>
                 </div>
