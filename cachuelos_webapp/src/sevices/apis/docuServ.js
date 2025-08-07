@@ -102,9 +102,9 @@ export const uploadFile = async (file) => {
         }
 };
 
-export const updateDocu = async (credentials) =>{
+export const updateDocu = async (docu) =>{
     try{
-        const response = await api.post('CrearDocumento', credentials);
+        const response = await api.post('CrearDocumento', docu);
         return response.data
     } catch (error) {
         if (error.response?.data.header.codigo !== 409){

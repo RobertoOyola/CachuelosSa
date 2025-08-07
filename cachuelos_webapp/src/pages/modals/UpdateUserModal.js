@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
-import Uploader from '../components/Uploader';
+import React, { useEffect, useState } from 'react';
+import Uploader from '../components/Uploader.tsx';
+import { updateDocu } from '../../sevices/apis/docuServ';
+import { toast } from 'react-toastify';
+import { obtenerUser, updateUser } from '../../sevices/apis/userServ.js';
 
-const UserInfoModal = ({ show, onClose, onSubmit }) => {
+const UserInfoModal = ({ show, onClose }) => {
     const [formData, setFormData] = useState({
         nombre: '',
         apellido: '',
@@ -24,7 +27,20 @@ const UserInfoModal = ({ show, onClose, onSubmit }) => {
     const [Curriculum, setCurriculum] = useState(null);
     const [Titulo, setTitulo] = useState(null);
 
-    // Handle form field change
+    useEffect(() => {
+        const IngresarInfo = async () => {
+            const datos = await obtenerUser();
+            const usuario = datos.body.usuarioInfoDto;
+            const fechaISO = new Date(usuario.fechaNacimiento).toISOString().split('T')[0];
+            setFormData({
+                ...usuario,
+                fechaNacimiento: fechaISO
+            });
+        };
+
+        IngresarInfo();
+    }, []);
+
     const handleInputChange = (e) => {
         const { name, value, type, checked } = e.target;
         setFormData({
@@ -33,27 +49,103 @@ const UserInfoModal = ({ show, onClose, onSubmit }) => {
         });
     };
 
-    // Handle form submission
-    const handleSubmit = (e) => {
+    const subirDocus = async () => {
+
+        if (HistorialPolicial) {
+            try {
+                const data = await updateDocu({ urlString: HistorialPolicial, idTipoDocumento: 3 });
+                if (data.header) {
+                    toast.success(`Historial Policial: ${data.header.mensaje}`)
+                }
+                else {
+                    toast.error(data.header?.mensaje || "Error al guardar el documento Historial Policial");
+                }
+            } catch {
+                toast.error("Error al guardar el documento Historial Policial");
+            }
+        }
+        if (Cedula) {
+            try {
+                const data = await updateDocu({ urlString: Cedula, idTipoDocumento: 4 });
+                if (data.header) {
+                    toast.success(`Cedula: ${data.header.mensaje}`)
+                }
+                else {
+                    toast.error(data.header?.mensaje || "Error al guardar el documento Cedula");
+                }
+            } catch {
+                toast.error("Error al guardar el documento Cedula");
+            }
+        }
+        if (Curriculum) {
+            try {
+                const data = await updateDocu({ urlString: Curriculum, idTipoDocumento: 1 });
+                if (data.header) {
+                    toast.success(`Curriculum: ${data.header.mensaje}`)
+                }
+                else {
+                    toast.error(data.header?.mensaje || "Error al guardar el documento Curriculum");
+                }
+            } catch {
+                toast.error("Error al guardar el documento Curriculum");
+            }
+        }
+        if (Titulo) {
+            try {
+                const data = await updateDocu({ urlString: Titulo, idTipoDocumento: 2 });
+                if (data.header) {
+                    toast.success(`Titulo: ${data.header.mensaje}`)
+                }
+                else {
+                    toast.error(data.header?.mensaje || "Error al guardar el documento Titulo");
+                }
+            } catch {
+                toast.error("Error al guardar el documento Titulo");
+            }
+        }
+
+        onClose();
+    }
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(formData)
-        onSubmit(formData);
+
+        const fechaFormateada = new Date(formData.fechaNacimiento).toISOString();
+
+        const payload = {
+            ...formData,
+            fechaNacimiento: fechaFormateada
+        };
+
+        try {
+            console.log(payload)
+            const data = await updateUser(payload);
+            if (data) {
+                toast.success(data.header?.mensaje || "Error al guardar el documento Historial Policial")
+            }
+            else {
+                toast.error(data.header?.mensaje || "Error al guardar el documento Historial Policial");
+            }
+        } catch (error) {
+            toast.error(error.message);
+        }
+
         onClose();
     };
 
     return (
         show && (
-            <div className="modal show" style={{ display: 'block' }} onClick={onClose}>
+            <div className="modal modal-xl show" style={{ display: 'block' }}>
                 <div className="modal-dialog">
                     <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title">Ingresar Información del Usuario</h5>
-                            <button type="button" className="close" onClick={onClose}>
+                        <div className="modal-header row">
+                            <h5 className="modal-title col">Ingresar Información del Usuario</h5>
+                            <button type="button" className="btn btn-secondary btn-sm col-1" onClick={onClose}>
                                 &times;
                             </button>
                         </div>
-                        <div className="modal-body">
-                            <form onSubmit={handleSubmit}>
+                        <div className="modal-body row">
+                            <form onSubmit={handleSubmit} className='col-7'>
                                 <div className="form-group">
                                     <label>Nombre</label>
                                     <input
@@ -228,26 +320,32 @@ const UserInfoModal = ({ show, onClose, onSubmit }) => {
                                         required
                                     />
                                 </div>
-
                                 <button type="submit" className="btn btn-primary mt-3">
                                     Guardar
                                 </button>
                             </form>
-                            <div>
-                                <label>Ingresar Historial Policial</label>
-                                <Uploader label="Historial Policial" onUploadSuccess={setHistorialPolicial} />
-                            </div>
-                            <div>
-                                <label>Ingresar Cédula</label>
-                            <Uploader label="Cédula" onUploadSuccess={setCedula} />
-                            </div>
-                            <div>
-                                <label>Ingresar Curriculum</label>
-                            <Uploader label="Curriculum Vitae" onUploadSuccess={setCurriculum} />
-                            </div>
-                            <div>
-                                <label>Ingresar Título</label>
-                            <Uploader label="Título Profesional" onUploadSuccess={setTitulo} />
+                            <div className='col'>
+                                <div>
+                                    <label>Ingresar Historial Policial</label>
+                                    <Uploader label="Historial Policial" onUploadSuccess={setHistorialPolicial} />
+                                </div>
+                                <div>
+                                    <label>Ingresar Cédula</label>
+                                    <Uploader label="Cédula" onUploadSuccess={setCedula} />
+                                </div>
+                                <div>
+                                    <label>Ingresar Curriculum</label>
+                                    <Uploader label="Curriculum Vitae" onUploadSuccess={setCurriculum} />
+                                </div>
+                                <div>
+                                    <label>Ingresar Título</label>
+                                    <Uploader label="Título Profesional" onUploadSuccess={setTitulo} />
+                                </div>
+                                <button
+                                    className='btn btn-secondary mt-3'
+                                    onClick={subirDocus}>
+                                    Guardar Documentos
+                                </button>
                             </div>
                         </div>
                     </div>

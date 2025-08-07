@@ -12,7 +12,8 @@ export default function Header({ onLogout }) {
 
     const [userInfo, setUserInfo] = useState({
         nombre_usuario: 'A',
-        imagen_url: ''
+        imagen_url: '',
+        Id: 0
     });
 
     const setInfo = useCallback(async () => {
@@ -21,7 +22,8 @@ export default function Header({ onLogout }) {
             if (data != null) {
                 setUserInfo({
                     nombre_usuario: data.UserName,
-                    imagen_url: data.ImgPerfil
+                    imagen_url: data.ImgPerfil,
+                    Id: data.Id
                 });
             } else {
                 navigate('/login');
