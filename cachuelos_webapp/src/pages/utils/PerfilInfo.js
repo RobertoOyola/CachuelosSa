@@ -27,7 +27,7 @@ export default function PerfilInfo() {
                 }
 
                 setInfoDto(userData);
-
+                
                 const urlImg = userData.usuarioInfoDto?.urlImg;
                 const imagenFinal = urlImg && urlImg.trim() !== ''
                     ? obtenerFoto(urlImg, 'orig')
@@ -46,13 +46,13 @@ export default function PerfilInfo() {
 
         cargarPerfil();
     }, [id]);
-
+    console.log(infoDto)
     const handleOpenModal = () => setShowModal(true);
     const handleCloseModal = () => setShowModal(false);
     const handleOpenDocumentModal = () => setShowDocumentModal(true);
     const handleCloseDocumentModal = () => setShowDocumentModal(false);
 
-    const pdfUrl = 'https://res.cloudinary.com/dkbtvl4oz/raw/upload/v1754586971/gpcnyppem05ka7dbymho.pdf';
+    const pdfUrl = 'https://res.cloudinary.com/dkbtvl4oz/raw/upload/v1754587194/nx48iixlm2atcarw3stz.pdf';
 
     if (!infoDto) return <div className="container mt-4">Cargando perfil...</div>;
 
@@ -84,9 +84,22 @@ export default function PerfilInfo() {
                     <div className="col-lg-5 col-md-12 p-2">
                         <h3 className="section-title">Descripción</h3>
                         <h5 className="description">{infoDto.usuarioInfoDto?.descripcion || 'Sin descripción'}</h5>
-                        <button className='btn btn-secondary btn-sm btn-actualizar' onClick={handleOpenDocumentModal}>
-                            Actualizar Perfil
-                        </button>
+                        <div className='container text-center'>
+                            <div className='container text-center'>
+                                <div className='row justify-content-center'>
+                                    <button className='col-sm-4 col-md-3 col-lg-2 btn btn-secondary btn-sm btn-actualizar m-1' onClick={handleOpenDocumentModal}>
+                                        Abrir Titulo
+                                    </button>
+                                    <button className='col-sm-4 col-md-3 col-lg-2 btn btn-secondary btn-sm btn-actualizar m-1' onClick={handleOpenDocumentModal}>
+                                        Abrir Curriculum
+                                    </button>
+                                    <button className='col-sm-4 col-md-3 col-lg-2 btn btn-secondary btn-sm btn-actualizar m-1' onClick={handleOpenDocumentModal}>
+                                        Abrir Historial Policial
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
 
                     <div className="col-lg-3 col-md-6 text-center p-2">
@@ -115,7 +128,7 @@ export default function PerfilInfo() {
             <IframeModal
                 show={showDocumentModal}
                 onClose={handleCloseDocumentModal}
-                title={'Docuemnto 1'}
+                title={'Documento 1'}
                 src={pdfUrl} />
         </>
     );
