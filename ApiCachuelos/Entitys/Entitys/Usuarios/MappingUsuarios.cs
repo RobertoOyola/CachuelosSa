@@ -32,21 +32,21 @@ namespace Entitys.Entitys.Usuarios
             {
                 UsuarioInfoDto usuarioXInfoCompleta = new UsuarioInfoDto()
                 {
-                    Nombre = userInfo.Nombre,
-                    Apellido = userInfo.Apellido,
+                    Nombre = string.IsNullOrEmpty(userInfo.Nombre) ? "" : userInfo.Nombre,
+                    Apellido = string.IsNullOrEmpty(userInfo.Apellido) ? "" : userInfo.Apellido,
+                    TipoIdentificacion = string.IsNullOrEmpty(userInfo.TipoIdentificacion) ? "" : userInfo.TipoIdentificacion,
+                    Identificacion = string.IsNullOrEmpty(userInfo.Identificacion) ? "" : userInfo.Identificacion,
+                    EstadoCivil = string.IsNullOrEmpty(userInfo.EstadoCivil) ? "" : userInfo.EstadoCivil,
+                    Direccion = string.IsNullOrEmpty(userInfo.Direccion) ? "" : userInfo.Direccion,
+                    Telefono = string.IsNullOrEmpty(userInfo.Telefono) ? "" : userInfo.Telefono,
+                    Ciudad = string.IsNullOrEmpty(userInfo.Ciudad) ? "" : userInfo.Ciudad,
+                    Provincia = string.IsNullOrEmpty(userInfo.Provincia) ? "" : userInfo.Provincia,
+                    Nacionalidad = string.IsNullOrEmpty(userInfo.Nacionalidad) ? "" : userInfo.Nacionalidad,
+                    TipoDiscapacidad = string.IsNullOrEmpty(userInfo.TipoDiscapacidad) ? "" : userInfo.TipoDiscapacidad,
+                    UrlImg = string.IsNullOrEmpty(userInfo.UrlImg) ? "" : userInfo.UrlImg,
+                    Descripcion = string.IsNullOrEmpty(userInfo.Descripcion) ? "" : userInfo.Descripcion,
                     FechaNacimiento = userInfo.FechaNacimiento,
-                    TipoIdentificacion = userInfo.TipoIdentificacion,
-                    Identificacion = userInfo.Identificacion,
-                    EstadoCivil = userInfo.EstadoCivil,
-                    Direccion = userInfo.Direccion,
-                    Telefono = userInfo.Telefono,
-                    Ciudad = userInfo.Ciudad,
-                    Provincia = userInfo.Provincia,
-                    Nacionalidad = userInfo.Nacionalidad,
                     Discapacidad = userInfo.Discapacidad,
-                    TipoDiscapacidad = userInfo.TipoDiscapacidad,
-                    UrlImg = userInfo.UrlImg,
-                    Descripcion = userInfo.Descripcion,
                 };
 
                 return usuarioXInfoCompleta;
@@ -72,7 +72,7 @@ namespace Entitys.Entitys.Usuarios
                 userInfo.Provincia = string.IsNullOrEmpty(userInfoDto.Provincia) ? userInfo.Provincia : userInfoDto.Provincia;
                 userInfo.Nacionalidad = string.IsNullOrEmpty(userInfoDto.Nacionalidad) ? userInfo.Nacionalidad : userInfoDto.Nacionalidad;
                 userInfo.Discapacidad = userInfoDto.Discapacidad ?? userInfo.Discapacidad;
-                userInfo.TipoDiscapacidad = string.IsNullOrEmpty(userInfoDto.TipoDiscapacidad) ? userInfo.TipoDiscapacidad : userInfoDto.TipoDiscapacidad;
+                userInfo.TipoDiscapacidad = string.IsNullOrEmpty(userInfoDto.TipoDiscapacidad) ? userInfo.TipoDiscapacidad : "";
                 userInfo.Descripcion = string.IsNullOrEmpty(userInfoDto.Descripcion) ? userInfo.Descripcion : userInfoDto.Descripcion;
 
                 return userInfo;

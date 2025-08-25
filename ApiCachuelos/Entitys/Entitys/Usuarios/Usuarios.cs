@@ -105,4 +105,9 @@
         public string Descripcion { get; set; }
         public DateTime? FechaUltimaConexion { get; set; }
     }
+    
+    public class ID
+    {
+        public int id { get; set; }
+    }
 }

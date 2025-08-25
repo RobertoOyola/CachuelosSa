@@ -68,10 +68,10 @@ namespace Api.Controllers
 
         [Authorize]
         [HttpPost("ObtenerUsuarioOtros")]
-        public async Task<IActionResult> ObtenerUsuario([FromBody] int id)
+        public async Task<IActionResult> ObtenerUsuario([FromBody] ID id)
         {
 
-            ServiceResult<UsuarioxUsuarioInfo> result = await _userServ.ObtenerUsuario(id);
+            ServiceResult<UsuarioxUsuarioInfo> result = await _userServ.ObtenerUsuario(id.id);
 
             if (!result.Exitoso)
             {

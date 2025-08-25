@@ -82,12 +82,18 @@ namespace Services.UsersServi
             Catalogo Ciudad = await _cataRepo.ObtenerCodXCat(Const.Catalogos.Ciudades, usuarioInfo.Ciudad);
             Catalogo Provincia = await _cataRepo.ObtenerCodXCat(Const.Catalogos.Provincias, usuarioInfo.Provincia);
 
+            string direccion = string.Empty;
+
+            if (Pais != null) direccion += string.IsNullOrEmpty(Pais.Nombre) ? Pais.Nombre : "";
+            if (Pais != null) direccion += string.IsNullOrEmpty(Ciudad.Nombre) ? Ciudad.Nombre : "";
+            if (Pais != null) direccion += string.IsNullOrEmpty(Provincia.Nombre) ? Provincia.Nombre : "";
+
             UsuarioxUsuarioInfo response = new UsuarioxUsuarioInfo()
             {
                 UsuarioDto = usuarioDto,
                 UsuarioInfoDto = usuarioInfoDto,
                 Edad = Commons.CalcularEdad(usuarioInfoDto.FechaNacimiento ?? DateTime.Now),
-                Direccion = $"{Pais.Nombre}, {Provincia.Nombre}, {Ciudad.Nombre}"
+                Direccion = direccion
             };
 
             return ServiceResult<UsuarioxUsuarioInfo>.Ok(response, "Informacion Obtenida con Exito", 200);
