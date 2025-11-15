@@ -29,7 +29,8 @@ export default function RegisterPage() {
                 toast.error(data.header?.mensaje);
             }
         } catch (error) {
-            toast.error("Error al registrar" || error.mensaje );
+            const mensaje = error?.header?.mensaje || "Error al registrar";
+            toast.error(mensaje);
         }
     };
 

@@ -19,8 +19,9 @@ export default function LoginPage({ onLogin }) {
       } else {
         toast.error(data.header?.mensaje || "Credenciales inválidas");
       }
-    } catch {
-      toast.error("Error al iniciar sesión");
+    } catch (error){
+      const mensaje = error?.header?.mensaje || "Error al iniciar sesión";
+      toast.error(mensaje);
     }
   };
 
@@ -72,6 +73,10 @@ export default function LoginPage({ onLogin }) {
             <div className="text-center mt-3">
               <span>¿Nuevo aquí?</span>{" "}
               <a href="/register" className="text-decoration-none">Crea una cuenta</a>
+            </div>
+            <div className="text-center">
+              <span>¿Olvidaste tu contraseña?</span>{" "}
+              <a href="/" className="text-decoration-none">Recuperar Contraseña</a>
             </div>
           </form>
         </div>

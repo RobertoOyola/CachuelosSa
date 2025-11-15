@@ -8,7 +8,7 @@ export default function HomePage({onLogout}) {
 
     const handleLogout = async () => {
         try {
-            const data = await logout(); // ✅ ya no es recursivo
+            const data = await logout();
             if (data.header.codigo === 200) {
                 toast.success("Logout Exitoso!");
                 onLogout();
@@ -18,7 +18,8 @@ export default function HomePage({onLogout}) {
                 toast.error(data.header.mensaje);
             }
         } catch (error) {
-            toast.error("Error al cerrar sesión");
+            const mensaje = error?.header?.mensaje || "Error al cerrar sesión";
+            toast.error(mensaje);
         }
     };
 

@@ -55,10 +55,10 @@ namespace Services.Auth
             login.password = Encript.EncriptarContra(login.password, key);
 
             Usuario newUser = await _authRepo.LoginUser(login);
-            newUser.ContrasenaHash = string.Empty;
 
             if (newUser != null)
             {
+                newUser.ContrasenaHash = string.Empty;
                 if (newUser.Activo == false)
                     return ServiceResult<Usuario>.Fail("Usuario desactivado o bloqueado", 401);
 
