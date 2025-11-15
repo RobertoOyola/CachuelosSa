@@ -8,7 +8,7 @@ export default function HomePage({onLogout}) {
 
     const handleLogout = async () => {
         try {
-            const data = await logout(); // ✅ ya no es recursivo
+            const data = await logout();
             if (data.header.codigo === 200) {
                 toast.success("Logout Exitoso!");
                 onLogout();

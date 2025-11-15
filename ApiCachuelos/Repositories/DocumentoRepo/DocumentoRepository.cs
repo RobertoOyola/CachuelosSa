@@ -97,7 +97,7 @@ namespace Repositories.DocumentoRepo
                         join Docu in _context.Documentos on UxD.IdDocumento equals Docu.Id
                         join TD in _context.TipoDocumentos on Docu.IdTipoDocumentos equals TD.Id
                         where   UxD.IdUsuario == idUser && 
-                                TD.NombreDocumento == Const.TipDocCurriculum &&
+                                TD.NombreDocumento == Const.TipoDocumento.Curriculum &&
                                 Docu.Activo == true
                         select new Docus
                         {
@@ -123,7 +123,7 @@ namespace Repositories.DocumentoRepo
                         join Docu in _context.Documentos on UxD.IdDocumento equals Docu.Id
                         join TD in _context.TipoDocumentos on Docu.IdTipoDocumentos equals TD.Id
                         where UxD.IdUsuario == idUser &&
-                                TD.NombreDocumento == Const.TipDocHistoPoli &&
+                                TD.NombreDocumento == Const.TipoDocumento.HistoPoli &&
                                 Docu.Activo == true
                         select new Docus
                         {
@@ -149,7 +149,7 @@ namespace Repositories.DocumentoRepo
                         join Docu in _context.Documentos on UxD.IdDocumento equals Docu.Id
                         join TD in _context.TipoDocumentos on Docu.IdTipoDocumentos equals TD.Id
                         where UxD.IdUsuario == idUser &&
-                                TD.NombreDocumento == Const.TipDocTitulo &&
+                                TD.NombreDocumento == Const.TipoDocumento.Titulo &&
                                 Docu.Activo == true
                         select new Docus
                         {

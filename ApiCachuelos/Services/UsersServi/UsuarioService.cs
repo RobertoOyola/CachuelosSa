@@ -3,7 +3,9 @@ using Entitys.CachuelosSA;
 using Entitys.Entitys;
 using Entitys.Entitys.Usuarios;
 using Repositories.UsuarioRepo;
+using Utils.Utilities;
 using Services.Auth;
+using Repositories.CatalogRepo;
 
 namespace Services.UsersServi
 {
@@ -11,20 +13,22 @@ namespace Services.UsersServi
     {
         private readonly IUsuariosRepository _usuRepo;
         private readonly IAuthService _authServ;
-        public UsuarioService(IUsuariosRepository usuRepo, IAuthService authServ)
+        private readonly ICatalogoRepository _cataRepo;
+        public UsuarioService(IUsuariosRepository usuRepo, IAuthService authServ, ICatalogoRepository cataRepo)
         {
             _usuRepo = usuRepo;
             _authServ = authServ;
+            _cataRepo = cataRepo;
         }
 
-        public async Task<ServiceResult<UsuarioInfo>> CambiarFotoUsuario(UsuariosInfoDto usuariosInfoDto)
+        public async Task<ServiceResult<UsuarioInfo>> CambiarFotoUsuario(string IdFoto)
         {
             Usuarios usuario = _authServ.OtenerTokenInfo();
 
-            UsuarioInfo usuarioInfo = await _usuRepo.ObtenerUserInfoXId(usuario.Id);
+            UsuarioInfo usuarioInfo = await _usuRepo.ObtenerUserInfoXIdUser(usuario.Id);
             if (usuarioInfo == null) return ServiceResult<UsuarioInfo>.Fail("UsuarioInfo no Encontrado", 204);
 
-            usuarioInfo.UrlImg = usuariosInfoDto.UrlImg;
+            usuarioInfo.UrlImg = IdFoto;
 
             usuarioInfo = await _usuRepo.ActualizarUserInfoXId(usuarioInfo);
             if (usuarioInfo == null) return ServiceResult<UsuarioInfo>.Fail("Imagen no Actualizada", 409);
@@ -33,35 +37,86 @@ namespace Services.UsersServi
 
         }
 
-        public async Task<ServiceResult<UsuarioInfo>> CambiarDescripcionUsuario(UsuariosInfoDto usuariosInfoDto)
-        {
-            Usuarios usuario = _authServ.OtenerTokenInfo();
-
-            UsuarioInfo usuarioInfo = await _usuRepo.ObtenerUserInfoXId(usuario.Id);
-            if (usuarioInfo == null) return ServiceResult<UsuarioInfo>.Fail("UsuarioInfo no Encontrado", 204);
-
-            usuarioInfo.Descripcion = usuariosInfoDto.Descripcion;
-
-            usuarioInfo = await _usuRepo.ActualizarUserInfoXId(usuarioInfo);
-            if (usuarioInfo == null) return ServiceResult<UsuarioInfo>.Fail("Imagen no Actualizada", 409);
-
-            return ServiceResult<UsuarioInfo>.Ok(usuarioInfo, "Imagen actualizada con Exito", 201);
-        }
-
-        public async Task<ServiceResult<UsuarioXInfoCompleta>> ObtenerInfoUsuario()
+        public async Task<ServiceResult<UsuarioxUsuarioInfo>> ObtenerUsuario()
         {
             Usuarios usuario = _authServ.OtenerTokenInfo();
 
             Usuario user = await _usuRepo.ObtenerUserXId(usuario.Id);
-            if (user == null) return ServiceResult<UsuarioXInfoCompleta>.Fail("Usuario no Encontrado", 204);
+            if (user == null) return ServiceResult<UsuarioxUsuarioInfo>.Fail("Usuario no Encontrado", 204);
 
-            UsuarioInfo usuarioInfo = await _usuRepo.ObtenerUserInfoXId(usuario.Id);
-            if (usuarioInfo == null) return ServiceResult<UsuarioXInfoCompleta>.Fail("UsuarioInfo no Encontrado", 204);
+            UsuarioInfo usuarioInfo = await _usuRepo.ObtenerUserInfoXIdUser(usuario.Id);
+            if (usuarioInfo == null) return ServiceResult<UsuarioxUsuarioInfo>.Fail("UsuarioInfo no Encontrado", 204);
 
-            UsuarioXInfoCompleta usuarioXInfoCompleta = MappingUsuarios.MapearInfoCompleta(user, usuarioInfo);
-            if (usuarioInfo == null) return ServiceResult<UsuarioXInfoCompleta>.Fail("Error al traer la informacion", 409);
+            UsuarioDto usuarioDto = MappingUsuarios.MapearUsuarioDto(user);
+            UsuarioInfoDto usuarioInfoDto = MappingUsuarios.MapearUsuarioInfoDto(usuarioInfo);
+            if (usuarioDto == null || usuarioInfoDto == null) return ServiceResult<UsuarioxUsuarioInfo>.Fail("Error al formatear la informacion", 204);
 
-            return ServiceResult<UsuarioXInfoCompleta>.Ok(usuarioXInfoCompleta, "Informacion Obtenida con Exito", 200);
+            Catalogo Pais = await _cataRepo.ObtenerCodXCat(Const.Catalogos.Nacionalidades, usuarioInfo.Nacionalidad);
+            Catalogo Ciudad = await _cataRepo.ObtenerCodXCat(Const.Catalogos.Ciudades, usuarioInfo.Ciudad);
+            Catalogo Provincia = await _cataRepo.ObtenerCodXCat(Const.Catalogos.Provincias, usuarioInfo.Provincia);
+
+            UsuarioxUsuarioInfo response = new UsuarioxUsuarioInfo()
+            {
+                UsuarioDto = usuarioDto,
+                UsuarioInfoDto = usuarioInfoDto,
+                Edad = Commons.CalcularEdad(usuarioInfoDto.FechaNacimiento ?? DateTime.Now),
+                Direccion = $"{Pais.Nombre}, {Provincia.Nombre}, {Ciudad.Nombre}"
+            };
+
+            return ServiceResult<UsuarioxUsuarioInfo>.Ok(response, "Informacion Obtenida con Exito", 200);
+        }
+
+        public async Task<ServiceResult<UsuarioxUsuarioInfo>> ObtenerUsuario(int id)
+        {
+            Usuario user = await _usuRepo.ObtenerUserXId(id);
+            if (user == null) return ServiceResult<UsuarioxUsuarioInfo>.Fail("Usuario no Encontrado", 204);
+
+            UsuarioInfo usuarioInfo = await _usuRepo.ObtenerUserInfoXIdUser(id);
+            if (usuarioInfo == null) return ServiceResult<UsuarioxUsuarioInfo>.Fail("UsuarioInfo no Encontrado", 204);
+
+            UsuarioDto usuarioDto = MappingUsuarios.MapearUsuarioDto(user);
+            UsuarioInfoDto usuarioInfoDto = MappingUsuarios.MapearUsuarioInfoDto(usuarioInfo);
+            if (usuarioDto == null || usuarioInfoDto == null) return ServiceResult<UsuarioxUsuarioInfo>.Fail("Error al formatear la informacion", 204);
+
+            Catalogo Pais = await _cataRepo.ObtenerCodXCat(Const.Catalogos.Nacionalidades, usuarioInfo.Nacionalidad);
+            Catalogo Ciudad = await _cataRepo.ObtenerCodXCat(Const.Catalogos.Ciudades, usuarioInfo.Ciudad);
+            Catalogo Provincia = await _cataRepo.ObtenerCodXCat(Const.Catalogos.Provincias, usuarioInfo.Provincia);
+
+            string direccion = string.Empty;
+
+            if (Pais != null) direccion += string.IsNullOrEmpty(Pais.Nombre) ? Pais.Nombre : "";
+            if (Pais != null) direccion += string.IsNullOrEmpty(Ciudad.Nombre) ? Ciudad.Nombre : "";
+            if (Pais != null) direccion += string.IsNullOrEmpty(Provincia.Nombre) ? Provincia.Nombre : "";
+
+            UsuarioxUsuarioInfo response = new UsuarioxUsuarioInfo()
+            {
+                UsuarioDto = usuarioDto,
+                UsuarioInfoDto = usuarioInfoDto,
+                Edad = Commons.CalcularEdad(usuarioInfoDto.FechaNacimiento ?? DateTime.Now),
+                Direccion = direccion
+            };
+
+            return ServiceResult<UsuarioxUsuarioInfo>.Ok(response, "Informacion Obtenida con Exito", 200);
+        }
+
+        public async Task<ServiceResult<UsuarioInfo>> ActualizarUsuario(UsuarioInfoDto usuarioInfoDto)
+        {
+            Usuarios userToken = _authServ.OtenerTokenInfo();
+
+            Usuario user = await _usuRepo.ObtenerUserXId(userToken.Id);
+            if (user == null) return ServiceResult<UsuarioInfo>.Fail("Usuario no Encontrado", 204);
+
+            UsuarioInfo usuarioInfo = await _usuRepo.ObtenerUserInfoXIdUser(userToken.Id);
+            if (usuarioInfo == null) return ServiceResult<UsuarioInfo>.Fail("UsuarioInfo no Encontrado", 204);
+
+            usuarioInfo = MappingUsuarios.MapearUsuarioInfoDto(usuarioInfo, usuarioInfoDto);
+            if (usuarioInfo == null) return ServiceResult<UsuarioInfo>.Fail("Error al pasar la informacion", 409);
+
+            usuarioInfo = await _usuRepo.ActualizarUserInfoXId(usuarioInfo);
+            if (usuarioInfo == null) return ServiceResult<UsuarioInfo>.Fail("Error al guardar la informacion", 409);
+
+            usuarioInfo.IdUsuarioNavigation = null;
+            return ServiceResult<UsuarioInfo>.Ok(usuarioInfo, "Informacion Actualizada con exito", 202);
 
         }
     }
