@@ -2,8 +2,16 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import { Register } from "../sevices/apis/authServ";
+import OtpModal from "./modals/OtpModal";
 
 export default function RegisterPage() {
+
+  const [showOtpModal, setShowOtpModal] = useState(false);
+
+  const handleSuccess = (response) => {
+  navigate(`/login`);
+  };
+
   const [form, setForm] = useState({
     nombreUsuario: "",
     correo: "",
@@ -19,12 +27,16 @@ export default function RegisterPage() {
       toast.error("Completa todos los campos");
       return;
     }
-    
+
+    if (contrasenaHash.length <= 6) {
+      return toast.error('La contraseña debe tener mas de 6 caracteres');
+    }
+
     try {
             const data = await Register(form);
             if (data.body) {
                 toast.success("Registro exitoso!");
-                navigate('/login');
+                setShowOtpModal(true);
             } else {
                 toast.error(data.header?.mensaje);
             }
@@ -35,18 +47,16 @@ export default function RegisterPage() {
     };
 
   return (
-    <div className="d-flex vh-95">
-      {/* Lado izquierdo con imagen (oculto en móviles) */}
+    <div className="d-flex vh-95 container mt-4">
       <div className="d-none d-md-flex flex-column justify-content-center align-items-center flex-grow-1 bg-light position-relative">
         <img
           src="img/register img.png"
           alt="register-illustration"
           className="img-fluid p-5"
-          style={{ maxHeight: "700px" }}
+          style={{ maxHeight: "600px" }}
         />
       </div>
 
-      {/* Lado derecho con formulario */}
       <div className="d-flex flex-column justify-content-center align-items-center p-5 bg-white shadow w-100" style={{ maxWidth: 480 }}>
         <div className="w-100" style={{ maxWidth: "400px" }}>
           <h4 className="mb-2">🚀 Comienza a trabajar con nosotros</h4>
@@ -58,6 +68,7 @@ export default function RegisterPage() {
               <input
                 type="text"
                 className="form-control"
+                placeholder="agente007"
                 value={form.nombreUsuario}
                 onChange={(e) => setForm({ ...form, nombreUsuario: e.target.value })}
                 required
@@ -67,7 +78,8 @@ export default function RegisterPage() {
             <div className="mb-3">
               <label className="form-label">Correo</label>
               <input
-                type="correo"
+                type="email"
+                placeholder="correo@ejemplo.com"
                 className="form-control"
                 value={form.correo}
                 onChange={(e) => setForm({ ...form, correo: e.target.value })}
@@ -78,8 +90,9 @@ export default function RegisterPage() {
             <div className="mb-3">
               <label className="form-label">Contraseña</label>
               <input
-                type="contrasenaHash"
+                type="password"
                 className="form-control"
+                placeholder="••••••••"
                 value={form.contrasenaHash}
                 onChange={(e) => setForm({ ...form, contrasenaHash: e.target.value })}
                 required
@@ -97,6 +110,14 @@ export default function RegisterPage() {
 
         </div>
       </div>
+      {showOtpModal && (
+        <OtpModal
+          onClose={() => setShowOtpModal(false)}
+          actionType="VERIFICAR_USU"
+          email={form.correo}
+          onSuccess={handleSuccess}
+        />
+      )}
     </div>
   );
 }

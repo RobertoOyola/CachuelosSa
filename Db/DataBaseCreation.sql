@@ -1,3 +1,11 @@
+CREATE DATABASE CachuelosSa;
+
+GO
+
+USE CachuelosSa;
+
+GO
+
 CREATE TABLE Usuarios (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     NombreUsuario NVARCHAR(50) NOT NULL ,
@@ -206,6 +214,7 @@ values
 	('TIPO_OTP', 'VU', 'Verificar Usuario', '', ''),
 	('TIPO_OTP', 'CC', 'Cambio Contraseña', '', ''),
 	('TIPO_OTP', 'EU', 'Eliminar Usuario', '', ''),
+	('TIPO_OTP', 'DU', 'Desbloquear Usuario', '', ''),
 	('TIPO_OTP', 'IT', 'Iniciar Trabajo', '', ''),
 	('TIPO_OTP', 'FT', 'Finalizar Trabajo', '', '');
 	

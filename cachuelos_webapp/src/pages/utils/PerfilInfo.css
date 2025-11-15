@@ -1,0 +1,10 @@
+.title{
+    font-style: normal;
+    text-transform: capitalize;
+    font-weight: bolder;
+}
+
+.Fperfil{
+    border: 10px solid black;
+    border-radius: 10%;
+}
