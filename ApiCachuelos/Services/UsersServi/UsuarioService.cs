@@ -60,7 +60,7 @@ namespace Services.UsersServi
                 UsuarioDto = usuarioDto,
                 UsuarioInfoDto = usuarioInfoDto,
                 Edad = Commons.CalcularEdad(usuarioInfoDto.FechaNacimiento ?? DateTime.Now),
-                Direccion = $"{Pais.Nombre}, {Provincia.Nombre}, {Ciudad.Nombre}"
+                Direccion = $"{Pais?.Nombre ?? "N/A"}, {Provincia?.Nombre ?? "N/A"}, {Ciudad?.Nombre ?? "N/A"}"
             };
 
             return ServiceResult<UsuarioxUsuarioInfo>.Ok(response, "Informacion Obtenida con Exito", 200);

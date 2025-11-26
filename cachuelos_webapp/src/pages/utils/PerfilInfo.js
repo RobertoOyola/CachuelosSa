@@ -46,7 +46,6 @@ export default function PerfilInfo() {
 
         cargarPerfil();
     }, [id]);
-    console.log(infoDto)
     const handleOpenModal = () => setShowModal(true);
     const handleCloseModal = () => setShowModal(false);
     const handleOpenDocumentModal = () => setShowDocumentModal(true);
