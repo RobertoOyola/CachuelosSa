@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Utils.Utilities;
 
-namespace Repositories.Otp
+namespace Repositories.OtpRepo
 {
     public class OtpRepository : IOtpRepository
     {

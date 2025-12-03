@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Repositories.Auth;
-using Repositories.Otp;
+using Repositories.OtpRepo;
 using Repositories.UsuarioRepo;
 using Services.CatalogoSeri;
 using System.Dynamic;

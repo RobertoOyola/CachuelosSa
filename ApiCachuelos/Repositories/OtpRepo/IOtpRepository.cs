@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Repositories.Otp
+namespace Repositories.OtpRepo
 {
     public interface IOtpRepository
     {

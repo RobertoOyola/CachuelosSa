@@ -5,7 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using Repositories.Auth;
 using Repositories.CatalogRepo;
 using Repositories.DocumentoRepo;
-using Repositories.Otp;
+using Repositories.OtpRepo;
 using Repositories.UsuarioRepo;
 using Services.Auth;
 using Services.CatalogoSeri;

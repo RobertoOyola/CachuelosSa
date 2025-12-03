@@ -53,5 +53,21 @@ namespace Utils.Utilities
             public const string DesbloquearUsu = "DU";
         }
 
+        public class Estado_Tbj
+        {
+            public const string Pendiente = "PE";
+            public const string Asignado = "AS";
+            public const string En_Proceso = "EP";
+            public const string Finalizado = "FN";
+            public const string Cancelado = "CN";
+        }
+
+        public class Estado_Oferta
+        {
+            public const string Abierta = "AB";
+            public const string Finalizada = "FI";
+            public const string Cancelada = "CA";
+        }
+
     }
 }

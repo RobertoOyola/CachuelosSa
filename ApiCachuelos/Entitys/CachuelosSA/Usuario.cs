@@ -39,6 +39,10 @@ public partial class Usuario
 
     public virtual Role Rol { get; set; }
 
+    public virtual ICollection<SubastaOfertum> SubastaOferta { get; set; } = new List<SubastaOfertum>();
+
+    public virtual ICollection<Trabajo> Trabajos { get; set; } = new List<Trabajo>();
+
     public virtual ICollection<UsuarioInfo> UsuarioInfos { get; set; } = new List<UsuarioInfo>();
 
     public virtual ICollection<UsuariosXDocumento> UsuariosXDocumentos { get; set; } = new List<UsuariosXDocumento>();

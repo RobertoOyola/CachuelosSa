@@ -247,3 +247,125 @@ BEGIN
     FROM Inserted
     WHERE OtpAction.Id = Inserted.Id;
 END;
+
+GO
+
+INSERT INTO Catalogo (NombreCat, Codigo, Nombre, Descripcion,Adicional)
+VALUES
+    ('EST_TRABAJO', 'PE', 'Pendiente', 'Publicado pero sin postulaciones',''),
+    ('EST_TRABAJO', 'AS', 'Asignado', 'Cliente seleccionó a un trabajador',''),
+    ('EST_TRABAJO', 'EP', 'En Proceso', 'El trabajador está realizando el trabajo',''),
+    ('EST_TRABAJO', 'FN', 'Finalizado', 'Trabajo completado por el trabajador',''),
+    ('EST_TRABAJO', 'CN', 'Cancelado', 'Trabajo cancelado por el cliente',''),
+	('EST_SUBASTA', 'AB', 'Abierta', 'Recibiendo ofertas',''),
+	('EST_SUBASTA', 'FI', 'Finalizada', 'Oferta ganadora seleccionada',''),
+	('EST_SUBASTA', 'CA', 'Cancelada', 'Subasta cerrada sin ganador','');
+
+GO
+
+CREATE TABLE CategoriaTrabajo (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Nombre NVARCHAR(100) NOT NULL,
+    Descripcion NVARCHAR(255) NULL,
+    Activo BIT DEFAULT 1,
+    FechaCreacion DATETIME DEFAULT GETDATE(),
+    FechaActualizacion DATETIME DEFAULT GETDATE()
+);
+
+CREATE TRIGGER trg_CategoriaTrabajo_Update
+ON CategoriaTrabajo
+AFTER UPDATE
+AS
+BEGIN
+    UPDATE ct
+    SET ct.FechaActualizacion = GETDATE()
+    FROM CategoriaTrabajo ct
+    INNER JOIN Inserted i ON ct.Id = i.Id;
+END;
+
+GO
+
+CREATE TABLE Trabajo (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    IdUsuarioCreador INT NOT NULL,
+    IdCategoria INT NOT NULL,
+    Titulo NVARCHAR(200) NOT NULL,
+    Descripcion NVARCHAR(MAX) NULL,
+    Direccion NVARCHAR(255) NULL,
+    Latitud DECIMAL(10,7) NULL,
+    Longitud DECIMAL(10,7) NULL,
+    PrecioReferencial DECIMAL(10,2) NULL,
+    Especial BIT DEFAULT 0,
+    Estado NVARCHAR(5) NOT NULL,
+    FechaPublicacion DATETIME DEFAULT GETDATE(),
+    FechaActualizacion DATETIME DEFAULT GETDATE(),
+    Activo BIT DEFAULT 1,
+
+    CONSTRAINT FK_Trabajo_Usuario FOREIGN KEY (IdUsuarioCreador)
+        REFERENCES Usuarios(Id),
+
+    CONSTRAINT FK_Trabajo_Categoria FOREIGN KEY (IdCategoria)
+        REFERENCES CategoriaTrabajo(Id)
+);
+
+GO
+
+CREATE TABLE TrabajoImagen (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    IdTrabajo INT NOT NULL,
+    UrlImagen NVARCHAR(500) NOT NULL,
+    FechaIngreso DATETIME DEFAULT GETDATE(),
+    Activo BIT DEFAULT 1,
+
+    CONSTRAINT FK_TrabajoImagen_Trabajo FOREIGN KEY (IdTrabajo)
+        REFERENCES Trabajo(Id)
+);
+
+
+GO
+
+CREATE TABLE Subasta (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    IdTrabajo INT NOT NULL,
+
+    Estado NVARCHAR(5) NOT NULL,
+    FechaInicio DATETIME DEFAULT GETDATE(),
+    FechaFin DATETIME NULL,
+
+    CONSTRAINT FK_Subasta_Trabajo FOREIGN KEY (IdTrabajo)
+        REFERENCES Trabajo(Id)
+);
+
+
+GO
+
+CREATE TABLE SubastaOferta (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    IdSubasta INT NOT NULL,
+    IdUsuarioTrabajador INT NOT NULL,
+    Monto DECIMAL(10,2) NOT NULL,
+    Mensaje NVARCHAR(500) NULL,
+    FechaOferta DATETIME DEFAULT GETDATE(),
+
+    CONSTRAINT FK_Oferta_Subasta FOREIGN KEY (IdSubasta)
+        REFERENCES Subasta(Id),
+
+    CONSTRAINT FK_Oferta_Usuario FOREIGN KEY (IdUsuarioTrabajador)
+        REFERENCES Usuarios(Id)
+);
+
+
+GO
+
+CREATE TABLE OfertaImagen (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    IdOferta INT NOT NULL,
+    UrlImagen NVARCHAR(500) NOT NULL,
+    FechaIngreso DATETIME DEFAULT GETDATE(),
+    Activo BIT DEFAULT 1,
+
+    CONSTRAINT FK_OfertaImagen_Oferta FOREIGN KEY (IdOferta)
+        REFERENCES SubastaOferta(Id)
+);
+
+
