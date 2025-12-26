@@ -285,6 +285,24 @@ END;
 
 GO
 
+INSERT INTO CategoriaTrabajo (Nombre, Descripcion, Activo)
+VALUES
+    ('Pintar', 'Servicios de pintura en paredes, techos y estructuras', 1),
+    ('Barrer', 'Limpieza básica de pisos en casas, patios o locales', 1),
+    ('Cocinar', 'Preparación de alimentos por horas o por evento', 1),
+    ('Mover muebles', 'Ayuda para mover, cargar o reubicar muebles', 1),
+    ('Colocar cuadros', 'Instalación de cuadros, repisas y adornos', 1),
+    ('Limpiar', 'Limpieza general o profunda de espacios', 1),
+    ('Plomería', 'Reparación de fugas, grifería y tuberías', 1),
+    ('Electricidad', 'Revisión o reparación de instalaciones eléctricas', 1),
+    ('Jardinería', 'Mantenimiento de jardines, podas y riego', 1),
+    ('Lavado de autos', 'Lavado interno y externo de vehículos', 1),
+    ('Ensamblaje', 'Armar muebles o equipos en el hogar', 1),
+    ('Cuidado de mascotas', 'Paseo, baño o cuidado temporal de mascotas', 1);
+
+
+GO
+
 CREATE TABLE Trabajo (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     IdUsuarioCreador INT NOT NULL,
@@ -294,6 +312,9 @@ CREATE TABLE Trabajo (
     Direccion NVARCHAR(255) NULL,
     Latitud DECIMAL(10,7) NULL,
     Longitud DECIMAL(10,7) NULL,
+    FechaFinSubasta DATETIME NULL,
+    FechaTrabajo DATETIME NULL,
+    TiempoEstimadoTrabajo INT NULL,
     PrecioReferencial DECIMAL(10,2) NULL,
     Especial BIT DEFAULT 0,
     Estado NVARCHAR(5) NOT NULL,

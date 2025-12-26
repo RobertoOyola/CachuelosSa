@@ -1,0 +1,103 @@
+/* Fondo oscuro tipo modal */
+.wizard-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+/* Contenedor blanco del wizard */
+.wizard-container {
+    width: 100%;
+    max-width: 520px;
+    padding: 1.5rem 0;
+}
+
+/* Títulos */
+.wizard-container h2 {
+    color: #111;
+    margin-bottom: 1rem;
+}
+
+/* Inputs */
+.wizard-container input,
+.wizard-container textarea,
+.wizard-container select {
+    width: 100%;
+    margin-bottom: 12px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    background: #fff;
+    color: #111;
+}
+
+/* Textarea */
+.wizard-container textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Fix Stepper content padding */
+.step-default {
+    padding: 0 2rem;
+}
+
+.wizard-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin: 10px 0 6px;
+    color: #333;
+}
+
+.imagenes-preview {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+}
+
+.wizard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wizard-close {
+    background: none;
+    border-radius: 9999px;
+    font-size: 15px;
+    cursor: pointer;
+    color: #4B0082;
+    border: 1px solid gray;
+    margin-bottom: 3%;
+}
+
+.wizard-close:hover {
+    color: white;
+}
+
+.tiempo-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tiempo-container input {
+    width: 100%;
+    max-width: 120px;
+    text-align: center;
+}
+
+.leaflet-container {
+    z-index: 0;
+}
+
+.btn-location {
+    border-radius: 6px;
+}

@@ -6,10 +6,12 @@ import { useEffect, useState, useCallback } from 'react'; // Importa useCallback
 import { logout } from '../../sevices/apis/authServ';
 import { obtenerFoto } from '../../sevices/apis/docuServ';
 import { AdvancedImage } from '@cloudinary/react';
+import WizardTrabajo from '../modals/WizardTrabajo';
 
 export default function Header({ onLogout }) {
     const navigate = useNavigate();
 
+    const [mostrarWizard, setMostrarWizard] = useState(false);
     const [userInfo, setUserInfo] = useState({
         nombre_usuario: 'A',
         imagen_url: '',
@@ -53,6 +55,11 @@ export default function Header({ onLogout }) {
         navigate(`/perfil/${userInfo.Id}`)
     }
 
+    const handleCrearTrabajo = () => {
+        setMostrarWizard(true);
+    };
+
+
     useEffect(() => {
         setInfo();
     }, [setInfo]);
@@ -72,6 +79,13 @@ export default function Header({ onLogout }) {
                         <span className="logo-text">Cachuelos</span>
                         <span className="logo-accent">SA</span>
                     </div>
+
+                    {/* Botón Crear Trabajo */}
+                    <button
+                        className="btn-crear-trabajo" 
+                        onClick={handleCrearTrabajo}>
+                        Publicar trabajo
+                    </button>
                 </div>
 
                 {/* Auth/User */}
@@ -104,6 +118,13 @@ export default function Header({ onLogout }) {
                     </button>
                 </div>
             </div>
+        {mostrarWizard && (
+            <div className="modal-backdrop">
+                <WizardTrabajo />
+            </div>
+        )}
+
         </header>
+
     );
 }

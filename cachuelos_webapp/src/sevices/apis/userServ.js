@@ -42,7 +42,6 @@ export const obtenerInfoToken = async () => {
 export const updateUser = async (user) =>{
     try{
         const response = await api.post('ActualizarUsuario', user);
-        console.log(response)
         return response.data
     } catch (error) {
         if (error.response?.data.header.codigo !== 409){

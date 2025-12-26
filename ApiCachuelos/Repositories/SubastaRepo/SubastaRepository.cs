@@ -32,5 +32,19 @@ namespace Repositories.SubastaRepo
                 return null;
             }
         }
+        public async Task<TrabajoImagen> CrearTrabajoImagen(TrabajoImagen trabajoimg)
+        {
+            try
+            {
+                _context.TrabajoImagens.Add(trabajoimg);
+                await _context.SaveChangesAsync();
+                return trabajoimg;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }   
+
     }
 }

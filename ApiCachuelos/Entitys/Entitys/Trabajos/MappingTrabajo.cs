@@ -24,6 +24,9 @@ namespace Entitys.Entitys.Trabajos
                 trabajo.FechaPublicacion = dto.FechaPublicacion ?? trabajo.FechaPublicacion;
                 trabajo.FechaActualizacion = dto.FechaActualizacion ?? trabajo.FechaActualizacion;
                 trabajo.Activo = dto.Activo ?? trabajo.Activo;
+                trabajo.FechaFinSubasta = dto.FechaFinSubasta ?? trabajo.FechaFinSubasta;
+                trabajo.FechaTrabajo = dto.FechaTrabajo ?? trabajo.FechaTrabajo;
+                trabajo.TiempoEstimadoTrabajo = dto.TiempoEstimadoTrabajo ?? trabajo.TiempoEstimadoTrabajo;
 
                 return trabajo;
             }
@@ -54,6 +57,9 @@ namespace Entitys.Entitys.Trabajos
                 dto.FechaPublicacion = DateTime.Now;
                 dto.FechaActualizacion = DateTime.Now;
                 dto.Activo = true;
+                dto.FechaFinSubasta = request.FechaFinSubasta ?? null;
+                dto.FechaTrabajo = request.FechaTrabajo ?? null;
+                dto.TiempoEstimadoTrabajo = request.TiempoEstimadoTrabajo ?? null;
 
                 return dto;
             }
@@ -89,6 +95,10 @@ namespace Entitys.Entitys.Trabajos
                 dto.FechaActualizacion = trabajo.FechaActualizacion ?? null;
 
                 dto.Activo = trabajo.Activo ?? false;
+
+                dto.FechaFinSubasta = trabajo.FechaFinSubasta ?? null;
+                dto.FechaTrabajo = trabajo.FechaTrabajo ?? null;
+                dto.TiempoEstimadoTrabajo = trabajo.TiempoEstimadoTrabajo ?? null;
 
                 return dto;
             }

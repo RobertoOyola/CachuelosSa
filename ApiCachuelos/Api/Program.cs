@@ -6,10 +6,12 @@ using Repositories.Auth;
 using Repositories.CatalogRepo;
 using Repositories.DocumentoRepo;
 using Repositories.OtpRepo;
+using Repositories.SubastaRepo;
 using Repositories.UsuarioRepo;
 using Services.Auth;
 using Services.CatalogoSeri;
 using Services.DocumentosServi;
+using Services.SubastaServi;
 using Services.UsersServi;
 using System.Text;
 
@@ -31,6 +33,9 @@ builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 
 builder.Services.AddScoped<IDocumentoService, DocumentoService>();
 builder.Services.AddScoped<IDocumentoRepository, DocumentoRepository>();
+
+builder.Services.AddScoped<ISubastaService, SubastaService>();
+builder.Services.AddScoped<ISubastaRepository, SubastaRepository>();
 
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddScoped<IUsuariosRepository, UsuariosRepository>();

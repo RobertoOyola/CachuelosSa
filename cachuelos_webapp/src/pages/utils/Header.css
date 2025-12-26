@@ -30,6 +30,13 @@
     cursor: pointer;
 }
 
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-right: 16px;
+}
+
 .logo-text {
     color: #ce42c7;
 }
@@ -83,4 +90,16 @@
     border-radius: 50%;
     font-size: 14px;
     color: #fff;
+}
+
+.btn-crear-trabajo {
+    height: 32px;
+    padding: 0 14px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.15s ease, box-shadow 0.15s ease;
 }

@@ -15,9 +15,10 @@ using System.Threading.Tasks;
 
 namespace Services.SubastaServi
 {
-    public class SubastaService
+    public class SubastaService : ISubastaService
     {
         private readonly ISubastaRepository _subaRepo;
+        private readonly ICatalogoRepository _cataRepo;
         private readonly IAuthService _authServ;
         public SubastaService(ISubastaRepository subaRepo, IAuthService authServ)
         {
@@ -51,6 +52,19 @@ namespace Services.SubastaServi
             trabajo = await _subaRepo.CrearTrabajo(trabajo);
             if (trabajo == null)
                 return ServiceResult<TrabajoDto>.Fail("Error en el guardado de datos", 400);
+
+            foreach (string trabajoimg in trabajoRequest.ImagenesUrls)
+            {
+                TrabajoImagen trabajoImagen = new TrabajoImagen()
+                {
+                    IdTrabajo = trabajo.Id,
+                    UrlImagen = trabajoimg,
+                    FechaIngreso = DateTime.Now,
+                    Activo = true
+                };
+
+                await _subaRepo.CrearTrabajoImagen(trabajoImagen);
+            }
 
             trabajoDto = MappingTrabajo.MapearTrabajoDto(trabajo);
 

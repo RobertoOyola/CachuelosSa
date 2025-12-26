@@ -11,5 +11,8 @@ namespace Repositories.CatalogRepo
     {
         Task<List<Catalogo>> ObtenerCatInfo(string nombreCat);
         Task<Catalogo> ObtenerCodXCat(string nombreCat, string codigo);
+        Task<List<CategoriaTrabajo>> ObtenerCatTrabajo();
+        Task<CategoriaTrabajo> ObtenerCatTrabajo(string nombreT);
+        Task<CategoriaTrabajo> CrearCatTrabajo(string nombreT);
     }
 }

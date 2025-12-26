@@ -76,6 +76,35 @@ namespace Services.CatalogoSeri
 
         }
 
+        public async Task<ServiceResult<int>> ObtenerIdCatTrabajo(string nomCatT)
+        {
+            if (nomCatT == "" || nomCatT == " " || nomCatT == null)
+                return ServiceResult<int>.Fail("No hay nombre de categoria", 400);
+
+            nomCatT = nomCatT.ToLower();
+
+            CategoriaTrabajo catT = await _cataRepo.ObtenerCatTrabajo(nomCatT);
+            if (catT == null)
+            {
+                catT = await _cataRepo.CrearCatTrabajo(nomCatT);
+                if (catT == null)
+                    return ServiceResult<int>.Fail("Error al crear la Categoria", 400);
+
+            }
+
+            return ServiceResult<int>.Ok(catT.Id, "Catalogos obtenido con Exito", 200);
+
+        }
+
+        public async Task<ServiceResult<List<CategoriaTrabajo>>> ObtenerCataTrabajo()
+        {
+            List<CategoriaTrabajo> list = await _cataRepo.ObtenerCatTrabajo();
+            if (list == null)
+                return ServiceResult<List<CategoriaTrabajo>>.Fail("Error al traer la lista Categorias", 400);
+
+            return ServiceResult<List<CategoriaTrabajo>>.Ok(list, "Catalogo obtenido con exito", 200);
+        }
+
         private List<CatalogoDto> ListCataToListCataDto(List<Catalogo> listCata)
         {
             List<CatalogoDto> listCataDto = new List<CatalogoDto>();

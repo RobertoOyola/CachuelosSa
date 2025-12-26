@@ -15,5 +15,7 @@ namespace Services.CatalogoSeri
         Task<List<Catalogo>> GetCatalogoDetails(string nombreCatalogo);
         Task<SmtpConfig> GetSmtpInfo();
         Task<ServiceResult<CatalogosUpdateInfo>> InfoParaRegister();
+        Task<ServiceResult<int>> ObtenerIdCatTrabajo(string nomCatT);
+        Task<ServiceResult<List<CategoriaTrabajo>>> ObtenerCataTrabajo();
     }
 }

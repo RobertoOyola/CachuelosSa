@@ -22,7 +22,7 @@ const Uploader = ({ onUploadSuccess, label }) => {
         }
 
         setFile(selectedFile);
-        setFileName(selectedFile.name); // 🆕 guardar el nombre
+        setFileName(selectedFile.name); 
     };
 
     const handleUpload = async () => {

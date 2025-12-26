@@ -35,6 +35,12 @@ public partial class Trabajo
 
     public bool? Activo { get; set; }
 
+    public DateTime? FechaFinSubasta { get; set; }
+
+    public DateTime? FechaTrabajo { get; set; }
+
+    public int? TiempoEstimadoTrabajo { get; set; }
+
     public virtual CategoriaTrabajo IdCategoriaNavigation { get; set; }
 
     public virtual Usuario IdUsuarioCreadorNavigation { get; set; }

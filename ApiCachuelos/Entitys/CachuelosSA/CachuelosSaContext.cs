@@ -56,7 +56,7 @@ public partial class CachuelosSaContext : DbContext
     {
         modelBuilder.Entity<Catalogo>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Catalogo__3214EC07E932E3C4");
+            entity.HasKey(e => e.Id).HasName("PK__Catalogo__3214EC072E89D73F");
 
             entity.ToTable("Catalogo", tb => tb.HasTrigger("trg_Catalogo_Update"));
 
@@ -80,9 +80,9 @@ public partial class CachuelosSaContext : DbContext
 
         modelBuilder.Entity<CategoriaTrabajo>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Categori__3214EC078B0ED362");
+            entity.HasKey(e => e.Id).HasName("PK__Categori__3214EC0793D18699");
 
-            entity.ToTable("CategoriaTrabajo");
+            entity.ToTable("CategoriaTrabajo", tb => tb.HasTrigger("trg_CategoriaTrabajo_Update"));
 
             entity.Property(e => e.Activo).HasDefaultValue(true);
             entity.Property(e => e.Descripcion).HasMaxLength(255);
@@ -99,7 +99,7 @@ public partial class CachuelosSaContext : DbContext
 
         modelBuilder.Entity<Documento>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Document__3214EC072FAC9CE2");
+            entity.HasKey(e => e.Id).HasName("PK__Document__3214EC070DEC6C58");
 
             entity.ToTable("Documento", tb => tb.HasTrigger("trg_Documento_Update"));
 
@@ -122,7 +122,7 @@ public partial class CachuelosSaContext : DbContext
 
         modelBuilder.Entity<OfertaImagen>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__OfertaIm__3214EC077A1DCF55");
+            entity.HasKey(e => e.Id).HasName("PK__OfertaIm__3214EC0754F491FB");
 
             entity.ToTable("OfertaImagen");
 
@@ -142,7 +142,7 @@ public partial class CachuelosSaContext : DbContext
 
         modelBuilder.Entity<OtpAction>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__OtpActio__3214EC071677DEC8");
+            entity.HasKey(e => e.Id).HasName("PK__OtpActio__3214EC078A734A69");
 
             entity.ToTable("OtpAction", tb => tb.HasTrigger("trg_OtpAction_Update"));
 
@@ -170,9 +170,9 @@ public partial class CachuelosSaContext : DbContext
 
         modelBuilder.Entity<Role>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Roles__3214EC07C5F92980");
+            entity.HasKey(e => e.Id).HasName("PK__Roles__3214EC0790A61A19");
 
-            entity.HasIndex(e => e.NombreRol, "UQ__Roles__4F0B537F3C625FF9").IsUnique();
+            entity.HasIndex(e => e.NombreRol, "UQ__Roles__4F0B537F20025383").IsUnique();
 
             entity.Property(e => e.Descripcion).HasMaxLength(255);
             entity.Property(e => e.NombreRol)
@@ -182,7 +182,7 @@ public partial class CachuelosSaContext : DbContext
 
         modelBuilder.Entity<SubastaOfertum>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__SubastaO__3214EC076315DC73");
+            entity.HasKey(e => e.Id).HasName("PK__SubastaO__3214EC07F75F6656");
 
             entity.Property(e => e.FechaOferta)
                 .HasDefaultValueSql("(getdate())")
@@ -203,7 +203,7 @@ public partial class CachuelosSaContext : DbContext
 
         modelBuilder.Entity<Subastum>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Subasta__3214EC078BBCF596");
+            entity.HasKey(e => e.Id).HasName("PK__Subasta__3214EC0700DD20AC");
 
             entity.Property(e => e.Estado)
                 .IsRequired()
@@ -221,9 +221,9 @@ public partial class CachuelosSaContext : DbContext
 
         modelBuilder.Entity<TipoDocumento>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__TipoDocu__3214EC07778B1496");
+            entity.HasKey(e => e.Id).HasName("PK__TipoDocu__3214EC073330D35D");
 
-            entity.HasIndex(e => e.NombreDocumento, "UQ__TipoDocu__637890ABDFBE9F24").IsUnique();
+            entity.HasIndex(e => e.NombreDocumento, "UQ__TipoDocu__637890AB91BDF8A7").IsUnique();
 
             entity.Property(e => e.Descripcion).HasMaxLength(255);
             entity.Property(e => e.NombreDocumento)
@@ -233,7 +233,7 @@ public partial class CachuelosSaContext : DbContext
 
         modelBuilder.Entity<Trabajo>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Trabajo__3214EC073B2E0880");
+            entity.HasKey(e => e.Id).HasName("PK__Trabajo__3214EC07E2E646B1");
 
             entity.ToTable("Trabajo");
 
@@ -246,9 +246,11 @@ public partial class CachuelosSaContext : DbContext
             entity.Property(e => e.FechaActualizacion)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
+            entity.Property(e => e.FechaFinSubasta).HasColumnType("datetime");
             entity.Property(e => e.FechaPublicacion)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
+            entity.Property(e => e.FechaTrabajo).HasColumnType("datetime");
             entity.Property(e => e.Latitud).HasColumnType("decimal(10, 7)");
             entity.Property(e => e.Longitud).HasColumnType("decimal(10, 7)");
             entity.Property(e => e.PrecioReferencial).HasColumnType("decimal(10, 2)");
@@ -269,7 +271,7 @@ public partial class CachuelosSaContext : DbContext
 
         modelBuilder.Entity<TrabajoImagen>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__TrabajoI__3214EC074D3664B4");
+            entity.HasKey(e => e.Id).HasName("PK__TrabajoI__3214EC076769A87A");
 
             entity.ToTable("TrabajoImagen");
 
@@ -289,7 +291,7 @@ public partial class CachuelosSaContext : DbContext
 
         modelBuilder.Entity<Usuario>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Usuarios__3214EC07D6C6BDC7");
+            entity.HasKey(e => e.Id).HasName("PK__Usuarios__3214EC0767A3BFB0");
 
             entity.ToTable(tb => tb.HasTrigger("trg_Usuarios_Update"));
 
@@ -324,7 +326,7 @@ public partial class CachuelosSaContext : DbContext
 
         modelBuilder.Entity<UsuarioInfo>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__UsuarioI__3214EC074D98F1D5");
+            entity.HasKey(e => e.Id).HasName("PK__UsuarioI__3214EC079DB28AC3");
 
             entity.ToTable("UsuarioInfo", tb => tb.HasTrigger("trg_UsuariosInfo_Update"));
 
@@ -360,7 +362,7 @@ public partial class CachuelosSaContext : DbContext
 
         modelBuilder.Entity<UsuariosXDocumento>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Usuarios__3214EC07DDAD8018");
+            entity.HasKey(e => e.Id).HasName("PK__Usuarios__3214EC07058BAE5C");
 
             entity.Property(e => e.FechaAsignacion)
                 .HasDefaultValueSql("(getdate())")

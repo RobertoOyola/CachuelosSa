@@ -10,5 +10,6 @@ namespace Repositories.SubastaRepo
     public interface ISubastaRepository
     {
         Task<Trabajo> CrearTrabajo(Trabajo trabajo);
+        Task<TrabajoImagen> CrearTrabajoImagen(TrabajoImagen trabajoimg);
     }
 }

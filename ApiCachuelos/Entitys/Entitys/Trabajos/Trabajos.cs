@@ -22,6 +22,9 @@ namespace Entitys.Entitys.Trabajos
         public DateTime? FechaPublicacion { get; set; }
         public DateTime? FechaActualizacion { get; set; }
         public bool? Activo { get; set; }
+        public DateTime? FechaFinSubasta { get; set; }
+        public DateTime? FechaTrabajo { get; set; }
+        public int? TiempoEstimadoTrabajo { get; set; }
     }
 
     public class TrabajoRequest
@@ -33,5 +36,9 @@ namespace Entitys.Entitys.Trabajos
         public decimal? Latitud { get; set; }
         public decimal? Longitud { get; set; }
         public decimal? PrecioReferencial { get; set; }
+        public List<string> ImagenesUrls { get; set; }
+        public DateTime? FechaFinSubasta { get; set; }
+        public DateTime? FechaTrabajo { get; set; }
+        public int? TiempoEstimadoTrabajo { get; set; }
     }
 }
