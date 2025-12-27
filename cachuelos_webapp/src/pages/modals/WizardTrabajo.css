@@ -101,3 +101,72 @@
 .btn-location {
     border-radius: 6px;
 }
+
+/* === React Select - Wizard === */
+
+.wizard-select__control {
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    min-height: 38px;
+    font-size: 14px;
+    box-shadow: none;
+}
+
+.wizard-select__control--is-focused {
+    border-color: #5227ff;
+    box-shadow: 0 0 0 1px rgba(82, 39, 255, 0.2);
+}
+
+.wizard-select__value-container {
+    padding: 2px 10px;
+}
+
+.wizard-select__placeholder {
+    color: #999;
+    font-size: 14px;
+}
+
+.wizard-select__single-value {
+    color: #111;
+    font-size: 14px;
+}
+
+.wizard-select__menu {
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    overflow-y: hidden;
+    z-index: 3000;
+}
+
+
+.wizard-select__option {
+    font-size: 14px;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.wizard-select__option--is-focused {
+    background-color: #f3f4f6;
+}
+
+.wizard-select__option--is-selected {
+    background-color: #5227ff;
+    color: #fff;
+}
+
+.wizard-select__clear-indicator {
+    cursor: pointer;
+}
+
+.wizard-select__dropdown-indicator {
+    color: #666;
+}
+
+/* Ajuste para que tenga mismo margen que inputs */
+.wizard-select {
+    margin-bottom: 12px;
+}
+
+.wizard-select__menu-list{
+    max-height: 150px !important;
+}

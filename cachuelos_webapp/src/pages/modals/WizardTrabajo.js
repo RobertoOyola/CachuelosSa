@@ -9,8 +9,10 @@ import shadow from "../../assets/leaflet/marker-shadow.png";
 import { motion } from "framer-motion";
 import ClipLoader from "react-spinners/ClipLoader";
 
+import CreatableSelect from "react-select/creatable";
+
 import { toast } from "react-toastify";
-import { ObtenerCatalogoT } from "../../sevices/apis/cataServ";
+import { ObtenerCatalogoT, ObtenerIdCatalogoT } from "../../sevices/apis/cataServ";
 import { uploadPhoto } from "../../sevices/apis/docuServ";
 import { CrearTrabajo } from "../../sevices/apis/subsServ";
 
@@ -50,6 +52,11 @@ export default function WizardTrabajo({ onClose }) {
         popupAnchor: [1, -34],
         shadowSize: [41, 41],
     });
+
+    const opcionesCategorias = categorias.map(c => ({
+        value: c.id,
+        label: c.nombre
+    }));
 
     const obtenerDireccionDesdeCoords = async (lat, lng) => {
         try {
@@ -202,7 +209,7 @@ export default function WizardTrabajo({ onClose }) {
                         <div className="wizard-header">
                             <h2>Creación de nuevo trabajo</h2>
                             <button className="wizard-close" onClick={onClose}>
-                                Regresar
+                                Salir
                             </button>
                         </div>
 
@@ -229,19 +236,42 @@ export default function WizardTrabajo({ onClose }) {
                         <h2>Categoría y fechas</h2>
 
                         <label className="wizard-label">Categoría del trabajo</label>
-                        <select
-                            value={trabajo.idCategoria}
-                            onChange={(e) =>
-                                setTrabajo({ ...trabajo, idCategoria: Number(e.target.value) })
+
+                        <CreatableSelect
+                            classNamePrefix="wizard-select"
+                            placeholder="Seleccione o cree una categoría"
+                            options={opcionesCategorias}
+                            value={
+                                trabajo.idCategoria
+                                    ? opcionesCategorias.find(o => o.value === trabajo.idCategoria)
+                                    : null
                             }
-                        >
-                            <option value="">Seleccione categoría</option>
-                            {categorias.map((c) => (
-                                <option key={c.id} value={c.id}>
-                                    {c.nombre}
-                                </option>
-                            ))}
-                        </select>
+                            isClearable
+                            onChange={async (selected) => {
+                                if (!selected) {
+                                    setTrabajo({ ...trabajo, idCategoria: "" });
+                                    return;
+                                }
+                                if (typeof selected.value === "number") {
+                                    setTrabajo({ ...trabajo, idCategoria: selected.value });
+                                    return;
+                                }
+                                try {
+                                    const data = await ObtenerIdCatalogoT(selected.label);
+                                    if (data?.body) {
+                                        setTrabajo({
+                                            ...trabajo,
+                                            idCategoria: data.body
+                                        });
+                                        toast.success("Categoría creada");
+                                    } else {
+                                        toast.error(data?.header?.mensaje || "No se pudo crear la categoría");
+                                    }
+                                } catch (error) {
+                                    toast.error("Error al crear la categoría");
+                                }
+                            }}
+                        />
 
                         <label className="wizard-label">
                             ¿Hasta cuándo se aceptan ofertas?
