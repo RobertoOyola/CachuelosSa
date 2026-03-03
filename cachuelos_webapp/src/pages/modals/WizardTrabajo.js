@@ -22,9 +22,9 @@ import "./WizardTrabajo.css";
 export default function WizardTrabajo({ onClose }) {
     const [usarUbicacionActual, setUsarUbicacionActual] = useState(false);
     const [cargandoUbicacion, setCargandoUbicacion] = useState(false);
-    const [imagenesKey, setImagenesKey] = useState(0);
     const [imagenesPreview, setImagenesPreview] = useState([]);
     const [categorias, setCategorias] = useState([]);
+    const [pasoActual, setPasoActual] = useState(1);
 
     const [trabajo, setTrabajo] = useState({
         idCategoria: "",
@@ -42,6 +42,77 @@ export default function WizardTrabajo({ onClose }) {
 
     const mapRef = useRef(null);
 
+    const validarPasoConMensaje = (step) => {
+        switch (step) {
+            case 1:
+                if (!trabajo.titulo.trim()) {
+                    toast.error("Debes ingresar el título del trabajo");
+                    return false;
+                }
+                if (!trabajo.descripcion.trim()) {
+                    toast.error("Debes ingresar la descripción del trabajo");
+                    return false;
+                }
+                return true;
+
+            case 2:
+                if (!trabajo.idCategoria) {
+                    toast.error("Debes seleccionar una categoría");
+                    return false;
+                }
+
+                if (!trabajo.fechaFinSubasta) {
+                    toast.error("Debes seleccionar la fecha fin de subasta");
+                    return false;
+                }
+
+                if (trabajo.fechaFinSubasta < hoy) {
+                    toast.error("La fecha fin de subasta no puede ser menor a hoy");
+                    return false;
+                }
+
+                if (!trabajo.fechaTrabajo) {
+                    toast.error("Debes seleccionar la fecha del trabajo");
+                    return false;
+                }
+
+                if (trabajo.fechaTrabajo < trabajo.fechaFinSubasta) {
+                    toast.error("La fecha del trabajo no puede ser menor a la fecha fin de subasta");
+                    return false;
+                }
+
+                return true;
+
+            case 3:
+                if (!trabajo.tiempoEstimadoTrabajo || trabajo.tiempoEstimadoTrabajo <= 0) {
+                    toast.error("Debes ingresar el tiempo estimado");
+                    return false;
+                }
+                return true;
+
+            case 4:
+                if (trabajo.imagenesUrls.length === 0) {
+                    toast.error("Debes subir al menos una imagen");
+                    return false;
+                }
+                return true;
+
+            case 5:
+                if (!trabajo.latitud || !trabajo.longitud) {
+                    toast.error("Debes seleccionar la ubicación");
+                    return false;
+                }
+                if (!trabajo.direccion.trim()) {
+                    toast.error("Debes ingresar la dirección");
+                    return false;
+                }
+                return true;
+
+            default:
+                return true;
+        }
+    };
+
     const markerIcon = new L.Icon({
         iconUrl: icon,
         iconRetinaUrl: icon2x,
@@ -52,6 +123,8 @@ export default function WizardTrabajo({ onClose }) {
         popupAnchor: [1, -34],
         shadowSize: [41, 41],
     });
+
+    const hoy = new Date().toISOString().split("T")[0];
 
     const opcionesCategorias = categorias.map(c => ({
         value: c.id,
@@ -91,10 +164,6 @@ export default function WizardTrabajo({ onClose }) {
         };
         cargar();
     }, []);
-
-    useEffect(() => {
-        setImagenesKey(prev => prev + 1);
-    }, [trabajo.imagenesUrls]);
 
     const LocationPicker = () => {
         const map = useMapEvents({
@@ -160,38 +229,38 @@ export default function WizardTrabajo({ onClose }) {
 
     const handleFinalSubmit = async () => {
         try {
-            console.log("Como cadena JSON:", JSON.stringify(trabajo));
+            const payload = {
+                ...trabajo,
+                precioReferencial: trabajo.precioReferencial
+                    ? Number(trabajo.precioReferencial)
+                    : 0
+            };
 
-            const data = await CrearTrabajo(trabajo);
-
+            const data = await CrearTrabajo(payload);
             if (data?.body) {
                 toast.success("Trabajo creado correctamente");
-                setTimeout(() => {
-                    onClose?.();
-                }, 300);
+                setTimeout(() => onClose?.(), 300);
             } else {
                 toast.error(data?.header?.mensaje);
             }
 
         } catch (error) {
-            toast.error("Error al crear trabajo" || error?.mensaje);
+            toast.error("Error al crear trabajo");
             console.error(error);
-            setTimeout(() => {
-                onClose?.();
-            }, 600);
         }
     };
 
 
+
     return (
-        <motion.div 
+        <motion.div
             className="wizard-overlay"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
             onClick={onClose} >
-            <motion.div 
+            <motion.div
                 className="wizard-container"
                 initial={{ scale: 0.95, y: 20, opacity: 0 }}
                 animate={{ scale: 1, y: 0, opacity: 1 }}
@@ -200,9 +269,21 @@ export default function WizardTrabajo({ onClose }) {
                 onClick={(e) => e.stopPropagation()} >
                 <Stepper
                     initialStep={1}
+                    onStepChange={(step) => setPasoActual(step)}
                     onFinalStepCompleted={handleFinalSubmit}
+                    disableStepIndicators={true}
                     backButtonText="Atrás"
                     nextButtonText="Siguiente"
+                    nextButtonProps={{
+                        onClickCapture: (e) => {
+                            const valido = validarPasoConMensaje(pasoActual);
+
+                            if (!valido) {
+                                e.preventDefault();
+                                e.stopPropagation();
+                            }
+                        }
+                    }}
                 >
                     {/* PASO 1 */}
                     <Step>
@@ -278,6 +359,7 @@ export default function WizardTrabajo({ onClose }) {
                         </label>
                         <input
                             type="date"
+                            min={hoy}
                             value={trabajo.fechaFinSubasta}
                             onChange={(e) =>
                                 setTrabajo({ ...trabajo, fechaFinSubasta: e.target.value })
@@ -289,6 +371,7 @@ export default function WizardTrabajo({ onClose }) {
                         </label>
                         <input
                             type="date"
+                            min={trabajo.fechaFinSubasta || hoy}
                             value={trabajo.fechaTrabajo}
                             onChange={(e) =>
                                 setTrabajo({ ...trabajo, fechaTrabajo: e.target.value })
@@ -420,8 +503,8 @@ export default function WizardTrabajo({ onClose }) {
                                 }, 200);
                             }}
                         >
-                        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-                        <LocationPicker />
+                            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+                            <LocationPicker />
                         </MapContainer>
                         <div
                             className="text-center pt-3">

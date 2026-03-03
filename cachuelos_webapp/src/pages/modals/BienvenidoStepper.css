@@ -1,0 +1,43 @@
+/* Overlay que bloquea TODO */
+.wizard-overlay.locked {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Contenedor */
+.wizard-container {
+    width: 100%;
+    max-width: 700px;
+    border-radius: 16px;
+    padding: 1.5rem 0;
+}
+
+/* Evita salir con scroll */
+body {
+    overflow: hidden;
+}
+
+select {
+    color: #000;
+    background-color: #fff;
+}
+
+select option {
+    color: #000;
+    background-color: #fff;
+}
+
+.checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.checkbox-row input[type="checkbox"] {
+    margin: 0;
+}

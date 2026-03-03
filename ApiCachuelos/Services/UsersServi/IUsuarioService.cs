@@ -10,5 +10,6 @@ namespace Services.UsersServi
         Task<ServiceResult<UsuarioxUsuarioInfo>> ObtenerUsuario();
         Task<ServiceResult<UsuarioxUsuarioInfo>> ObtenerUsuario(int id);
         Task<ServiceResult<UsuarioInfo>> ActualizarUsuario(UsuarioInfoDto usuarioInfoDto);
+        Task<ServiceResult<bool>> TieneInfoUser();
     }
 }

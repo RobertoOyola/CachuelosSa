@@ -69,5 +69,13 @@ namespace Utils.Utilities
             public const string Cancelada = "CA";
         }
 
+        public class Estado_Pago
+        {
+            public const string Pendiente = "PE";
+            public const string Confirmado = "CO";
+            public const string Rechazado = "RE";
+            public const string Pendiente_Trab = "PE";
+            public const string Pagado_Trab = "PA";
+        }
     }
 }

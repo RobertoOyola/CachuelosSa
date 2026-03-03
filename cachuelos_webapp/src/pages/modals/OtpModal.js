@@ -27,10 +27,18 @@ export default function OtpModal({ onClose, actionType, email, onSuccess }) {
             case 'VERIFICAR_USU':
                 settitle('Verificacion de Usuario');
                 break;
+            case 'FINALIZAR_TBJ':
+                settitle('Finalizar Trabajo');
+                break;  
             default:
                 settitle('Autentificacion Otp');
         }
     }, [actionType, settitle])
+
+    const bloquearCorreo =
+        actionType === 'INICIO_TBJ' ||
+        actionType === 'FINALIZAR_TBJ' ||
+        actionType === 'VERIFICAR_USU';
 
 
     const isEmailValid = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(newEmail);
@@ -112,6 +120,7 @@ export default function OtpModal({ onClose, actionType, email, onSuccess }) {
                                 value={newEmail}
                                 onChange={(e) => setNewEmail(e.target.value)}
                                 placeholder="correo@ejemplo.com"
+                                disabled={bloquearCorreo}
                                 required
                             />
                         </div>

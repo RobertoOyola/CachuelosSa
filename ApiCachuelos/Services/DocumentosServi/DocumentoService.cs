@@ -38,6 +38,7 @@ namespace Services.DocumentosServi
 
             int idCurriculum = await _docuRepo.ObtenerIdDocuXNombre(Const.TipoDocumento.Curriculum);
             int idHistPoli = await _docuRepo.ObtenerIdDocuXNombre(Const.TipoDocumento.HistoPoli);
+            int idTitulo = await _docuRepo.ObtenerIdDocuXNombre(Const.TipoDocumento.Titulo);
 
             if (documento.idTipoDocumento == idCurriculum)
             {
@@ -47,7 +48,14 @@ namespace Services.DocumentosServi
             {
                 busqudaDoc = await _docuRepo.ObtenerDocuHistorialPoliXIdUser(user.Id);
             }
-
+            else if (documento.idTipoDocumento == idTitulo)
+            {
+                List<Docus> listTemp = new List<Docus>();
+                listTemp = await _docuRepo.ObtenerDocuTitulosXIdUser(user.Id);
+                if(listTemp.Count != 0)
+                    busqudaDoc = listTemp[0];
+            }
+            
             if (busqudaDoc != null)
                 if (busqudaDoc.Id != 0 && busqudaDoc.UrlDocumento != null)
                 {
@@ -83,6 +91,25 @@ namespace Services.DocumentosServi
             Docus docCorriculum = await _docuRepo.ObtenerDocuCurriculumXIdUser(usuario.Id);
             Docus docHistoPoli = await _docuRepo.ObtenerDocuHistorialPoliXIdUser(usuario.Id);
             List<Docus> titulos = await _docuRepo.ObtenerDocuTitulosXIdUser(usuario.Id);
+
+            ListDocumentos documentos = new ListDocumentos()
+            {
+                Curriculum = docCorriculum,
+                Titulos = titulos,
+                HistorialPolicial = docHistoPoli
+            };
+
+            if (docCorriculum == null && docHistoPoli == null && (titulos == null || titulos.Count == 0))
+                return ServiceResult<ListDocumentos>.Fail("El Usuario no tiene Documentos", 204);
+
+            return ServiceResult<ListDocumentos>.Ok(documentos, "Documentos Obtenidos con Exito", 200);
+        }
+
+        public async Task<ServiceResult<ListDocumentos>> obtenerDocumentosXIdCliente(int id)
+        {
+            Docus docCorriculum = await _docuRepo.ObtenerDocuCurriculumXIdUser(id);
+            Docus docHistoPoli = await _docuRepo.ObtenerDocuHistorialPoliXIdUser(id);
+            List<Docus> titulos = await _docuRepo.ObtenerDocuTitulosXIdUser(id);
 
             ListDocumentos documentos = new ListDocumentos()
             {

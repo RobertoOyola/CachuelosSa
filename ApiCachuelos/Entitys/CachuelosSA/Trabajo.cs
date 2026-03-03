@@ -41,9 +41,15 @@ public partial class Trabajo
 
     public int? TiempoEstimadoTrabajo { get; set; }
 
+    public int? IdUsuarioTrabajadorAsignado { get; set; }
+
     public virtual CategoriaTrabajo IdCategoriaNavigation { get; set; }
 
     public virtual Usuario IdUsuarioCreadorNavigation { get; set; }
+
+    public virtual Usuario IdUsuarioTrabajadorAsignadoNavigation { get; set; }
+
+    public virtual ICollection<Pago> Pagos { get; set; } = new List<Pago>();
 
     public virtual ICollection<Subastum> Subasta { get; set; } = new List<Subastum>();
 

@@ -20,10 +20,21 @@ export const ObtenerCatalogoT = async () =>{
 
 export const ObtenerIdCatalogoT = async (nombre) =>{
     try{
-        const response = await api.post('ObtenerIdCatalogoTrabajo', nombre);
+        const response = await api.post('ObtenerIdCatalogoTrabajo', JSON.stringify(nombre),
+            {headers: {'Content-Type': 'application/json'}});
         return response.data
     } catch (error) {
         console.error("Error al Obtener Id Catalogo:", error.response?.data.header.mensaje);
+        return error.response?.data;
+    }
+};
+
+export const ObtenerInfoParaRegister = async () =>{
+    try{
+        const response = await api.post('InfoParaRegister');
+        return response.data
+    } catch (error) {
+        console.error("Error al Obtener Info Para Register:", error.response?.data.header.mensaje);
         return error.response?.data;
     }
 };

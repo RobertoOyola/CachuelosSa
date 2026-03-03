@@ -41,7 +41,9 @@ public partial class Usuario
 
     public virtual ICollection<SubastaOfertum> SubastaOferta { get; set; } = new List<SubastaOfertum>();
 
-    public virtual ICollection<Trabajo> Trabajos { get; set; } = new List<Trabajo>();
+    public virtual ICollection<Trabajo> TrabajoIdUsuarioCreadorNavigations { get; set; } = new List<Trabajo>();
+
+    public virtual ICollection<Trabajo> TrabajoIdUsuarioTrabajadorAsignadoNavigations { get; set; } = new List<Trabajo>();
 
     public virtual ICollection<UsuarioInfo> UsuarioInfos { get; set; } = new List<UsuarioInfo>();
 

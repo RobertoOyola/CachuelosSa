@@ -8,6 +8,7 @@ namespace Services.DocumentosServi
         Task<ServiceResult<DocResponse>> InsertarDocumento(Documentos documento);
         Task<ServiceResult<List<TipDoc>>> obtenerTiposDocs();
         Task<ServiceResult<ListDocumentos>> obtenerDocumentosXIdCliente();
+        Task<ServiceResult<ListDocumentos>> obtenerDocumentosXIdCliente(int id);
         Task<ServiceResult<DocResponse>> EliminarDocumento(Docus documento);
     }
 }

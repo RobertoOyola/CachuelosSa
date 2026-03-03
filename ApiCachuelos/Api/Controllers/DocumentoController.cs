@@ -105,6 +105,29 @@ namespace Api.Controllers
         }
 
         [Authorize]
+        [HttpPost("ObtenerDocumentosUsuarioid")]
+        public async Task<IActionResult> ObtenerDocumentosDeUsuario(DocusId id)
+        {
+            ServiceResult<ListDocumentos> result = await _docServ.obtenerDocumentosXIdCliente(id.Id);
+
+            if (!result.Exitoso)
+            {
+
+                return BadRequest(new CustomResponse<string>
+                {
+                    Header = new CustomHeader { Codigo = result.Codigo, Mensaje = result.Mensaje },
+                    Body = null
+                });
+            }
+
+            return Ok(new CustomResponse<ListDocumentos>
+            {
+                Header = new CustomHeader { Codigo = result.Codigo, Mensaje = result.Mensaje },
+                Body = result.Datos
+            });
+        }
+
+        [Authorize]
         [HttpPost("EliminarDocumento")]
         public async Task<IActionResult> EliminarDocumento(Docus documentos)
         {

@@ -1,55 +1,101 @@
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify"
-import { logout } from "../sevices/apis/authServ";
-import { useState } from "react";
-import WizardTrabajo from "./modals/WizardTrabajo";
-import { AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+import { TieneInfoUser } from "../sevices/apis/userServ";
+import BienvenidoStepper from "./modals/BienvenidoStepper";
 
-export default function HomePage({onLogout}) {
+import '../css/HomePage.css';
+import SubastaModal from "./modals/SubastaModal";
+import { TraerTrabajos } from "../sevices/apis/subsServ";
 
-    const navigate = useNavigate();
+export default function HomePage({ onLogout }) {
+    const [mostrarBienvenidoStepper, setMostrarsetBienvenidoStepper] = useState(false);
+    const [subastaSeleccionada, setSubastaSeleccionada] = useState(null);
+    const [trabajos, setTrabajos] = useState([]);
+    const [loadingTrabajos, setLoadingTrabajos] = useState(true);
 
-    const [mostrarWizard, setMostrarWizard] = useState(false);
-
-    const handleLogout = async () => {
-        try {
-            const data = await logout();
-            if (data.header.codigo === 200) {
-                toast.success("Logout Exitoso!");
-                onLogout();
-                console.log("Logout ejecutado");
-                navigate('/login');
-            } else {
-                toast.error(data.header.mensaje);
+    useEffect(() => {
+        const verificar = async () => {
+            const data = await TieneInfoUser();
+            if (!data.body === false) {
+                setMostrarsetBienvenidoStepper(true);
             }
-        } catch (error) {
-            toast.error("Error al cerrar sesión");
-        }
-    };
-    const handleCrearTrabajo = () => {
-        setMostrarWizard(true);
-    };
+        };
+        verificar();
+    }, []);
 
-    return(
+    useEffect(() => {
+        const cargarTrabajos = async () => {
+            setLoadingTrabajos(true);
+            const data = await TraerTrabajos();
+
+            if (data?.header?.codigo === 200) {
+                setTrabajos(data.body);
+            }
+
+            setLoadingTrabajos(false);
+        };
+
+        cargarTrabajos();
+    }, []);
+
+    return (
         <>
-            <button
-                onClick={handleLogout}>
-                LogOut
-            </button>
-            {/* Botón Crear Trabajo */}
-            <button
-                className="btn-crear-trabajo" 
-                onClick={handleCrearTrabajo}>
-                Publicar trabajo
-            </button>
-            <AnimatePresence mode="wait">
-                {mostrarWizard && (
-                    <WizardTrabajo
-                        key="wizard-trabajo"
-                        onClose={() => setMostrarWizard(false)}
-                    />
-                )}
-            </AnimatePresence>
+            {mostrarBienvenidoStepper && <BienvenidoStepper />}
+            {subastaSeleccionada && (
+                <SubastaModal
+                    subasta={{
+                        ...subastaSeleccionada,
+                        publicadoPor: "Empresa Creativa EC"
+                    }}
+                    onClose={() => setSubastaSeleccionada(null)}
+                />
+            )}
+
+            <div className="container mt-5">
+                <h3 className="mb-4 fw-bold text-purple">
+                    Trabajos abiertos a subasta
+                </h3>
+
+                <div className="row g-4">
+                    {loadingTrabajos ? (
+                        <p>Cargando trabajos...</p>
+                    ) : trabajos.length === 0 ? (
+                        <p>No hay trabajos disponibles</p>
+                    ) : (
+                        trabajos.map((item, index) => {
+                            const trabajo = item.trabajo;
+
+                            return (
+                                <div className="col-md-6 col-lg-4" key={trabajo.id}>
+                                    <div className="card h-100 shadow-sm border-0 rounded-4">
+                                        <div className="card-body">
+                                            <h5 className="card-title fw-bold mt-2">
+                                                {trabajo.titulo}
+                                            </h5>
+                                            <p className="text-muted small">
+                                                {trabajo.descripcion}
+                                            </p>
+
+                                            <ul className="list-unstyled small mb-3">
+                                                <li>Presupuesto: <b>${trabajo.precioReferencial}</b></li>
+                                                <li>Fecha trabajo: {new Date(trabajo.fechaTrabajo).toLocaleDateString()}</li>
+                                                <li>Ofertas: <b>{item.subastaOfertas?.length || 0}</b></li>
+                                                <li>Termina subasta:{" "}<b>{new Date(trabajo.fechaFinSubasta).toLocaleDateString()}</b></li>
+                                            </ul>
+
+                                            <button
+                                                className="btn btn-subasta w-100"
+                                                onClick={() => setSubastaSeleccionada(item)}
+                                            >
+                                                Ver subasta
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                        })
+                    )}
+                </div>
+            </div>
         </>
-    )
+    );
 }

@@ -1,0 +1,20 @@
+.trabajo-card {
+    border-radius: 16px;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.trabajo-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(111, 45, 189, 0.25);
+}
+
+.text-purple {
+    color: #6f2dbd;
+}
+
+.bg-purple {
+    background-color: #6f2dbd;
+}

@@ -38,4 +38,9 @@ namespace Entitys.Entitys.Documentos
         public int Id { get; set; }
         public string TituloDoc {  get; set; }
     }
+
+    public class DocusId
+    {
+        public int Id { get; set; }
+    }
 }

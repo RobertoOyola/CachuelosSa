@@ -1,0 +1,33 @@
+.text-purple {
+    color: #6f2dbd !important;
+}
+
+.bg-purple {
+    background-color: #4B0082 !important;
+}
+
+.btn-outline-purple {
+    color: #4B0082 !important;
+    border: 2px solid #6f2dbd !important;
+}
+
+.btn-outline-purple:hover {
+    background-color: #6f2dbd !important;
+    color: #4B0082 !important;
+}
+.btn-subasta {
+    color: #4B0082 !important;
+    border: 2px solid #6f2dbd !important;
+    background-color: transparent;
+    border-radius: 999px; /* full circular */
+    padding: 8px 18px;
+    font-weight: 500;
+    transition: all 0.25s ease;
+}
+
+.btn-subasta:hover {
+    background-color: #6f2dbd !important;
+    color: #ffffff !important;
+    box-shadow: 0 6px 18px rgba(111, 45, 189, 0.35);
+    transform: translateY(-2px);
+}

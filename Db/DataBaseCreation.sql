@@ -302,7 +302,6 @@ VALUES
 
 
 GO
-
 CREATE TABLE Trabajo (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     IdUsuarioCreador INT NOT NULL,
@@ -316,17 +315,24 @@ CREATE TABLE Trabajo (
     FechaTrabajo DATETIME NULL,
     TiempoEstimadoTrabajo INT NULL,
     PrecioReferencial DECIMAL(10,2) NULL,
+    IdUsuarioTrabajadorAsignado INT NULL,
     Especial BIT DEFAULT 0,
     Estado NVARCHAR(5) NOT NULL,
     FechaPublicacion DATETIME DEFAULT GETDATE(),
     FechaActualizacion DATETIME DEFAULT GETDATE(),
     Activo BIT DEFAULT 1,
 
-    CONSTRAINT FK_Trabajo_Usuario FOREIGN KEY (IdUsuarioCreador)
+    CONSTRAINT FK_Trabajo_Usuario 
+        FOREIGN KEY (IdUsuarioCreador)
         REFERENCES Usuarios(Id),
 
-    CONSTRAINT FK_Trabajo_Categoria FOREIGN KEY (IdCategoria)
-        REFERENCES CategoriaTrabajo(Id)
+    CONSTRAINT FK_Trabajo_Categoria 
+        FOREIGN KEY (IdCategoria)
+        REFERENCES CategoriaTrabajo(Id),
+
+    CONSTRAINT FK_Trabajo_UsuarioTrabajadorAsignado
+        FOREIGN KEY (IdUsuarioTrabajadorAsignado)
+        REFERENCES Usuarios(Id)
 );
 
 GO
@@ -375,7 +381,6 @@ CREATE TABLE SubastaOferta (
         REFERENCES Usuarios(Id)
 );
 
-
 GO
 
 CREATE TABLE OfertaImagen (
@@ -389,4 +394,59 @@ CREATE TABLE OfertaImagen (
         REFERENCES SubastaOferta(Id)
 );
 
+GO
 
+CREATE TABLE Pago (
+    Id INT IDENTITY PRIMARY KEY,
+    IdTrabajo INT NOT NULL,
+    IdUsuarioPagador INT NOT NULL,
+    Monto DECIMAL(10,2) NOT NULL,
+    MetodoPago NVARCHAR(50),
+    EstadoPago NVARCHAR(20),
+    FechaPago DATETIME DEFAULT GETDATE(),
+    Activo BIT DEFAULT 1,
+	
+    CONSTRAINT FK_Pago_Trabajo
+        FOREIGN KEY (IdTrabajo)
+        REFERENCES Trabajo(Id)
+);
+
+GO
+
+CREATE TABLE ComprobantePago (
+    Id INT IDENTITY PRIMARY KEY,
+    IdPago INT NOT NULL,
+    UrlComprobante NVARCHAR(500) NOT NULL,
+    FechaSubida DATETIME DEFAULT GETDATE(),
+    Validado BIT DEFAULT 0,
+	
+    CONSTRAINT FK_ComprobantePago_Pago
+        FOREIGN KEY (IdPago)
+        REFERENCES Pago(Id)
+);
+
+GO
+
+CREATE TABLE PagoTrabajador (
+    Id INT IDENTITY PRIMARY KEY,
+    IdPago INT NOT NULL,
+    IdUsuarioTrabajador INT NOT NULL,
+    Monto DECIMAL(10,2) NOT NULL,
+    FechaTransferencia DATETIME,
+    Estado NVARCHAR(20),
+	
+    CONSTRAINT FK_PagoTrabajador_Pago
+        FOREIGN KEY (IdPago)
+        REFERENCES Pago(Id)
+);
+
+GO
+
+INSERT INTO Catalogo (NombreCat, Codigo, Nombre, Descripcion, Adicional)
+VALUES
+    ('EST_PAGO', 'PE', 'Pendiente', 'Pago registrado pero aún no confirmado',''),
+    ('EST_PAGO', 'CO', 'Confirmado', 'Comprobante validado y pago aprobado',''),
+    ('EST_PAGO', 'RE', 'Rechazado', 'Comprobante inválido o rechazado',''),
+    ('EST_PAGO_TRAB', 'PE', 'Pendiente', 'Pago pendiente de transferencia al trabajador',''),
+    ('EST_PAGO_TRAB', 'PA', 'Pagado', 'Transferencia realizada al trabajador','');
+GO

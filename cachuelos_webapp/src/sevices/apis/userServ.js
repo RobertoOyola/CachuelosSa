@@ -75,3 +75,31 @@ export const obtenerOtrosUser = async (id) =>{
         return error.response?.data;
     }
 };
+
+export const TieneInfoUser = async () => {
+    try {
+        const response = await api.post('TieneInfoUser');
+        return response.data;
+    } catch (error) {
+        console.error("Error al crear trabajo:", error.response?.data.header.mensaje);
+        return error.response?.data;
+    }
+};
+
+export const CambiarFotoUsuario = async (foto) => {
+    try {
+        const response = await api.post(
+            "CambiarFotoUsuario",
+            JSON.stringify(foto),
+            {
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }
+        );
+
+        return response.data;
+    } catch (error) {
+        return error.response?.data;
+    }
+};

@@ -1,0 +1,260 @@
+.modal-Otp-content h3 {
+    color: #4B0082;
+}
+
+.subasta-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.subasta-modal {
+    background: #fff;
+    width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.modal-header-custom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.btn-close {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.imagen-principal img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.miniaturas {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    justify-content: center;
+}
+
+.miniaturas img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: 0.2s;
+}
+
+.miniaturas img.active,
+.miniaturas img:hover {
+    opacity: 1;
+    border: 2px solid #6a0dad;
+}
+
+.descripcion {
+    margin-top: 15px;
+    color: #555;
+}
+
+.info-trabajo {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.info-trabajo p {
+    margin-bottom: 6px;
+}
+
+.oferta-section {
+    margin-top: 20px;
+}
+
+.oferta-section input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.btn-enviar {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #6a0dad, #8e2de2);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-enviar:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+.subasta-modal.modern {
+    max-width: 720px;
+    border-radius: 20px;
+    padding: 25px;
+    background: #ffffff;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-header-modern {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.titulo-trabajo {
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.badge-subasta {
+    background: #f3f0ff;
+    color: #6c5ce7;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+.btn-close-modern {
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.imagen-principal-modern img {
+    width: 100%;
+    border-radius: 16px;
+    object-fit: cover;
+    max-height: 320px;
+}
+
+.miniaturas-modern {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.miniaturas-modern img {
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.miniaturas-modern img.active {
+    opacity: 1;
+    border: 2px solid #6c5ce7;
+}
+
+.card-section {
+    margin-top: 25px;
+}
+
+.card-section h5 {
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.info-card {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 14px;
+    font-size: 14px;
+}
+
+.info-card.highlight {
+    background: #6c5ce7;
+    color: white;
+}
+
+.info-card.highlight h4 {
+    margin: 0;
+}
+
+.mapa-modern {
+    border-radius: 14px;
+    margin-top: 10px;
+    border: none;
+}
+
+.oferta-modern {
+    margin-top: 30px;
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    background: #f3f3f3;
+    border-radius: 12px;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+.input-wrapper span {
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+.input-wrapper input {
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+}
+
+.btn-enviar-modern {
+    width: 100%;
+    margin-top: 15px;
+    background: #6c5ce7;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 14px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-enviar-modern:hover {
+    background: #5848d6;
+}
+
+.btn-enviar-modern:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

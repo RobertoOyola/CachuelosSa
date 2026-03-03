@@ -23,7 +23,7 @@ export const UploadImage = () => {
         setUploading(true);
 
         try {
-            const ImgId = await uploadPhoto(image);  // Subir imagen
+            const ImgId = await uploadPhoto(image);
             if (ImgId) {
                 const img = obtenerFoto(ImgId, 'orig');
                 setCldImage(img);

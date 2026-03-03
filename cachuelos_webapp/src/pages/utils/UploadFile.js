@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Uploader from '../components/Uploader.tsx'
+import Uploader from '../components/Uploader.js'
 
 export default function UploadFile() {
     const [HistorialPolicial, setHistorialPolicial] = useState(null);

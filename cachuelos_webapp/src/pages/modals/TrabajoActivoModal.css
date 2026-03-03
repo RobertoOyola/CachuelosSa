@@ -1,0 +1,67 @@
+.transfer-card {
+    margin-top: 20px;
+    padding: 18px;
+    border-radius: 16px;
+    background: #f8f7ff;
+    border: 1px solid #e6e2ff;
+}
+
+.monto-transferir {
+    color: #6c5ce7;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.input-file-wrapper input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    background: white;
+}
+
+.preview-img {
+    margin-top: 15px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.section-card {
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 18px;
+    background: #ffffff;
+    border: 1px solid #eaeaea;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+}
+
+.section-title {
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #4b3df0;
+}
+
+.detail-item {
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+.warning-card {
+    background: #fff8e6;
+    border: 1px solid #ffe2a8;
+}
+
+.info-card {
+    background: #eef6ff;
+    border: 1px solid #cce3ff;
+}
+
+.success-card {
+    background: #e9f9ef;
+    border: 1px solid #b8e7c8;
+}
+
+.danger-card {
+    background: #fff0f0;
+    border: 1px solid #ffc9c9;
+}

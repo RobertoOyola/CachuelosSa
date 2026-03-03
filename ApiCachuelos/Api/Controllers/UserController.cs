@@ -113,5 +113,29 @@ namespace Api.Controllers
                 Body = result.Datos
             });
         }
+
+        [Authorize]
+        [HttpPost("TieneInfoUser")]
+        public async Task<IActionResult> TieneInfoUser()
+        {
+
+            ServiceResult<bool> result = await _userServ.TieneInfoUser();
+
+            if (!result.Exitoso)
+            {
+
+                return BadRequest(new CustomResponse<string>
+                {
+                    Header = new CustomHeader { Codigo = result.Codigo, Mensaje = result.Mensaje },
+                    Body = null
+                });
+            }
+
+            return Ok(new CustomResponse<bool>
+            {
+                Header = new CustomHeader { Codigo = result.Codigo, Mensaje = result.Mensaje },
+                Body = result.Datos
+            });
+        }
     }
 }

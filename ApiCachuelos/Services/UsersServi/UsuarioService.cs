@@ -119,5 +119,39 @@ namespace Services.UsersServi
             return ServiceResult<UsuarioInfo>.Ok(usuarioInfo, "Informacion Actualizada con exito", 202);
 
         }
+
+        public async Task<ServiceResult<bool>> TieneInfoUser()
+        {
+            Usuarios userToken = _authServ.OtenerTokenInfo();
+
+            Usuario user = await _usuRepo.ObtenerUserXId(userToken.Id);
+            if (user == null)
+                return ServiceResult<bool>.Fail("Usuario no encontrado", 404);
+
+            UsuarioInfo info = await _usuRepo.ObtenerUserInfoXIdUser(userToken.Id);
+            if (info == null)
+                return ServiceResult<bool>.Fail("UsuarioInfo no Encontrado", 204);
+
+            bool faltaInfoCritica =
+                string.IsNullOrWhiteSpace(info.Nombre) ||
+                string.IsNullOrWhiteSpace(info.Apellido) ||
+                !info.FechaNacimiento.HasValue ||
+                string.IsNullOrWhiteSpace(info.TipoIdentificacion) ||
+                string.IsNullOrWhiteSpace(info.Identificacion) ||
+                string.IsNullOrWhiteSpace(info.Direccion) ||
+                string.IsNullOrWhiteSpace(info.Telefono) ||
+                string.IsNullOrWhiteSpace(info.Ciudad) ||
+                string.IsNullOrWhiteSpace(info.Provincia) ||
+                string.IsNullOrWhiteSpace(info.Nacionalidad) ||
+                string.IsNullOrWhiteSpace(info.Descripcion);
+
+            if (info.Discapacidad == true &&
+                string.IsNullOrWhiteSpace(info.TipoDiscapacidad))
+            {
+                faltaInfoCritica = true;
+            }
+
+            return ServiceResult<bool>.Ok(faltaInfoCritica, "response", 200);
+        }
     }
 }

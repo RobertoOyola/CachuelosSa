@@ -7,6 +7,7 @@ import { logout } from '../../sevices/apis/authServ';
 import { obtenerFoto } from '../../sevices/apis/docuServ';
 import { AdvancedImage } from '@cloudinary/react';
 import WizardTrabajo from '../modals/WizardTrabajo';
+import { AnimatePresence } from "framer-motion";
 
 export default function Header({ onLogout }) {
     const navigate = useNavigate();
@@ -118,11 +119,14 @@ export default function Header({ onLogout }) {
                     </button>
                 </div>
             </div>
-        {mostrarWizard && (
-            <div className="modal-backdrop">
-                <WizardTrabajo />
-            </div>
-        )}
+            <AnimatePresence mode="wait">
+                {mostrarWizard && (
+                    <WizardTrabajo
+                        key="wizard-trabajo"
+                        onClose={() => setMostrarWizard(false)}
+                    />
+                )}
+            </AnimatePresence>
 
         </header>
 
